@@ -87,7 +87,7 @@ forms.forEach(form => {
       if (response.ok) {
         form.innerHTML = `
           <div style="text-align:center; padding: 2rem 0;">
-            <div style="width:64px;height:64px;background:linear-gradient(135deg,#c9a84c,#e8c96a);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.8rem;">✓</div>
+            <div style="width:64px;height:64px;background:#D4AF37;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.8rem;color:#05130E;font-weight:900;">✓</div>
             <h3 style="font-size:1.3rem;font-weight:700;margin-bottom:0.75rem;">¡Registro confirmado!</h3>
             <p style="color:rgba(245,240,232,0.7);font-size:0.9rem;line-height:1.6;">Recibirás un mensaje de confirmación pronto.<br>¡Nos vemos el <strong style="color:#c9a84c;">10 de octubre</strong>!</p>
           </div>
@@ -104,29 +104,7 @@ forms.forEach(form => {
   });
 });
 
-// ---- PARTICLES BACKGROUND (Hero) ----
-function createParticles() {
-  const hero = document.getElementById('hero');
-  if (!hero) return;
-
-  const wrap = document.createElement('div');
-  wrap.classList.add('particles-wrap');
-  hero.appendChild(wrap);
-
-  const count = window.innerWidth < 600 ? 12 : 24;
-
-  for (let i = 0; i < count; i++) {
-    const p = document.createElement('div');
-    p.classList.add('particle');
-    p.style.left = `${Math.random() * 100}%`;
-    p.style.width = p.style.height = `${Math.random() * 2 + 1}px`;
-    p.style.animationDuration = `${Math.random() * 15 + 10}s`;
-    p.style.animationDelay = `${Math.random() * 10}s`;
-    wrap.appendChild(p);
-  }
-}
-
-createParticles();
+// Hero leaves particle system is handled in js/animations.js via GSAP
 
 // ---- NUMBER COUNTER ANIMATION (for stats if added) ----
 function animateValue(element, start, end, duration) {
