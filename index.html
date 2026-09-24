@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Inversionista Imparable — Un evento de crecimiento personal y financiero. 10 de octubre, Auditorio Campus Maria Montessori, Miraflores. Entrada gratuita." />
+  <meta name="keywords" content="inversion, crecimiento personal, finanzas, congreso, Lima, Miraflores, evento gratuito" />
+  <meta property="og:title" content="INVERSIONISTA IMPARABLE — 10 de Octubre | Miraflores" />
+  <meta property="og:description" content="Ya aprendiste a generar ingresos. Ahora aprende a hacerlos crecer. Registro gratuito." />
+  <meta property="og:type" content="website" />
+  <title>INVERSIONISTA IMPARABLE — 10 de Octubre | Miraflores</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <!-- ========================================================
+       NAV BAR (minimal, sin menu)
+       ======================================================== -->
+  <nav class="nav-bar" role="navigation" aria-label="Navegacion principal">
+    <div class="nav-logo">Inversionista <span>Imparable</span></div>
+    <a href="#registro" class="nav-cta" id="nav-cta-btn">Reservar lugar</a>
+  </nav>
+
+  <!-- ========================================================
+       HERO SECTION
+       ======================================================== -->
+  <section id="hero" aria-label="Seccion principal del evento">
+    <div class="hero-content">
+      <div class="hero-badge" role="status">
+        Evento Presencial &mdash; Entrada Gratuita
+      </div>
+
+      <h1 class="hero-event-name">
+        <span class="gold">Inversionista</span><br>Imparable
+      </h1>
+      <p class="hero-tagline">Crece &bull; Invierte &bull; Trasciende</p>
+
+      <h2 class="hero-headline">
+        Ganar mas no siempre<br>significa crecer mas.
+      </h2>
+
+      <p class="hero-subtitle">
+        Descubre como fortalecer tu seguridad, transformar tus limites
+        y aprender nuevas formas de hacer crecer tu dinero.
+      </p>
+
+      <div class="hero-info" aria-label="Informacion del evento">
+        <div class="hero-info-item">
+          <div class="icon" aria-hidden="true">&#128197;</div>
+          <span><strong>10 de Octubre, 2026</strong> &mdash; 3:00 P.M.</span>
+        </div>
+        <div class="hero-info-item">
+          <div class="icon" aria-hidden="true">&#128205;</div>
+          <span><strong>Auditorio Campus Maria Montessori</strong><br>Calle Moquegua #741, Miraflores</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formulario hero (above the fold) -->
+    <div class="hero-form-card" role="complementary" aria-label="Formulario de registro">
+      <p class="form-title">Reserva tu lugar ahora</p>
+      <p class="form-subtitle">&#127775; Cupos limitados &mdash; Entrada gratuita</p>
+
+      <form id="form-hero" data-formspree
+            action="https://formspree.io/f/XXXXXXXX"
+            method="POST"
+            novalidate>
+        <div class="form-group">
+          <label for="hero-name">Nombre y apellido</label>
+          <input type="text" id="hero-name" name="nombre" placeholder="Tu nombre completo" required autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="hero-phone">WhatsApp</label>
+          <input type="tel" id="hero-phone" name="whatsapp" placeholder="+51 999 999 999" required autocomplete="tel" />
+        </div>
+        <div class="form-group">
+          <label for="hero-email">Correo electronico</label>
+          <input type="email" id="hero-email" name="email" placeholder="tu@correo.com" required autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label for="hero-interest">Lo que mas me interesa</label>
+          <select id="hero-interest" name="interes">
+            <option value="">Selecciona una opcion...</option>
+            <option value="crecimiento">Crecimiento personal</option>
+            <option value="inversion">Inversion</option>
+            <option value="finanzas">Finanzas personales</option>
+            <option value="inmobiliario">Oportunidades inmobiliarias</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-primary" id="hero-submit-btn">
+          &#127775; Quiero mi entrada gratuita
+        </button>
+        <p class="btn-scarcity"><span>Cupos limitados.</span> Asegura el tuyo hoy.</p>
+
+        <p class="form-privacy">
+          <span>&#128274;</span>
+          Tus datos seran utilizados unicamente para gestionar tu registro y comunicar informacion relacionada con el evento.
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       COUNTDOWN
+       ======================================================== -->
+  <div id="countdown" aria-label="Contador regresivo al evento">
+    <p class="countdown-label">Faltan</p>
+    <div class="countdown-grid">
+      <div class="countdown-unit">
+        <span class="countdown-number" id="count-days">--</span>
+        <span class="countdown-unit-label">Dias</span>
+      </div>
+      <span class="countdown-separator" aria-hidden="true">:</span>
+      <div class="countdown-unit">
+        <span class="countdown-number" id="count-hours">--</span>
+        <span class="countdown-unit-label">Horas</span>
+      </div>
+      <span class="countdown-separator" aria-hidden="true">:</span>
+      <div class="countdown-unit">
+        <span class="countdown-number" id="count-minutes">--</span>
+        <span class="countdown-unit-label">Minutos</span>
+      </div>
+      <span class="countdown-separator" aria-hidden="true">:</span>
+      <div class="countdown-unit">
+        <span class="countdown-number" id="count-seconds">--</span>
+        <span class="countdown-unit-label">Segundos</span>
+      </div>
+    </div>
+    <p class="countdown-text">para vivir <strong>Inversionista Imparable</strong></p>
+  </div>
+
+  <!-- ========================================================
+       PARA QUIEN ES
+       ======================================================== -->
+  <section id="para-quien" aria-labelledby="para-quien-title">
+    <div class="container">
+      <p class="section-label" data-anim="fade-up">Tu momento</p>
+      <h2 class="section-title" id="para-quien-title" data-anim="fade-up">Este evento es para ti si&hellip;</h2>
+      <div class="gold-line" data-anim="fade-up"></div>
+
+      <div class="checklist" data-anim="stagger-grid">
+        <div class="check-item">
+          <div class="check-icon" aria-hidden="true">&#10003;</div>
+          <p>Ya has logrado generar ingresos, pero quieres aprender <strong>nuevas formas de hacer crecer tu dinero.</strong></p>
+        </div>
+        <div class="check-item">
+          <div class="check-icon" aria-hidden="true">&#10003;</div>
+          <p>Quieres <strong>tomar mejores decisiones financieras</strong> con lo que ya tienes.</p>
+        </div>
+        <div class="check-item">
+          <div class="check-icon" aria-hidden="true">&#10003;</div>
+          <p>Quieres <strong>fortalecer tu seguridad</strong> personal y profesional.</p>
+        </div>
+        <div class="check-item">
+          <div class="check-icon" aria-hidden="true">&#10003;</div>
+          <p>Sientes que existen <strong>creencias o limites</strong> que todavia frenan tu crecimiento.</p>
+        </div>
+        <div class="check-item">
+          <div class="check-icon" aria-hidden="true">&#10003;</div>
+          <p>Quieres conocer <strong>nuevas oportunidades de inversion</strong> reales.</p>
+        </div>
+        <div class="check-item">
+          <div class="check-icon" aria-hidden="true">&#10003;</div>
+          <p>Quieres <strong>relacionarte con personas</strong> que tambien estan buscando crecer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ========================================================
+       QUE VAS A VIVIR (SESIONES)
+       ======================================================== -->
+  <section id="sesiones" aria-labelledby="sesiones-title">
+    <div class="container">
+      <p class="section-label" data-anim="label">El programa</p>
+      <h2 class="section-title" id="sesiones-title" data-anim="fade-up">Que vas a vivir</h2>
+      <div class="gold-line" data-anim="fade-up"></div>
+      <p class="section-desc" data-anim="fade-up">Cuatro experiencias diseñadas para transformar la forma en que piensas, sientes y actuas.</p>
+
+      <div class="sessions-grid" data-anim="stagger-grid">
+        <div class="session-card">
+          <div class="session-number">01</div>
+          <h3 class="session-title">Tu voz tiene poder</h3>
+          <p class="session-desc">Aprende herramientas para comunicarte con mayor seguridad y hacer que tu voz tenga impacto real.</p>
+          <div class="session-speaker">
+            <div class="session-speaker-dot"></div>
+            <span class="session-speaker-name">Luz Macedo</span>
+          </div>
+        </div>
+        <div class="session-card">
+          <div class="session-number">02</div>
+          <h3 class="session-title">Activa tu poder</h3>
+          <p class="session-desc">Fortalece tu seguridad, confianza y capacidad para avanzar hacia tus objetivos sin frenos.</p>
+          <div class="session-speaker">
+            <div class="session-speaker-dot"></div>
+            <span class="session-speaker-name">Mayk Huamani</span>
+          </div>
+        </div>
+        <div class="session-card">
+          <div class="session-number">03</div>
+          <h3 class="session-title">Sana tu historia, transforma tu futuro</h3>
+          <p class="session-desc">Identifica creencias y limitaciones que pueden estar frenando tu crecimiento y liberalas.</p>
+          <div class="session-speaker">
+            <div class="session-speaker-dot"></div>
+            <span class="session-speaker-name">Aleyda Fernandez</span>
+          </div>
+        </div>
+        <div class="session-card">
+          <div class="session-number">04</div>
+          <h3 class="session-title">Haz que tu dinero trabaje para ti</h3>
+          <p class="session-desc">Descubre nuevas alternativas para pensar en crecimiento y construccion de capital a largo plazo.</p>
+          <div class="session-speaker">
+            <div class="session-speaker-dot"></div>
+            <span class="session-speaker-name">Albert Ponce &mdash; Agroinvest Peru</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       CTA STRIP (mid-page)
+       ======================================================== -->
+  <div class="cta-strip">
+    <div class="container">
+      <p class="reveal">&#127775; Estos temas te esperan el <strong>10 de octubre</strong> en Miraflores</p>
+      <a href="#registro" class="btn-primary reveal" id="cta-strip-btn">
+        Reservar mi lugar &rarr;
+      </a>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       PONENTES
+       ======================================================== -->
+  <section id="ponentes" aria-labelledby="ponentes-title">
+    <div class="container">
+      <p class="section-label" data-anim="label">Los expertos</p>
+      <h2 class="section-title" id="ponentes-title" data-anim="fade-up">Conoce a quienes te acompanaran</h2>
+      <div class="gold-line" data-anim="fade-up"></div>
+
+      <div class="speakers-grid" data-anim="stagger-grid">
+        <div class="speaker-card" data-tilt>
+          <div class="speaker-img-wrap">
+            <img src="images/ponentes/luz_macedo.jpg" alt="Luz Macedo - Ponente" loading="lazy" />
+            <div class="speaker-img-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="speaker-info">
+            <h3 class="speaker-name">Luz Macedo</h3>
+            <p class="speaker-role">Coach de Comunicacion y Liderazgo</p>
+            <p class="speaker-bio">[Credenciales reales por confirmar]</p>
+          </div>
+        </div>
+
+        <div class="speaker-card" data-tilt>
+          <div class="speaker-img-wrap">
+            <img src="images/ponentes/mayk_huamani.jpg" alt="Mayk Huamani - Ponente" loading="lazy" />
+            <div class="speaker-img-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="speaker-info">
+            <h3 class="speaker-name">Mayk Huamani</h3>
+            <p class="speaker-role">Especialista en Desarrollo Personal</p>
+            <p class="speaker-bio">[Credenciales reales por confirmar]</p>
+          </div>
+        </div>
+
+        <div class="speaker-card" data-tilt>
+          <div class="speaker-img-wrap">
+            <img src="images/ponentes/aleyda_fernandez.jpg" alt="Aleyda Fernandez - Ponente" loading="lazy" />
+            <div class="speaker-img-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="speaker-info">
+            <h3 class="speaker-name">Aleyda Fernandez</h3>
+            <p class="speaker-role">Terapeuta y Coach de Transformacion</p>
+            <p class="speaker-bio">[Credenciales reales por confirmar]</p>
+          </div>
+        </div>
+
+        <div class="speaker-card" data-tilt>
+          <div class="speaker-img-wrap">
+            <img src="images/ponentes/albert_ponce.jpg" alt="Albert Ponce - Agroinvest Peru" loading="lazy" />
+            <div class="speaker-img-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="speaker-info">
+            <h3 class="speaker-name">Albert Ponce</h3>
+            <p class="speaker-role">Agroinvest Peru</p>
+            <p class="speaker-bio">[Credenciales reales por confirmar]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ========================================================
+       TRANSFORMACION FLOW
+       ======================================================== -->
+  <section id="transformacion" aria-labelledby="transform-title">
+    <div class="container">
+      <p class="section-label" data-anim="label">El viaje</p>
+      <h2 class="section-title" id="transform-title" data-anim="fade-up">4 horas para cambiar la forma<br>en que ves tu crecimiento</h2>
+      <div class="gold-line" data-anim="fade-up"></div>
+
+      <div class="transform-flow" id="transform-flow">
+        <div class="transform-step" data-anim="transform-step">
+          <div class="transform-step-num">I</div>
+          <div class="transform-step-content">
+            <h3 class="transform-step-title">Crece</h3>
+            <p class="transform-step-desc">Fortalece tu comunicacion y seguridad personal.</p>
+          </div>
+        </div>
+        <div class="transform-arrow" aria-hidden="true" data-anim="transform-arrow">&#8595;</div>
+        <div class="transform-step" data-anim="transform-step">
+          <div class="transform-step-num">II</div>
+          <div class="transform-step-content">
+            <h3 class="transform-step-title">Activa</h3>
+            <p class="transform-step-desc">Descubre el poder que ya tienes dentro de ti.</p>
+          </div>
+        </div>
+        <div class="transform-arrow" aria-hidden="true" data-anim="transform-arrow">&#8595;</div>
+        <div class="transform-step" data-anim="transform-step">
+          <div class="transform-step-num">III</div>
+          <div class="transform-step-content">
+            <h3 class="transform-step-title">Transforma</h3>
+            <p class="transform-step-desc">Rompe creencias que pueden estar limitando tu crecimiento.</p>
+          </div>
+        </div>
+        <div class="transform-arrow" aria-hidden="true" data-anim="transform-arrow">&#8595;</div>
+        <div class="transform-step" data-anim="transform-step">
+          <div class="transform-step-num">IV</div>
+          <div class="transform-step-content">
+            <h3 class="transform-step-title">Invierte</h3>
+            <p class="transform-step-desc">Conoce nuevas formas de hacer crecer tu dinero.</p>
+          </div>
+        </div>
+        <div class="transform-arrow" aria-hidden="true" data-anim="transform-arrow">&#8595;</div>
+        <div class="transform-step" data-anim="transform-step">
+          <div class="transform-step-num">V</div>
+          <div class="transform-step-content">
+            <h3 class="transform-step-title">Trasciende</h3>
+            <p class="transform-step-desc">Empieza a pensar en el futuro que quieres construir.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       VIDEO SECTION
+       ======================================================== -->
+  <section id="video" aria-labelledby="video-title">
+    <div class="container">
+      <p class="section-label reveal">Siente la energia</p>
+      <h2 class="section-title reveal" id="video-title">Mira lo que te espera</h2>
+      <div class="gold-line reveal"></div>
+
+      <!-- 
+        INSTRUCCION: 
+        Cuando tengas el video de YouTube, reemplaza todo el div.video-placeholder
+        con el siguiente bloque (cambia VIDEO_ID por el ID real):
+        
+        <div class="video-embed reveal">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID"
+                  title="Inversionista Imparable — Video del evento"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen loading="lazy"></iframe>
+        </div>
+      -->
+      <div class="video-placeholder reveal" role="button" tabindex="0" aria-label="Video de presentacion del evento">
+        <div class="video-placeholder-text">
+          <div class="video-play-btn" aria-hidden="true">&#9654;</div>
+          <p>Video del evento proximamente</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       BENEFICIOS — LO QUE TE LLEVARAS
+       ======================================================== -->
+  <section id="beneficios" aria-labelledby="beneficios-title">
+    <div class="container">
+      <p class="section-label" data-anim="label">Lo que te llevaras</p>
+      <h2 class="section-title" id="beneficios-title" data-anim="fade-up">No solo vas a escuchar.<br>Vas a salir con herramientas.</h2>
+      <div class="gold-line" data-anim="fade-up"></div>
+
+      <div class="benefits-grid" data-anim="stagger-grid">
+        <div class="benefit-item">
+          <span class="benefit-check" aria-hidden="true">&#10003;</span>
+          <p><strong>Herramientas</strong> para comunicarte con mayor seguridad e impacto.</p>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-check" aria-hidden="true">&#10003;</span>
+          <p><strong>Nuevas perspectivas</strong> para superar limites personales que te frenan.</p>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-check" aria-hidden="true">&#10003;</span>
+          <p><strong>Ideas claras</strong> para tomar mejores decisiones con tu dinero.</p>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-check" aria-hidden="true">&#10003;</span>
+          <p><strong>Nuevas formas</strong> de pensar sobre crecimiento e inversion a largo plazo.</p>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-check" aria-hidden="true">&#10003;</span>
+          <p><strong>Conexiones reales</strong> con personas que comparten tus objetivos de crecimiento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       PRUEBA SOCIAL
+       ======================================================== -->
+  <section id="prueba-social" aria-labelledby="social-title">
+    <div class="container">
+      <p class="section-label reveal">Confianza</p>
+      <h2 class="section-title reveal" id="social-title">Personas que ya decidieron<br>dar el siguiente paso</h2>
+      <div class="gold-line reveal"></div>
+
+      <!-- 
+        INSTRUCCION: Al ser la primera edicion, usamos un mensaje honesto.
+        Cuando tengas testimonios reales, reemplaza este bloque con las tarjetas.
+      -->
+      <div class="social-proof-note reveal">
+        <p>
+          <strong>Primera edicion del evento.</strong><br>
+          Tenemos el compromiso de ofrecerte una experiencia de alto nivel.
+          Cuando el evento concluya, aqui encontraras los testimonios reales de quienes vivieron Inversionista Imparable.
+        </p>
+      </div>
+
+      <!-- 
+        TESTIMONIOS (descomenta y edita cuando tengas testimonios reales):
+        <div class="testimonial-grid">
+          <div class="testimonial-card reveal delay-1">
+            <div class="testimonial-quote">&#8220;</div>
+            <p class="testimonial-text">Tu testimonio real aqui.</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">A</div>
+              <div>
+                <div class="testimonial-author-name">Nombre Apellido</div>
+                <div class="testimonial-author-role">Cargo / Empresa</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      -->
+    </div>
+  </section>
+
+  <!-- ========================================================
+       UBICACION
+       ======================================================== -->
+  <section id="ubicacion" aria-labelledby="ubicacion-title">
+    <div class="container">
+      <p class="section-label reveal">Nos vemos aqui</p>
+      <h2 class="section-title reveal" id="ubicacion-title">Nos vemos en Miraflores</h2>
+      <div class="gold-line reveal"></div>
+
+      <div class="location-content">
+        <div class="location-info reveal-left">
+          <div class="location-date">10 de Octubre</div>
+          <div class="location-time">3:00 P.M. en punto</div>
+          <div class="location-address">
+            <h4>Lugar del evento</h4>
+            <p>
+              Auditorio del Campus Maria Montessori<br>
+              Calle Moquegua #741<br>
+              Miraflores, Lima &mdash; Peru
+            </p>
+          </div>
+          <div class="location-details">
+            <div class="location-detail-item">
+              <div class="icon" aria-hidden="true">&#128205;</div>
+              <span>A pocos minutos de la Av. Larco</span>
+            </div>
+            <div class="location-detail-item">
+              <div class="icon" aria-hidden="true">&#128513;</div>
+              <span>Acceso para personas con movilidad reducida</span>
+            </div>
+            <!-- Agrega: estacionamiento, metro, referencias cuando confirmes -->
+          </div>
+        </div>
+
+        <div class="map-embed reveal-right">
+          <iframe
+            title="Mapa del evento — Calle Moquegua 741, Miraflores"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.8!2d-77.0298!3d-12.1191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c8a3aad8e84f%3A0x6e5e5e5e5e5e5e5e!2sCalle+Moquegua+741%2C+Miraflores%2C+Lima!5e0!3m2!1ses!2spe!4v1234567890"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       REGISTRO (mid-page)
+       ======================================================== -->
+  <section id="registro" aria-labelledby="registro-title">
+    <div class="container">
+      <p class="section-label reveal">Asegura tu lugar</p>
+      <h2 class="section-title reveal" id="registro-title">Completa tu registro gratuito</h2>
+      <div class="gold-line reveal"></div>
+
+      <div class="registro-inner reveal">
+        <p class="form-title">Un solo paso te separa del evento</p>
+        <p class="form-subtitle">&#127775; 10 de Octubre &bull; 3:00 P.M. &bull; Miraflores &bull; Gratuito</p>
+
+        <form id="form-registro" data-formspree
+              action="https://formspree.io/f/XXXXXXXX"
+              method="POST"
+              novalidate>
+          <div class="form-group">
+            <label for="reg-name">Nombre y apellido</label>
+            <input type="text" id="reg-name" name="nombre" placeholder="Tu nombre completo" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="reg-phone">WhatsApp</label>
+            <input type="tel" id="reg-phone" name="whatsapp" placeholder="+51 999 999 999" required autocomplete="tel" />
+          </div>
+          <div class="form-group">
+            <label for="reg-email">Correo electronico</label>
+            <input type="email" id="reg-email" name="email" placeholder="tu@correo.com" required autocomplete="email" />
+          </div>
+          <div class="form-group">
+            <label for="reg-interest">Lo que mas me interesa</label>
+            <select id="reg-interest" name="interes">
+              <option value="">Selecciona una opcion...</option>
+              <option value="crecimiento">Crecimiento personal</option>
+              <option value="inversion">Inversion</option>
+              <option value="finanzas">Finanzas personales</option>
+              <option value="inmobiliario">Oportunidades inmobiliarias</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn-primary" id="registro-submit-btn">
+            &#127775; Quiero mi entrada gratuita
+          </button>
+          <p class="btn-scarcity"><span>Cupos limitados.</span> Tu lugar no esta garantizado hasta completar el registro.</p>
+
+          <p class="form-privacy">
+            <span>&#128274;</span>
+            Tus datos seran utilizados unicamente para gestionar tu registro y comunicar informacion relacionada con el evento.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ========================================================
+       FAQ
+       ======================================================== -->
+  <section id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <p class="section-label reveal">Resuelve tus dudas</p>
+      <h2 class="section-title reveal" id="faq-title">Preguntas frecuentes</h2>
+      <div class="gold-line reveal"></div>
+
+      <div class="faq-list">
+        <div class="faq-item reveal delay-1">
+          <button class="faq-question" id="faq-q1" aria-expanded="false" aria-controls="faq-a1">
+            <span>La entrada es gratuita?</span>
+            <div class="faq-icon" aria-hidden="true">+</div>
+          </button>
+          <div class="faq-answer" id="faq-a1" role="region" aria-labelledby="faq-q1">
+            <p>Si. El registro al evento es completamente gratuito, sujeto a disponibilidad de cupos. Solo completa el formulario y asegura tu lugar.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal delay-2">
+          <button class="faq-question" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">
+            <span>Cuando es el evento?</span>
+            <div class="faq-icon" aria-hidden="true">+</div>
+          </button>
+          <div class="faq-answer" id="faq-a2" role="region" aria-labelledby="faq-q2">
+            <p>El evento es el <strong>10 de octubre de 2026</strong> desde las <strong>3:00 p.m.</strong> Te recomendamos llegar 15 minutos antes para registrarte en la entrada.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal delay-3">
+          <button class="faq-question" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">
+            <span>Donde sera el evento?</span>
+            <div class="faq-icon" aria-hidden="true">+</div>
+          </button>
+          <div class="faq-answer" id="faq-a3" role="region" aria-labelledby="faq-q3">
+            <p>En el Auditorio del Campus Maria Montessori, Calle Moquegua #741, Miraflores, Lima.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal delay-4">
+          <button class="faq-question" id="faq-q4" aria-expanded="false" aria-controls="faq-a4">
+            <span>Necesito experiencia previa en inversiones?</span>
+            <div class="faq-icon" aria-hidden="true">+</div>
+          </button>
+          <div class="faq-answer" id="faq-a4" role="region" aria-labelledby="faq-q4">
+            <p>No necesariamente. El evento esta disenado para personas interesadas en crecimiento personal, financiero y nuevas oportunidades de inversion, sin importar su nivel de experiencia.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal delay-5">
+          <button class="faq-question" id="faq-q5" aria-expanded="false" aria-controls="faq-a5">
+            <span>Como recibo mi confirmacion?</span>
+            <div class="faq-icon" aria-hidden="true">+</div>
+          </button>
+          <div class="faq-answer" id="faq-a5" role="region" aria-labelledby="faq-q5">
+            <p>Despues de completar el registro recibiras la confirmacion por WhatsApp y/o correo electronico con todos los detalles del evento.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal delay-1">
+          <button class="faq-question" id="faq-q6" aria-expanded="false" aria-controls="faq-a6">
+            <span>Hay algun costo oculto?</span>
+            <div class="faq-icon" aria-hidden="true">+</div>
+          </button>
+          <div class="faq-answer" id="faq-a6" role="region" aria-labelledby="faq-q6">
+            <p>No. El acceso al evento es completamente gratuito. No existe ningun costo de inscripcion ni de participacion.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       CTA FINAL
+       ======================================================== -->
+  <section id="cta-final" aria-labelledby="cta-final-title">
+    <div class="container" style="position:relative;z-index:2;">
+      <p class="cta-final-event">Inversionista Imparable &bull; 10 de Octubre &bull; Miraflores</p>
+      <h2 class="cta-final-headline reveal" id="cta-final-title">
+        Tu siguiente nivel<br>comienza aqui.
+      </h2>
+      <p class="cta-final-sub reveal">
+        Ya aprendiste a generar ingresos.<br>
+        Ahora aprende a tomar mejores decisiones con tu dinero.
+      </p>
+
+      <div class="cta-final-info reveal">
+        <span>&#128197; <strong>10 de Octubre, 2026</strong></span>
+        <span>&#128336; <strong>3:00 P.M.</strong></span>
+        <span>&#128205; <strong>Miraflores, Lima</strong></span>
+        <span>&#127775; <strong>Entrada Gratuita</strong></span>
+      </div>
+
+      <div class="cta-btn-wrap reveal">
+        <a href="#registro" class="btn-primary" id="cta-final-btn">
+          &#127775; Quiero mi entrada gratuita
+        </a>
+        <p class="btn-scarcity"><span>Cupos limitados.</span> Registrate hoy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       FOOTER
+       ======================================================== -->
+  <footer role="contentinfo">
+    <div class="footer-logo">Inversionista Imparable</div>
+    <p class="footer-text">
+      &copy; 2026 Inversionista Imparable &mdash; Todos los derechos reservados.<br>
+      Evento organizado por <strong>Agroinvest Peru</strong> | Miraflores, Lima
+    </p>
+  </footer>
+
+  <!-- GSAP 3 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <!-- App scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>
