@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    INVERSIONISTA IMPARABLE — GSAP ANIMATIONS
    Requires: gsap 3.12+ and ScrollTrigger plugin
    Follows gsap-core skill best practices:
@@ -10,41 +10,18 @@
    - back.out / power3.out eases for premium feel
    ============================================================ */
 
-// Fallback: IntersectionObserver for scroll-blocked environments (IDE file:// preview)
-function setupFallbackReveal() {
-  const allAnimEls = document.querySelectorAll('[data-anim], .reveal, .reveal-left, .reveal-right');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        if (Number(gsap.getProperty(el, 'opacity')) < 0.5) {
-          gsap.to(el, { autoAlpha: 1, y: 0, x: 0, duration: 0.6, ease: 'power3.out', overwrite: false });
-        }
-        io.unobserve(el);
-      }
-    });
-  }, { threshold: 0.01, rootMargin: '400px 0px 400px 0px' });
-  allAnimEls.forEach(el => io.observe(el));
-}
-setTimeout(setupFallbackReveal, 600);
+// Removed fallback logic that conflicts with GSAP ScrollTrigger
 
-// Hard fallback: 2.5s timeout — makes all still-invisible elements visible
-// (handles IDE scroll-locked file:// preview)
-setTimeout(() => {
-  document.querySelectorAll('[data-anim], .reveal, .reveal-left, .reveal-right').forEach(el => {
-    if (parseFloat(getComputedStyle(el).opacity) < 0.5) {
-      gsap.to(el, { autoAlpha: 1, y: 0, x: 0, duration: 0.5, ease: 'power2.out', overwrite: false });
-    }
-  });
-}, 2500);
+if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+  console.warn('GSAP / ScrollTrigger no detectado. El contenido permanece visible.');
+} else {
+  gsap.registerPlugin(ScrollTrigger);
 
-gsap.registerPlugin(ScrollTrigger);
+  /* ---- GLOBAL DEFAULTS ---- */
+  gsap.defaults({ ease: 'power3.out', duration: 0.7 });
 
-/* ---- GLOBAL DEFAULTS ---- */
-gsap.defaults({ ease: 'power3.out', duration: 0.7 });
-
-/* ---- MATCH MEDIA (responsive + reduced-motion) ---- */
-const mm = gsap.matchMedia();
+  /* ---- MATCH MEDIA (responsive + reduced-motion) ---- */
+  const mm = gsap.matchMedia();
 
 mm.add(
   {
@@ -59,63 +36,114 @@ mm.add(
     /* ======================================================
        1. HERO — ORCHESTRATED TIMELINE ENTRANCE
        ====================================================== */
-    const heroTl = gsap.timeline({ delay: 0.1 });
+    const heroTl = gsap.timeline({ delay: 0.15 });
 
     heroTl
-      .from('.hero-badge', {
-        autoAlpha: 0, y: -24, duration: reduceMotion ? 0 : 0.6,
-        ease: 'power2.out'
-      })
-      .from('.hero-event-name', {
-        autoAlpha: 0, y: 50, duration: reduceMotion ? 0 : 0.9,
-        ease: 'back.out(1.4)', skewY: isDesktop ? 3 : 0
-      }, '-=0.3')
+      // 1. Ambient background zoom out
+      .from('.hero-bg', {
+        scale: 1.15, duration: reduceMotion ? 0 : 2.8, ease: 'power2.out'
+      }, 0)
+      // 2. Smooth borderless live status eyebrow
+      .from('.hero-eyebrow', {
+        autoAlpha: 0, x: -30, duration: reduceMotion ? 0 : 0.8,
+        ease: 'power3.out'
+      }, 0.1)
+      .from('.beacon-ring', {
+        scale: 0, autoAlpha: 0, duration: reduceMotion ? 0 : 0.8,
+        ease: 'back.out(2)'
+      }, 0.2)
+      // 3. ELEGANT, FRIENDLY TITLE REVEAL
+      .from('.hero-title-wrap .title-word', {
+        yPercent: 110,
+        autoAlpha: 0,
+        duration: reduceMotion ? 0 : 0.9,
+        stagger: 0.15,
+        ease: 'power3.out'
+      }, 0.25)
+      // 4. Hero tagline with clean tracking
       .from('.hero-tagline', {
-        autoAlpha: 0, y: 20, duration: reduceMotion ? 0 : 0.6,
-        ease: 'power3.out', letterSpacing: '0.5em'
+        autoAlpha: 0, y: 15, duration: reduceMotion ? 0 : 0.6,
+        ease: 'power3.out'
       }, '-=0.5')
+      // 5. Value proposition headline
       .from('.hero-headline', {
-        autoAlpha: 0, y: 40, duration: reduceMotion ? 0 : 0.8,
-        ease: 'power4.out'
+        autoAlpha: 0, y: 30, duration: reduceMotion ? 0 : 0.8,
+        ease: 'power3.out'
       }, '-=0.4')
+      // 6. Subtitle
       .from('.hero-subtitle', {
-        autoAlpha: 0, y: 30, duration: reduceMotion ? 0 : 0.7
+        autoAlpha: 0, y: 20, duration: reduceMotion ? 0 : 0.7,
+        ease: 'power3.out'
       }, '-=0.5')
+      // 7. Event meta items
       .from('.hero-info-item', {
         autoAlpha: 0, x: -20, duration: reduceMotion ? 0 : 0.5,
-        stagger: 0.15, ease: 'power2.out'
+        stagger: 0.12, ease: 'power2.out'
       }, '-=0.4')
+      // 8. Glass registration card (enters promptly with title)
       .from('.hero-form-card', {
-        autoAlpha: 0, x: isDesktop ? 60 : 0, y: isDesktop ? 0 : 30,
-        duration: reduceMotion ? 0 : 1,
-        ease: 'power4.out', scale: 0.97
-      }, '-=0.7')
-      // Countdown units stagger in after hero
-      .from('.countdown-unit', {
-        autoAlpha: 0, y: 30, scale: 0.85,
+        autoAlpha: 0, x: isDesktop ? 40 : 0, y: isDesktop ? 0 : 20,
+        duration: reduceMotion ? 0 : 0.8,
+        ease: 'power3.out', scale: 0.98
+      }, 0.35);
+
+    /* ======================================================
+       1.2 COUNTDOWN — DEDICATED SCROLLTRIGGER ENTRANCE
+       ====================================================== */
+    gsap.fromTo('.countdown-unit',
+      { autoAlpha: 0, y: 30, scale: 0.85 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        scale: 1,
+        duration: reduceMotion ? 0 : 0.6,
         stagger: { each: 0.1, from: 'start' },
+        ease: 'back.out(1.7)',
+        scrollTrigger: {
+          trigger: '#countdown',
+          start: 'top 92%',
+          toggleActions: 'play none none none'
+        }
+      }
+    );
+
+    gsap.fromTo('.countdown-label, .countdown-text',
+      { autoAlpha: 0, y: 15 },
+      {
+        autoAlpha: 1,
+        y: 0,
         duration: reduceMotion ? 0 : 0.5,
-        ease: 'back.out(1.7)'
-      }, '-=0.2')
-      .from('.countdown-label, .countdown-text', {
-        autoAlpha: 0, duration: reduceMotion ? 0 : 0.4
-      }, '<');
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '#countdown',
+          start: 'top 92%',
+          toggleActions: 'play none none none'
+        }
+      }
+    );
+
+    /* ======================================================
+       1.5 HERO (Mouse lag removed; atmosphere driven by floating leaves)
+       ====================================================== */
 
     /* ======================================================
        2. GENERIC FADE-UP elements with data-anim="fade-up"
        ====================================================== */
     document.querySelectorAll('[data-anim="fade-up"]').forEach((el) => {
-      gsap.from(el, {
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 88%',
-          toggleActions: 'play none none none'
-        },
-        autoAlpha: 0,
-        y: 40,
-        duration: reduceMotion ? 0 : 0.75,
-        ease: 'power3.out'
-      });
+      gsap.fromTo(el,
+        { autoAlpha: 0, y: 40 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: reduceMotion ? 0 : 0.75,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
     });
 
     /* ======================================================
@@ -131,20 +159,24 @@ mm.add(
           : `<span class="char" style="display:inline-block;">${ch}</span>`
       ).join('');
 
-      gsap.from(label.querySelectorAll('.char'), {
-        scrollTrigger: {
-          trigger: label,
-          start: 'top 90%',
-          toggleActions: 'play none none none'
-        },
-        autoAlpha: 0,
-        y: reduceMotion ? 0 : 14,
-        rotationX: reduceMotion ? 0 : -60,
-        duration: reduceMotion ? 0 : 0.4,
-        stagger: { each: 0.04, from: 'start' },
-        ease: 'back.out(2)',
-        transformOrigin: '50% 50% -10px'
-      });
+      gsap.set(label, { autoAlpha: 1 });
+      gsap.fromTo(label.querySelectorAll('.char'),
+        { autoAlpha: 0, y: reduceMotion ? 0 : 14, rotationX: reduceMotion ? 0 : -60 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          rotationX: 0,
+          duration: reduceMotion ? 0 : 0.4,
+          stagger: { each: 0.04, from: 'start' },
+          ease: 'back.out(2)',
+          transformOrigin: '50% 50% -10px',
+          scrollTrigger: {
+            trigger: label,
+            start: 'top 90%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
     });
 
     /* ======================================================
@@ -154,19 +186,22 @@ mm.add(
        ====================================================== */
     document.querySelectorAll('[data-anim="stagger-grid"]').forEach((grid) => {
       const children = grid.children;
-      gsap.from(children, {
-        scrollTrigger: {
-          trigger: grid,
-          start: 'top 85%',
-          toggleActions: 'play none none none'
-        },
-        autoAlpha: 0,
-        y: reduceMotion ? 0 : 60,
-        scale: reduceMotion ? 1 : 0.93,
-        duration: reduceMotion ? 0 : 0.65,
-        stagger: { each: 0.1, from: 'start' },
-        ease: 'power3.out'
-      });
+      gsap.fromTo(children,
+        { autoAlpha: 0, y: reduceMotion ? 0 : 60, scale: reduceMotion ? 1 : 0.93 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          scale: 1,
+          duration: reduceMotion ? 0 : 0.65,
+          stagger: { each: 0.1, from: 'start' },
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: grid,
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
     });
 
     /* ======================================================
@@ -207,93 +242,30 @@ mm.add(
     }
 
     /* ======================================================
-       6. COUNTDOWN DIGIT FLIP ANIMATION
-          When a number ticks, the digit flips on Y axis
+       6. COUNTDOWN (handled entirely by main.js to avoid conflicts)
        ====================================================== */
-    const countIds = ['count-days', 'count-hours', 'count-minutes', 'count-seconds'];
-    const prevValues = {};
-
-    function flipDigit(el) {
-      gsap.fromTo(el,
-        { scaleY: 0, autoAlpha: 0.3, transformOrigin: '50% 0%' },
-        { scaleY: 1, autoAlpha: 1, duration: 0.25, ease: 'back.out(1.5)' }
-      );
-    }
-
-    // Override the plain textContent update to add flip
-    const EVENT_DATE_ANIM = new Date('2026-10-10T15:00:00-05:00');
-
-    function updateCountdownAnimated() {
-      const now  = new Date();
-      const diff = EVENT_DATE_ANIM - now;
-      if (diff <= 0) return;
-
-      const pad = n => String(Math.floor(n)).padStart(2, '0');
-      const values = {
-        'count-days':    pad(diff / (1000 * 60 * 60 * 24)),
-        'count-hours':   pad((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-        'count-minutes': pad((diff % (1000 * 60 * 60)) / (1000 * 60)),
-        'count-seconds': pad((diff % (1000 * 60)) / 1000)
-      };
-
-      countIds.forEach(id => {
-        const el = document.getElementById(id);
-        if (!el) return;
-        if (el.textContent !== values[id]) {
-          el.textContent = values[id];
-          if (!reduceMotion) flipDigit(el);
-        }
-      });
-    }
-
-    // Replace the setInterval from main.js (it will just update without flip)
-    // Run our animated version in parallel
-    setInterval(updateCountdownAnimated, 1000);
-    updateCountdownAnimated();
 
     /* ======================================================
-       7. SPEAKER CARDS — 3D TILT ON HOVER
-          data-tilt attribute on .speaker-card
+       7. SPEAKER CARDS — ELEGANT HOVER LIFT (Lag-free)
        ====================================================== */
     if (isDesktop) {
       document.querySelectorAll('[data-tilt]').forEach((card) => {
-        const TILT_MAX = 12; // degrees
-
         card.addEventListener('mouseenter', () => {
           gsap.to(card, {
-            duration: 0.3,
+            y: -8,
+            scale: 1.02,
+            duration: 0.35,
             ease: 'power2.out',
-            boxShadow: '0 30px 60px rgba(201,168,76,0.25)'
-          });
-        });
-
-        card.addEventListener('mousemove', (e) => {
-          const rect   = card.getBoundingClientRect();
-          const cx     = rect.left + rect.width  / 2;
-          const cy     = rect.top  + rect.height / 2;
-          const dx     = (e.clientX - cx) / (rect.width  / 2);  // -1 to 1
-          const dy     = (e.clientY - cy) / (rect.height / 2);  // -1 to 1
-          const rotX   = -dy * TILT_MAX;
-          const rotY   =  dx * TILT_MAX;
-
-          gsap.to(card, {
-            rotationX: rotX,
-            rotationY: rotY,
-            scale: 1.03,
-            duration: 0.25,
-            ease: 'power2.out',
-            transformPerspective: 800,
-            transformOrigin: 'center center'
+            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.6)'
           });
         });
 
         card.addEventListener('mouseleave', () => {
           gsap.to(card, {
-            rotationX: 0,
-            rotationY: 0,
+            y: 0,
             scale: 1,
-            duration: 0.5,
-            ease: 'elastic.out(1, 0.5)',
+            duration: 0.45,
+            ease: 'power2.out',
             boxShadow: 'none'
           });
         });
@@ -301,23 +273,15 @@ mm.add(
     }
 
     /* ======================================================
-       8. CTA BUTTON MAGNETIC EFFECT
-          All .btn-primary elements follow cursor slightly
+       8. CTA BUTTONS — SMOOTH HOVER PULSE (Lag-free)
        ====================================================== */
     if (isDesktop) {
       document.querySelectorAll('.btn-primary').forEach((btn) => {
-        const MAGNET_STRENGTH = 0.35;
-
-        btn.addEventListener('mousemove', (e) => {
-          const rect = btn.getBoundingClientRect();
-          const cx   = rect.left + rect.width  / 2;
-          const cy   = rect.top  + rect.height / 2;
-          const dx   = (e.clientX - cx) * MAGNET_STRENGTH;
-          const dy   = (e.clientY - cy) * MAGNET_STRENGTH;
-
+        btn.addEventListener('mouseenter', () => {
           gsap.to(btn, {
-            x: dx, y: dy,
-            duration: 0.4,
+            y: -2,
+            scale: 1.02,
+            duration: 0.25,
             ease: 'power2.out',
             overwrite: 'auto'
           });
@@ -325,9 +289,10 @@ mm.add(
 
         btn.addEventListener('mouseleave', () => {
           gsap.to(btn, {
-            x: 0, y: 0,
-            duration: 0.7,
-            ease: 'elastic.out(1, 0.4)',
+            y: 0,
+            scale: 1,
+            duration: 0.35,
+            ease: 'power2.out',
             overwrite: 'auto'
           });
         });
@@ -386,18 +351,21 @@ mm.add(
       const isRight = el.classList.contains('reveal-right');
       const fromX = isLeft ? -40 : isRight ? 40 : 0;
 
-      gsap.from(el, {
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 88%',
-          toggleActions: 'play none none none'
-        },
-        autoAlpha: 0,
-        y:  (!isLeft && !isRight) ? 40 : 0,
-        x:  fromX,
-        duration: reduceMotion ? 0 : 0.75,
-        ease: 'power3.out'
-      });
+      gsap.fromTo(el,
+        { autoAlpha: 0, y: (!isLeft && !isRight) ? 40 : 0, x: fromX },
+        {
+          autoAlpha: 1,
+          y: 0,
+          x: 0,
+          duration: reduceMotion ? 0 : 0.75,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
     });
 
     /* ======================================================
@@ -435,61 +403,93 @@ mm.add(
     });
 
     /* ======================================================
-       14. CTA FINAL SECTION — split headline reveal
+       14. CTA FINAL SECTION — (handled by generic .reveal class above)
        ====================================================== */
-    const ctaHeadline = document.querySelector('.cta-final-headline');
-    if (ctaHeadline) {
-      gsap.from(ctaHeadline, {
-        scrollTrigger: {
-          trigger: ctaHeadline,
-          start: 'top 85%',
-          toggleActions: 'play none none none'
-        },
-        autoAlpha: 0,
-        y: reduceMotion ? 0 : 60,
-        scale: reduceMotion ? 1 : 0.95,
-        duration: reduceMotion ? 0 : 1,
-        ease: 'power4.out'
-      });
-    }
 
     /* ======================================================
-       15. FLOATING PARTICLES — enhanced with GSAP
+       15. PARTICLES / ATMOSPHERE — FLOATING GOLDEN LEAVES
+           Theme: Raíces & Patrimonio Tangible (60 FPS GSAP)
        ====================================================== */
-    if (isDesktop && !reduceMotion) {
-      const hero = document.getElementById('hero');
-      if (hero) {
-        // Add a few large glowing orbs in background
-        for (let i = 0; i < 3; i++) {
-          const orb = document.createElement('div');
-          orb.style.cssText = `
-            position: absolute;
-            width: ${120 + i * 60}px;
-            height: ${120 + i * 60}px;
-            background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
-            border-radius: 50%;
-            left: ${[15, 70, 40][i]}%;
-            top:  ${[20, 60, 80][i]}%;
-            pointer-events: none;
-            z-index: 1;
-          `;
-          hero.appendChild(orb);
+    if (!reduceMotion) {
+      const leavesContainer = document.getElementById('hero-leaves');
+      if (leavesContainer) {
+        leavesContainer.innerHTML = '';
+        const leafCount = isDesktop ? 16 : 8;
+        const leafSVGs = [
+          '<svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M17 8C8 10 5 16 8 21C13 21 19 18 21 12C21 8 18 8 17 8Z"/></svg>',
+          '<svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12C5 12 8 10 10 8C12 6 12 4 12 2ZM22 12C16.5 12 14 15 14 18C14 20 15 21 16 22C20 20 22 16.5 22 12Z"/></svg>',
+          '<svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 3C7 3 3 8 4 14C5 20 11 21 12 21C13 21 19 20 20 14C21 8 17 3 12 3ZM12 17C10 17 8 15 8 13C8 10 11 7 12 5C13 7 16 10 16 13C16 15 14 17 12 17Z"/></svg>'
+        ];
 
-          // Floating animation
-          gsap.to(orb, {
-            y:        `${[-30, 40, -20][i]}`,
-            x:        `${[20, -25, 15][i]}`,
-            duration: [8, 11, 9][i],
-            repeat:   -1,
-            yoyo:     true,
-            ease:     'sine.inOut',
-            delay:    i * 2
+        for (let i = 0; i < leafCount; i++) {
+          const leaf = document.createElement('div');
+          leaf.className = 'hero-leaf';
+          const size = gsap.utils.random(11, 20);
+          leaf.style.width = `${size}px`;
+          leaf.style.height = `${size}px`;
+          leaf.style.left = `${gsap.utils.random(2, 96)}%`;
+          leaf.style.top = `${gsap.utils.random(-50, 600)}px`;
+          leaf.style.opacity = `${gsap.utils.random(0.18, 0.42)}`;
+          leaf.innerHTML = leafSVGs[i % leafSVGs.length];
+          leavesContainer.appendChild(leaf);
+
+          // Continuous vertical falling with random speed
+          const fallDur = gsap.utils.random(12, 22);
+          gsap.to(leaf, {
+            y: `+=${window.innerHeight + 150}`,
+            duration: fallDur,
+            repeat: -1,
+            ease: 'none',
+            delay: gsap.utils.random(0, 8),
+            modifiers: {
+              y: (y) => {
+                const cur = parseFloat(y);
+                const limit = window.innerHeight + 80;
+                return (cur % limit) + 'px';
+              }
+            }
+          });
+
+          // Organic horizontal sway and 3D leaf tumble
+          gsap.to(leaf, {
+            x: `+=${gsap.utils.random(-45, 45)}`,
+            rotation: `+=${gsap.utils.random(90, 240)}`,
+            rotationY: `+=${gsap.utils.random(80, 200)}`,
+            duration: gsap.utils.random(3.5, 6),
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut',
+            delay: gsap.utils.random(0, 3)
           });
         }
       }
     }
+
+    /* ======================================================
+       16. TOPOGRAPHIC BACKGROUND PARALLAX
+       ====================================================== */
+    if (!reduceMotion) {
+      document.querySelectorAll('.topo-bg-layer').forEach((topo) => {
+        gsap.to(topo, {
+          y: isDesktop ? -45 : -20,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: topo.parentElement,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1.2
+          }
+        });
+      });
+    }
   }
 );
 
-console.log('%c GSAP Animations Loaded ', 'background:#c9a84c;color:#0a0a0a;font-weight:700;padding:4px 8px;border-radius:3px;');
+  // Recalculate triggers after images finish loading
+  window.addEventListener('load', () => {
+    ScrollTrigger.refresh();
+  });
+}
+
+console.log('%c GSAP Animations Loaded ', 'background:#D4AF37;color:#05130E;font-weight:700;padding:4px 8px;border-radius:3px;');
 
