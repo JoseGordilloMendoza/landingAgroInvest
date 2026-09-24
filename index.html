@@ -10,13 +10,14 @@
   <meta property="og:type" content="website" />
   <title>INVERSIONISTA IMPARABLE — 10 de Octubre | Miraflores</title>
   <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 </head>
 <body>
 
   <!-- ========================================================
-       NAV BAR (minimal, sin menu)
+       NAV BAR (compact, refined)
        ======================================================== -->
   <nav class="nav-bar" role="navigation" aria-label="Navegacion principal">
     <div class="nav-logo">Inversionista <span>Imparable</span></div>
@@ -27,14 +28,28 @@
        HERO SECTION
        ======================================================== -->
   <section id="hero" aria-label="Seccion principal del evento">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-leaves-container" id="hero-leaves" aria-hidden="true"></div>
     <div class="hero-content">
-      <div class="hero-badge" role="status">
-        Evento Presencial &mdash; Entrada Gratuita
+      <div class="hero-eyebrow" role="status">
+        <span class="pulse-beacon" aria-hidden="true">
+          <span class="beacon-ring"></span>
+          <span class="beacon-core"></span>
+        </span>
+        <span class="eyebrow-item highlight">Evento Presencial</span>
+        <span class="eyebrow-sep" aria-hidden="true">&bull;</span>
+        <span class="eyebrow-item">Lima, Miraflores</span>
+        <span class="eyebrow-sep" aria-hidden="true">&bull;</span>
+        <span class="eyebrow-item accent-text">Entrada Gratuita</span>
       </div>
 
-      <h1 class="hero-event-name">
-        <span class="gold">Inversionista</span><br>Imparable
-      </h1>
+      <div class="hero-title-wrap">
+        <h1 class="hero-event-name" aria-label="Inversionista Imparable">
+          <span class="title-line"><span class="title-word accent-word">Inversionista</span></span>
+          <span class="title-line"><span class="title-word clean-word">Imparable</span></span>
+        </h1>
+      </div>
       <p class="hero-tagline">Crece &bull; Invierte &bull; Trasciende</p>
 
       <h2 class="hero-headline">
@@ -48,20 +63,25 @@
 
       <div class="hero-info" aria-label="Informacion del evento">
         <div class="hero-info-item">
-          <div class="icon" aria-hidden="true">&#128197;</div>
+          <div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div>
           <span><strong>10 de Octubre, 2026</strong> &mdash; 3:00 P.M.</span>
         </div>
         <div class="hero-info-item">
-          <div class="icon" aria-hidden="true">&#128205;</div>
+          <div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
           <span><strong>Auditorio Campus Maria Montessori</strong><br>Calle Moquegua #741, Miraflores</span>
         </div>
       </div>
     </div>
 
-    <!-- Formulario hero (above the fold) -->
+    <!-- Formulario hero (friendly, simple & aesthetic) -->
     <div class="hero-form-card" role="complementary" aria-label="Formulario de registro">
-      <p class="form-title">Reserva tu lugar ahora</p>
-      <p class="form-subtitle">&#127775; Cupos limitados &mdash; Entrada gratuita</p>
+      <div class="form-badge">
+        <span class="form-badge-dot" aria-hidden="true"></span>
+        <span>Pase de Acceso Gratuito</span>
+      </div>
+
+      <h3 class="form-title">Reserva tu Lugar</h3>
+      <p class="form-subtitle">Evento exclusivo con aforo limitado &mdash; 100% gratuito</p>
 
       <form id="form-hero" data-formspree
             action="https://formspree.io/f/XXXXXXXX"
@@ -69,35 +89,36 @@
             novalidate>
         <div class="form-group">
           <label for="hero-name">Nombre y apellido</label>
-          <input type="text" id="hero-name" name="nombre" placeholder="Tu nombre completo" required autocomplete="name" />
+          <input type="text" id="hero-name" name="nombre" placeholder="Ej. Carlos Mendoza" required autocomplete="name" />
         </div>
         <div class="form-group">
           <label for="hero-phone">WhatsApp</label>
-          <input type="tel" id="hero-phone" name="whatsapp" placeholder="+51 999 999 999" required autocomplete="tel" />
+          <input type="tel" id="hero-phone" name="whatsapp" placeholder="Ej. +51 999 999 999" required autocomplete="tel" />
         </div>
         <div class="form-group">
           <label for="hero-email">Correo electronico</label>
-          <input type="email" id="hero-email" name="email" placeholder="tu@correo.com" required autocomplete="email" />
+          <input type="email" id="hero-email" name="email" placeholder="carlos@ejemplo.com" required autocomplete="email" />
         </div>
         <div class="form-group">
-          <label for="hero-interest">Lo que mas me interesa</label>
+          <label for="hero-interest">Lo que mas te interesa</label>
           <select id="hero-interest" name="interes">
-            <option value="">Selecciona una opcion...</option>
-            <option value="crecimiento">Crecimiento personal</option>
-            <option value="inversion">Inversion</option>
-            <option value="finanzas">Finanzas personales</option>
-            <option value="inmobiliario">Oportunidades inmobiliarias</option>
+            <option value="">Selecciona tu interes principal...</option>
+            <option value="inversion">Inversion y Patrimonio Tangible</option>
+            <option value="crecimiento">Crecimiento Personal y Liderazgo</option>
+            <option value="finanzas">Finanzas e Inteligencia de Capital</option>
+            <option value="inmobiliario">Oportunidades en Tierra y Agro</option>
           </select>
         </div>
 
         <button type="submit" class="btn-primary" id="hero-submit-btn">
-          &#127775; Quiero mi entrada gratuita
+          <span>Quiero mi entrada gratuita</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </button>
-        <p class="btn-scarcity"><span>Cupos limitados.</span> Asegura el tuyo hoy.</p>
+        <p class="btn-scarcity"><span>⚡ Cupos limitados.</span> Asegura tu asiento hoy.</p>
 
         <p class="form-privacy">
-          <span>&#128274;</span>
-          Tus datos seran utilizados unicamente para gestionar tu registro y comunicar informacion relacionada con el evento.
+          <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></span>
+          Tus datos estan 100% seguros y seran usados solo para confirmar tu asistencia.
         </p>
       </form>
     </div>
@@ -143,39 +164,44 @@
 
       <div class="checklist" data-anim="stagger-grid">
         <div class="check-item">
-          <div class="check-icon" aria-hidden="true">&#10003;</div>
+          <div class="check-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
           <p>Ya has logrado generar ingresos, pero quieres aprender <strong>nuevas formas de hacer crecer tu dinero.</strong></p>
         </div>
         <div class="check-item">
-          <div class="check-icon" aria-hidden="true">&#10003;</div>
+          <div class="check-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
           <p>Quieres <strong>tomar mejores decisiones financieras</strong> con lo que ya tienes.</p>
         </div>
         <div class="check-item">
-          <div class="check-icon" aria-hidden="true">&#10003;</div>
+          <div class="check-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
           <p>Quieres <strong>fortalecer tu seguridad</strong> personal y profesional.</p>
         </div>
         <div class="check-item">
-          <div class="check-icon" aria-hidden="true">&#10003;</div>
+          <div class="check-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
           <p>Sientes que existen <strong>creencias o limites</strong> que todavia frenan tu crecimiento.</p>
         </div>
         <div class="check-item">
-          <div class="check-icon" aria-hidden="true">&#10003;</div>
+          <div class="check-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
           <p>Quieres conocer <strong>nuevas oportunidades de inversion</strong> reales.</p>
         </div>
         <div class="check-item">
-          <div class="check-icon" aria-hidden="true">&#10003;</div>
+          <div class="check-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
           <p>Quieres <strong>relacionarte con personas</strong> que tambien estan buscando crecer.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="section-divider"></div>
+  <div class="topo-divider" aria-hidden="true">
+    <img src="images/decorations/topo_wave_divider.svg" alt="" loading="lazy" />
+  </div>
 
   <!-- ========================================================
        QUE VAS A VIVIR (SESIONES)
        ======================================================== -->
   <section id="sesiones" aria-labelledby="sesiones-title">
+    <div class="topo-bg-layer" aria-hidden="true">
+      <img src="images/decorations/topo_contours_large.svg" alt="" loading="lazy" />
+    </div>
     <div class="container">
       <p class="section-label" data-anim="label">El programa</p>
       <h2 class="section-title" id="sesiones-title" data-anim="fade-up">Que vas a vivir</h2>
@@ -228,7 +254,7 @@
        ======================================================== -->
   <div class="cta-strip">
     <div class="container">
-      <p class="reveal">&#127775; Estos temas te esperan el <strong>10 de octubre</strong> en Miraflores</p>
+      <p class="reveal">Estos temas te esperan el <strong>10 de octubre</strong> en Miraflores</p>
       <a href="#registro" class="btn-primary reveal" id="cta-strip-btn">
         Reservar mi lugar &rarr;
       </a>
@@ -302,6 +328,9 @@
        TRANSFORMACION FLOW
        ======================================================== -->
   <section id="transformacion" aria-labelledby="transform-title">
+    <div class="topo-bg-layer" aria-hidden="true">
+      <img src="images/decorations/topo_contours_large.svg" alt="" loading="lazy" />
+    </div>
     <div class="container">
       <p class="section-label" data-anim="label">El viaje</p>
       <h2 class="section-title" id="transform-title" data-anim="fade-up">4 horas para cambiar la forma<br>en que ves tu crecimiento</h2>
@@ -351,6 +380,10 @@
     </div>
   </section>
 
+  <div class="topo-divider" aria-hidden="true">
+    <img src="images/decorations/topo_wave_divider.svg" alt="" loading="lazy" />
+  </div>
+
   <!-- ========================================================
        VIDEO SECTION
        ======================================================== -->
@@ -392,23 +425,23 @@
 
       <div class="benefits-grid" data-anim="stagger-grid">
         <div class="benefit-item">
-          <span class="benefit-check" aria-hidden="true">&#10003;</span>
+          <span class="benefit-check" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
           <p><strong>Herramientas</strong> para comunicarte con mayor seguridad e impacto.</p>
         </div>
         <div class="benefit-item">
-          <span class="benefit-check" aria-hidden="true">&#10003;</span>
+          <span class="benefit-check" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
           <p><strong>Nuevas perspectivas</strong> para superar limites personales que te frenan.</p>
         </div>
         <div class="benefit-item">
-          <span class="benefit-check" aria-hidden="true">&#10003;</span>
+          <span class="benefit-check" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
           <p><strong>Ideas claras</strong> para tomar mejores decisiones con tu dinero.</p>
         </div>
         <div class="benefit-item">
-          <span class="benefit-check" aria-hidden="true">&#10003;</span>
+          <span class="benefit-check" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
           <p><strong>Nuevas formas</strong> de pensar sobre crecimiento e inversion a largo plazo.</p>
         </div>
         <div class="benefit-item">
-          <span class="benefit-check" aria-hidden="true">&#10003;</span>
+          <span class="benefit-check" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
           <p><strong>Conexiones reales</strong> con personas que comparten tus objetivos de crecimiento.</p>
         </div>
       </div>
@@ -478,11 +511,11 @@
           </div>
           <div class="location-details">
             <div class="location-detail-item">
-              <div class="icon" aria-hidden="true">&#128205;</div>
+              <div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
               <span>A pocos minutos de la Av. Larco</span>
             </div>
             <div class="location-detail-item">
-              <div class="icon" aria-hidden="true">&#128513;</div>
+              <div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div>
               <span>Acceso para personas con movilidad reducida</span>
             </div>
             <!-- Agrega: estacionamiento, metro, referencias cuando confirmes -->
@@ -513,7 +546,7 @@
 
       <div class="registro-inner reveal">
         <p class="form-title">Un solo paso te separa del evento</p>
-        <p class="form-subtitle">&#127775; 10 de Octubre &bull; 3:00 P.M. &bull; Miraflores &bull; Gratuito</p>
+        <p class="form-subtitle">10 de Octubre &bull; 3:00 P.M. &bull; Miraflores &bull; Gratuito</p>
 
         <form id="form-registro" data-formspree
               action="https://formspree.io/f/XXXXXXXX"
@@ -543,12 +576,12 @@
           </div>
 
           <button type="submit" class="btn-primary" id="registro-submit-btn">
-            &#127775; Quiero mi entrada gratuita
+            Quiero mi entrada gratuita
           </button>
           <p class="btn-scarcity"><span>Cupos limitados.</span> Tu lugar no esta garantizado hasta completar el registro.</p>
 
           <p class="form-privacy">
-            <span>&#128274;</span>
+            <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></span>
             Tus datos seran utilizados unicamente para gestionar tu registro y comunicar informacion relacionada con el evento.
           </p>
         </form>
@@ -635,6 +668,9 @@
        CTA FINAL
        ======================================================== -->
   <section id="cta-final" aria-labelledby="cta-final-title">
+    <div class="topo-bg-layer" aria-hidden="true">
+      <img src="images/decorations/topo_contours_large.svg" alt="" loading="lazy" />
+    </div>
     <div class="container" style="position:relative;z-index:2;">
       <p class="cta-final-event">Inversionista Imparable &bull; 10 de Octubre &bull; Miraflores</p>
       <h2 class="cta-final-headline reveal" id="cta-final-title">
@@ -646,15 +682,15 @@
       </p>
 
       <div class="cta-final-info reveal">
-        <span>&#128197; <strong>10 de Octubre, 2026</strong></span>
-        <span>&#128336; <strong>3:00 P.M.</strong></span>
-        <span>&#128205; <strong>Miraflores, Lima</strong></span>
-        <span>&#127775; <strong>Entrada Gratuita</strong></span>
+        <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> <strong>10 de Octubre, 2026</strong></span>
+        <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> <strong>3:00 P.M.</strong></span>
+        <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> <strong>Miraflores, Lima</strong></span>
+        <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> <strong>Entrada Gratuita</strong></span>
       </div>
 
       <div class="cta-btn-wrap reveal">
         <a href="#registro" class="btn-primary" id="cta-final-btn">
-          &#127775; Quiero mi entrada gratuita
+          Quiero mi entrada gratuita
         </a>
         <p class="btn-scarcity"><span>Cupos limitados.</span> Registrate hoy.</p>
       </div>
@@ -672,9 +708,9 @@
     </p>
   </footer>
 
-  <!-- GSAP 3 CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <!-- GSAP 3 Local (100% offline & local file safe) -->
+  <script src="js/gsap.min.js"></script>
+  <script src="js/ScrollTrigger.min.js"></script>
   <!-- App scripts -->
   <script src="js/main.js"></script>
   <script src="js/animations.js"></script>
