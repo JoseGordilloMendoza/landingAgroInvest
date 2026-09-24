@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" fill="none">
+  <g stroke="#D4AF37" stroke-opacity="0.22">
+    <!-- Ridges & Elevation Contours -->
+    <path d="M-100,200 C200,100 450,280 750,180 C1050,80 1300,240 1600,150" stroke-width="1.2"/>
+    <path d="M-100,250 C220,160 480,320 770,230 C1070,140 1320,290 1600,210" stroke-width="1"/>
+    <path d="M-100,300 C240,210 500,370 790,280 C1090,190 1340,340 1600,270" stroke-width="1.5"/>
+    <path d="M-100,350 C260,270 520,420 810,330 C1110,250 1360,390 1600,330" stroke-width="1" stroke-dasharray="8 6"/>
+    <path d="M-100,400 C280,320 540,470 830,380 C1130,300 1380,440 1600,390" stroke-width="1.2"/>
+
+    <!-- Valley / Basin Loop -->
+    <path d="M100,600 C280,450 480,520 680,620 C880,720 1100,580 1350,660" stroke-width="1.2"/>
+    <path d="M120,650 C300,510 500,570 700,670 C900,770 1120,630 1370,710" stroke-width="1.8"/>
+    <path d="M140,700 C320,570 520,620 720,720 C920,820 1140,680 1390,760" stroke-width="1" stroke-dasharray="10 8"/>
+    <path d="M160,750 C340,620 540,670 740,770 C940,870 1160,730 1410,810" stroke-width="1.2"/>
+
+    <!-- Concentric Elevation Nodes -->
+    <ellipse cx="450" cy="380" rx="140" ry="60" transform="rotate(-15 450 380)" stroke-width="1"/>
+    <ellipse cx="450" cy="380" rx="95" ry="40" transform="rotate(-15 450 380)" stroke-width="1.4"/>
+    <ellipse cx="450" cy="380" rx="55" ry="22" transform="rotate(-15 450 380)" stroke-width="1" stroke-dasharray="4 4"/>
+    <circle cx="450" cy="380" r="3" fill="#D4AF37" opacity="0.6"/>
+
+    <ellipse cx="1150" cy="480" rx="180" ry="80" transform="rotate(20 1150 480)" stroke-width="1"/>
+    <ellipse cx="1150" cy="480" rx="120" ry="50" transform="rotate(20 1150 480)" stroke-width="1.5"/>
+    <ellipse cx="1150" cy="480" rx="70" ry="28" transform="rotate(20 1150 480)" stroke-width="1" stroke-dasharray="6 6"/>
+    <circle cx="1150" cy="480" r="3.5" fill="#F3E5AB" opacity="0.7"/>
+
+    <!-- Minimal Elevation Labels -->
+    <text x="475" y="375" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" letter-spacing="0.2em" fill="#D4AF37" opacity="0.45">COTA +450M</text>
+    <text x="1175" y="475" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" letter-spacing="0.2em" fill="#D4AF37" opacity="0.45">ELEVACION +820M</text>
+    <text x="760" y="270" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" letter-spacing="0.25em" fill="#D4AF37" opacity="0.35">COORD 12 07 S - 77 02 W</text>
+  </g>
+</svg>
