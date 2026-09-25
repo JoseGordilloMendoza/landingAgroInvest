@@ -2,19 +2,71 @@
    INVERSIONISTA IMPARABLE — MAIN JAVASCRIPT
    ============================================================ */
 
-// ---- COUNTDOWN TIMER ----
-// Fecha del evento: 10 de octubre 2026, 3:00 PM hora Lima (UTC-5)
+// ---- COUNTDOWN TIMER WITH PRECISION HOROLOGICAL TRANSITION ----
+// Fecha del evento: 10 de octubre 2026, 3:00 PM hora Arequipa / Peru (UTC-5)
 const EVENT_DATE = new Date('2026-10-10T15:00:00-05:00');
+
+const prevCountdownValues = {
+  days: null,
+  hours: null,
+  minutes: null,
+  seconds: null
+};
+
+function updateUnitValue(elementId, newValue, isSecondUnit = false) {
+  const el = document.getElementById(elementId);
+  if (!el) return;
+
+  const key = elementId.replace('count-', '');
+  const prevVal = prevCountdownValues[key];
+
+  if (prevVal === null) {
+    el.textContent = newValue;
+    prevCountdownValues[key] = newValue;
+    return;
+  }
+
+  if (prevVal === newValue) return;
+
+  prevCountdownValues[key] = newValue;
+
+  if (typeof gsap !== 'undefined') {
+    // Reloj mecánico muy fino: el número anterior se desliza hacia arriba mientras entra el nuevo
+    gsap.killTweensOf(el);
+    gsap.timeline()
+      .to(el, {
+        y: -7,
+        opacity: 0.25,
+        duration: isSecondUnit ? 0.15 : 0.2,
+        ease: 'power2.in',
+        onComplete: () => {
+          el.textContent = newValue;
+        }
+      })
+      .fromTo(el,
+        { y: 7, opacity: 0.25 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: isSecondUnit ? 0.22 : 0.28,
+          ease: 'power2.out',
+          clearProps: 'transform,opacity'
+        }
+      );
+  } else {
+    el.textContent = newValue;
+  }
+}
 
 function updateCountdown() {
   const now = new Date();
   const diff = EVENT_DATE - now;
 
   if (diff <= 0) {
-    document.getElementById('count-days').textContent = '00';
-    document.getElementById('count-hours').textContent = '00';
-    document.getElementById('count-minutes').textContent = '00';
-    document.getElementById('count-seconds').textContent = '00';
+    updateUnitValue('count-days', '00');
+    updateUnitValue('count-hours', '00');
+    updateUnitValue('count-minutes', '00');
+    updateUnitValue('count-seconds', '00', true);
     const countdownText = document.querySelector('.countdown-text');
     if (countdownText) countdownText.innerHTML = '<strong>¡El evento ha comenzado! Únete ahora.</strong>';
     return;
@@ -22,15 +74,15 @@ function updateCountdown() {
 
   const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
   const hours   = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const minutes = Math.floor((diff % (1000 * 60)) / (1000 * 60));
   const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
   const pad = n => String(n).padStart(2, '0');
 
-  document.getElementById('count-days').textContent    = pad(days);
-  document.getElementById('count-hours').textContent   = pad(hours);
-  document.getElementById('count-minutes').textContent = pad(minutes);
-  document.getElementById('count-seconds').textContent = pad(seconds);
+  updateUnitValue('count-days', pad(days));
+  updateUnitValue('count-hours', pad(hours));
+  updateUnitValue('count-minutes', pad(minutes));
+  updateUnitValue('count-seconds', pad(seconds), true);
 }
 
 updateCountdown();
