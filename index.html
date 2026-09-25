@@ -1,27 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Inversionista Imparable — Un evento de crecimiento personal y financiero. 10 de octubre, Auditorio Campus Maria Montessori, Miraflores. Entrada gratuita." />
-  <meta name="keywords" content="inversion, crecimiento personal, finanzas, congreso, Lima, Miraflores, evento gratuito" />
-  <meta property="og:title" content="INVERSIONISTA IMPARABLE — 10 de Octubre | Miraflores" />
-  <meta property="og:description" content="Ya aprendiste a generar ingresos. Ahora aprende a hacerlos crecer. Registro gratuito." />
+  <meta name="description"
+    content="Inversionista Imparable — Un evento de crecimiento personal y financiero. 10 de octubre, Auditorio Campus Maria Montessori, Miraflores, Arequipa. Entrada gratuita." />
+  <meta name="keywords"
+    content="inversion, crecimiento personal, finanzas, congreso, Arequipa, Miraflores, evento gratuito" />
+  <meta property="og:title" content="INVERSIONISTA IMPARABLE — 10 de Octubre | Arequipa" />
+  <meta property="og:description" content="Ganar mas no siempre significa crecer mas. Registro gratuito en Arequipa." />
   <meta property="og:type" content="website" />
-  <title>INVERSIONISTA IMPARABLE — 10 de Octubre | Miraflores</title>
-  <link rel="stylesheet" href="css/styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>INVERSIONISTA IMPARABLE — 10 de Octubre | Arequipa</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
+
 <body>
 
   <!-- ========================================================
-       NAV BAR (compact, refined)
+       NAV BAR (editorial, refined, zero-pill)
        ======================================================== -->
   <nav class="nav-bar" role="navigation" aria-label="Navegacion principal">
-    <div class="nav-logo">Inversionista <span>Imparable</span></div>
-    <a href="#registro" class="nav-cta" id="nav-cta-btn">Reservar lugar</a>
+    <a href="#hero" class="nav-logo" id="nav-logo-link" aria-label="Volver al inicio">Inversionista
+      <span>Imparable</span></a>
+    <div class="nav-event-meta" aria-label="Informacion del evento">
+      <span class="nav-meta-item">10 de Octubre</span>
+      <span class="nav-meta-sep" aria-hidden="true">&bull;</span>
+      <span class="nav-meta-item">Miraflores, Arequipa</span>
+      <span class="nav-meta-sep" aria-hidden="true">&bull;</span>
+      <span class="nav-meta-item nav-meta-highlight">Entrada Libre</span>
+    </div>
+    <a href="#registro" class="nav-cta" id="nav-cta-btn">Registrate ahora</a>
   </nav>
 
   <!-- ========================================================
@@ -30,236 +44,946 @@
   <section id="hero" aria-label="Seccion principal del evento">
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="hero-glow" aria-hidden="true"></div>
+    <canvas id="hero-particles-canvas" class="hero-particles-canvas" aria-hidden="true"></canvas>
     <div class="hero-leaves-container" id="hero-leaves" aria-hidden="true"></div>
-    <div class="hero-content">
-      <div class="hero-eyebrow" role="status">
-        <span class="pulse-beacon" aria-hidden="true">
-          <span class="beacon-ring"></span>
-          <span class="beacon-core"></span>
-        </span>
-        <span class="eyebrow-item highlight">Evento Presencial</span>
-        <span class="eyebrow-sep" aria-hidden="true">&bull;</span>
-        <span class="eyebrow-item">Lima, Miraflores</span>
-        <span class="eyebrow-sep" aria-hidden="true">&bull;</span>
-        <span class="eyebrow-item accent-text">Entrada Gratuita</span>
-      </div>
-
-      <div class="hero-title-wrap">
-        <h1 class="hero-event-name" aria-label="Inversionista Imparable">
-          <span class="title-line"><span class="title-word accent-word">Inversionista</span></span>
-          <span class="title-line"><span class="title-word clean-word">Imparable</span></span>
-        </h1>
-      </div>
-      <p class="hero-tagline">Crece &bull; Invierte &bull; Trasciende</p>
-
-      <h2 class="hero-headline">
-        Ganar mas no siempre<br>significa crecer mas.
-      </h2>
-
-      <p class="hero-subtitle">
-        Descubre como fortalecer tu seguridad, transformar tus limites
-        y aprender nuevas formas de hacer crecer tu dinero.
-      </p>
-
-      <div class="hero-info" aria-label="Informacion del evento">
-        <div class="hero-info-item">
-          <div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div>
-          <span><strong>10 de Octubre, 2026</strong> &mdash; 3:00 P.M.</span>
-        </div>
-        <div class="hero-info-item">
-          <div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
-          <span><strong>Auditorio Campus Maria Montessori</strong><br>Calle Moquegua #741, Miraflores</span>
+    <div class="hero-layout-v3">
+      <!-- Centro Superior: Titulo Monumental -->
+      <div class="hero-top-center">
+        <div class="hero-brand-logo">
+          <h1 class="hero-brand-title">
+            <span class="hero-logo-top">INVERSIONISTA</span>
+            <span class="hero-logo-main">IMPARABLE</span>
+          </h1>
         </div>
       </div>
-    </div>
 
-    <!-- Formulario hero (friendly, simple & aesthetic) -->
-    <div class="hero-form-card" role="complementary" aria-label="Formulario de registro">
-      <div class="form-badge">
-        <span class="form-badge-dot" aria-hidden="true"></span>
-        <span>Pase de Acceso Gratuito</span>
+      <!-- Zona Inferior: Copy a la izquierda, Datos a la derecha -->
+      <div class="hero-bottom-grid">
+        <!-- Izquierda: Copy y CTA -->
+        <div class="hero-bottom-left">
+          <h2 class="hero-headline">
+            Ganar m&aacute;s no siempre<br>significa crecer m&aacute;s.
+          </h2>
+          <p class="hero-subtitle">
+            Si ya aprendiste a generar ingresos, ahora es momento de aprender a tomar mejores decisiones con tu dinero.
+          </p>
+
+          <div class="hero-cta-wrapper">
+            <a href="#registro" class="btn-hero-cta" id="hero-cta-primary-btn">
+              <span>REG&Iacute;STRATE AHORA</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <p class="hero-cta-footnote">Acceso sin costo previa inscripci&oacute;n &bull; Aforo limitado</p>
+          </div>
+        </div>
+
+        <!-- Derecha: Indice de Datos (Elegante, minimalista) -->
+        <div class="hero-bottom-right">
+          <div class="vip-pass-card" id="vip-pass">
+            <div class="vip-pass-glow"></div>
+
+            <div class="vip-pass-body">
+              <div class="pass-row">
+                <span class="pass-label">FECHA Y HORA</span>
+                <strong class="pass-value">10 de Octubre &mdash; 3:00 P.M.</strong>
+              </div>
+              <div class="pass-divider"></div>
+              <div class="pass-row">
+                <span class="pass-label">UBICACI&Oacute;N</span>
+                <strong class="pass-value">Auditorio Campus Mar&iacute;a Montessori<br><span
+                    class="pass-sub">Miraflores, Arequipa</span></strong>
+              </div>
+              <div class="pass-divider"></div>
+              <div class="pass-row highlight">
+                <span class="pass-label">INGRESO</span>
+                <strong class="pass-value">Entrada Gratuita &bull; Cupos Limitados</strong>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <h3 class="form-title">Reserva tu Lugar</h3>
-      <p class="form-subtitle">Evento exclusivo con aforo limitado &mdash; 100% gratuito</p>
-
-      <form id="form-hero" data-formspree
-            action="https://formspree.io/f/XXXXXXXX"
-            method="POST"
-            novalidate>
-        <div class="form-group">
-          <label for="hero-name">Nombre y apellido</label>
-          <input type="text" id="hero-name" name="nombre" placeholder="Ej. Carlos Mendoza" required autocomplete="name" />
-        </div>
-        <div class="form-group">
-          <label for="hero-phone">WhatsApp</label>
-          <input type="tel" id="hero-phone" name="whatsapp" placeholder="Ej. +51 999 999 999" required autocomplete="tel" />
-        </div>
-        <div class="form-group">
-          <label for="hero-email">Correo electronico</label>
-          <input type="email" id="hero-email" name="email" placeholder="carlos@ejemplo.com" required autocomplete="email" />
-        </div>
-        <div class="form-group">
-          <label for="hero-interest">Lo que mas te interesa</label>
-          <select id="hero-interest" name="interes">
-            <option value="">Selecciona tu interes principal...</option>
-            <option value="inversion">Inversion y Patrimonio Tangible</option>
-            <option value="crecimiento">Crecimiento Personal y Liderazgo</option>
-            <option value="finanzas">Finanzas e Inteligencia de Capital</option>
-            <option value="inmobiliario">Oportunidades en Tierra y Agro</option>
-          </select>
-        </div>
-
-        <button type="submit" class="btn-primary" id="hero-submit-btn">
-          <span>Quiero mi entrada gratuita</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </button>
-        <p class="btn-scarcity"><span>⚡ Cupos limitados.</span> Asegura tu asiento hoy.</p>
-
-        <p class="form-privacy">
-          <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></span>
-          Tus datos estan 100% seguros y seran usados solo para confirmar tu asistencia.
-        </p>
-      </form>
     </div>
   </section>
 
   <!-- ========================================================
-       COUNTDOWN
+       COUNTDOWN (Horologerie & Editorial Timepiece)
        ======================================================== -->
-  <div id="countdown" aria-label="Contador regresivo al evento">
-    <p class="countdown-label">Faltan</p>
-    <div class="countdown-grid">
-      <div class="countdown-unit">
-        <span class="countdown-number" id="count-days">--</span>
-        <span class="countdown-unit-label">Dias</span>
-      </div>
-      <span class="countdown-separator" aria-hidden="true">:</span>
-      <div class="countdown-unit">
-        <span class="countdown-number" id="count-hours">--</span>
-        <span class="countdown-unit-label">Horas</span>
-      </div>
-      <span class="countdown-separator" aria-hidden="true">:</span>
-      <div class="countdown-unit">
-        <span class="countdown-number" id="count-minutes">--</span>
-        <span class="countdown-unit-label">Minutos</span>
-      </div>
-      <span class="countdown-separator" aria-hidden="true">:</span>
-      <div class="countdown-unit">
-        <span class="countdown-number" id="count-seconds">--</span>
-        <span class="countdown-unit-label">Segundos</span>
-      </div>
+  <section id="countdown" aria-label="Contador regresivo al evento">
+    <div class="countdown-ambient" aria-hidden="true"></div>
+    <div class="countdown-botanical countdown-botanical--left" aria-hidden="true">
+      <svg width="240" height="340" viewBox="0 0 240 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-20 170 C40 170, 90 140, 130 90 C150 65, 170 30, 180 -10" stroke="rgba(197, 160, 89, 0.25)"
+          stroke-width="1.2" stroke-linecap="round" />
+        <path d="M-10 180 C50 185, 110 210, 150 260 C170 285, 190 320, 200 360" stroke="rgba(197, 160, 89, 0.2)"
+          stroke-width="1.2" stroke-linecap="round" />
+        <path d="M50 155 C70 120, 105 105, 125 110 C125 125, 105 145, 75 155 Z" fill="rgba(197, 160, 89, 0.07)"
+          stroke="rgba(197, 160, 89, 0.22)" stroke-width="0.8" />
+        <path d="M95 115 C115 85, 145 75, 165 80 C165 95, 145 115, 115 120 Z" fill="rgba(197, 160, 89, 0.07)"
+          stroke="rgba(197, 160, 89, 0.22)" stroke-width="0.8" />
+        <path d="M60 195 C80 230, 115 245, 135 240 C135 225, 115 205, 85 195 Z" fill="rgba(197, 160, 89, 0.07)"
+          stroke="rgba(197, 160, 89, 0.22)" stroke-width="0.8" />
+        <path d="M110 230 C130 260, 160 270, 180 265 C180 250, 160 230, 130 225 Z" fill="rgba(197, 160, 89, 0.07)"
+          stroke="rgba(197, 160, 89, 0.22)" stroke-width="0.8" />
+        <path d="M-15 200 C30 220, 70 270, 85 330" stroke="rgba(197, 160, 89, 0.14)" stroke-width="0.8"
+          stroke-dasharray="2 3" />
+        <path d="M20 225 C45 255, 60 300, 65 350" stroke="rgba(197, 160, 89, 0.12)" stroke-width="0.6" />
+      </svg>
     </div>
-    <p class="countdown-text">para vivir <strong>Inversionista Imparable</strong></p>
-  </div>
+    <div class="countdown-botanical countdown-botanical--right" aria-hidden="true">
+      <svg width="240" height="340" viewBox="0 0 240 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M260 170 C200 170, 150 140, 110 90 C90 65, 70 30, 60 -10" stroke="rgba(197, 160, 89, 0.25)"
+          stroke-width="1.2" stroke-linecap="round" />
+        <path d="M250 180 C190 185, 130 210, 90 260 C70 285, 50 320, 40 360" stroke="rgba(197, 160, 89, 0.2)"
+          stroke-width="1.2" stroke-linecap="round" />
+        <path d="M190 155 C170 120, 135 105, 115 110 C115 125, 135 145, 165 155 Z" fill="rgba(197, 160, 89, 0.07)"
+          stroke="rgba(197, 160, 89, 0.22)" stroke-width="0.8" />
+        <path d="M145 115 C125 85, 95 75, 75 80 C75 95, 95 115, 125 120 Z" fill="rgba(197, 160, 89, 0.07)"
+          stroke="rgba(197, 160, 89, 0.22)" stroke-width="0.8" />
+        <path d="M180 195 C160 230, 125 245, 105 240 C105 225, 125 205, 155 195 Z" fill="rgba(197, 160, 89, 0.07)"
+          stroke="rgba(197, 160, 89, 0.22)" stroke-width="0.8" />
+        <path d="M130 230 C110 260, 80 270, 60 265 C60 250, 80 230, 110 225 Z" fill="rgba(197, 160, 89, 0.07)"
+          stroke="rgba(197, 160, 89, 0.22)" stroke-width="0.8" />
+        <path d="M255 200 C210 220, 170 270, 155 330" stroke="rgba(197, 160, 89, 0.14)" stroke-width="0.8"
+          stroke-dasharray="2 3" />
+        <path d="M220 225 C195 255, 180 300, 175 350" stroke="rgba(197, 160, 89, 0.12)" stroke-width="0.6" />
+      </svg>
+    </div>
+    <div class="container countdown-container">
+      <div class="countdown-header">
+        <span class="countdown-kicker">Apertura Oficial &bull; 10 de Octubre &bull; Arequipa</span>
+        <h3 class="countdown-headline">El tiempo es tu mayor activo</h3>
+        <div class="countdown-gold-divider" aria-hidden="true">
+          <span class="divider-line"></span>
+          <span class="divider-diamond">&#9670;</span>
+          <span class="divider-line"></span>
+        </div>
+      </div>
+      <div class="countdown-grid">
+        <div class="countdown-unit" data-countdown-card>
+          <svg class="plate-corner plate-corner--tl" width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <path d="M1 15V5C1 2.79086 2.79086 1 5 1H15" stroke="currentColor" stroke-width="1.1"
+              stroke-linecap="round" />
+            <path d="M3.5 12.5V6C3.5 4.61929 4.61929 3.5 6 3.5H12.5" stroke="currentColor" stroke-width="0.7"
+              stroke-linecap="round" stroke-opacity="0.6" />
+            <circle cx="2.2" cy="2.2" r="0.9" fill="currentColor" />
+          </svg>
+          <svg class="plate-corner plate-corner--tr" width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <path d="M1 15V5C1 2.79086 2.79086 1 5 1H15" stroke="currentColor" stroke-width="1.1"
+              stroke-linecap="round" />
+            <path d="M3.5 12.5V6C3.5 4.61929 4.61929 3.5 6 3.5H12.5" stroke="currentColor" stroke-width="0.7"
+              stroke-linecap="round" stroke-opacity="0.6" />
+            <circle cx="2.2" cy="2.2" r="0.9" fill="currentColor" />
+          </svg>
+          <svg class="plate-corner plate-corner--bl" width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <path d="M1 15V5C1 2.79086 2.79086 1 5 1H15" stroke="currentColor" stroke-width="1.1"
+              stroke-linecap="round" />
+            <path d="M3.5 12.5V6C3.5 4.61929 4.61929 3.5 6 3.5H12.5" stroke="currentColor" stroke-width="0.7"
+              stroke-linecap="round" stroke-opacity="0.6" />
+            <circle cx="2.2" cy="2.2" r="0.9" fill="currentColor" />
+          </svg>
+          <svg class="plate-corner plate-corner--br" width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <path d="M1 15V5C1 2.79086 2.79086 1 5 1H15" stroke="currentColor" stroke-width="1.1"
+              stroke-linecap="round" />
+            <path d="M3.5 12.5V6C3.5 4.61929 4.61929 3.5 6 3.5H12.5" stroke="currentColor" stroke-width="0.7"
+              stroke-linecap="round" stroke-opacity="0.6" />
+            <circle cx="2.2" cy="2.2" r="0.9" fill="currentColor" />
+          </svg>
+          <span class="countdown-number" id="count-days">--</span>
+          <span class="countdown-unit-label">D&iacute;as</span>
+        </div>
+        <span class="countdown-separator" aria-hidden="true">&#9670;</span>
+        <div class="countdown-unit" data-countdown-card>
+          <svg class="plate-corner plate-corner--tl" width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <path d="M1 15V5C1 2.79086 2.79086 1 5 1H15" stroke="currentColor" stroke-width="1.1"
+              stroke-linecap="round" />
+            <path d="M3.5 12.5V6C3.5 4.61929 4.61929 3.5 6 3.5H12.5" stroke="currentColor" stroke-width="0.7"
+              stroke-linecap="round" stroke-opacity="0.6" />
+            <circle cx="2.2" cy="2.2" r="0.9" fill="currentColor" />
+          </svg>
+          <svg class="plate-corner plate-corner--tr" width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <path d="M1 15V5C1 2.79086 2.79086 1 5 1H15" stroke="currentColor" stroke-width="1.1"
+              stroke-linecap="round" />
+            <path d="M3.5 12.5V6C3.5 4.61929 4.61929 3.5 6 3.5H12.5" stroke="currentColor" stroke-width="0.7"
+              stroke-linecap="round" stroke-opacity="0.6" />
+            <circle cx="2.2" cy="2.2" r="0.9" fill="currentColor" />
+          </svg>
+          <svg class="plate-corner plate-corner--bl" width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <path d="M1 15V5C1 2.79086 2.79086 1 5 1H15" stroke="currentColor" stroke-width="1.1"
+              stroke-linecap="round" />
+            <path d="M3.5 12.5V6C3.5 4.61929 4.61929 3.5 6 3.5H12.5" stroke="currentColor" stroke-width="0.7"
+              stroke-linecap="round" stroke-opacity="0.6" />
+            <circle cx="2.2" cy="2.2" r="0.9" fill="currentColor" />
+          </svg>
+          <svg class="plate-corner plate-corner--br" width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <path d="M1 15V5C1 2.79086 2.79086 1 5 1H15" stroke="currentColor" stroke-width="1.1"
+              stroke-linecap="round" />
+            <path d="M3.5 12.5V6C3.5 4.61929 4.61929 3.5 6 3.5H12.5" stroke="currentColor" stroke-width="0.7"
+              stroke-linecap="round" stroke-opacity="0.6" />
+            <circle cx="2.2" cy="2.2" r="0.9" fill="currentColor" />
+          </svg>
+          <span class="countdown-number" id="count-hours">--</span>
+          <span class="countdown-unit-label">Horas</span>
+        </div>
+        <span class="countdown-separator" aria-hidden="true">&#9670;</span>
+        <div class="countdown-unit" data-countdown-card>
+          <svg class="plate-corner plate-corner--tl" width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <path d="M1 15V5C1 2.79086 2.79086 1 5 1H15" stroke="currentColor" stroke-width="1.1"
+              stroke-linecap="round" />
+            <path d="M3.5 12.5V6C3.5 4.61929 4.61929 3.5 6 3.5H12.5" stroke="currentColor" stroke-width="0.7"
+              stroke-linecap="round" stroke-opacity="0.6" />
+            <circle cx="2.2" cy="2.2" r="0.9" fill="currentColor" />
+          </svg>
+          <svg class="plate-corner plate-corner--tr" width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <path d="M1 15V5C1 2.79086 2.79086 1 5 1H15" stroke="currentColor" stroke-width="1.1"
+              stroke-linecap="round" />
+            <path d="M3.5 12.5V6C3.5 4.61929 4.61929 3.5 6 3.5H12.5" stroke="currentColor" stroke-width="0.7"
+              stroke-linecap="round" stroke-opacity="0.6" />
+            <circle cx="2.2" cy="2.2" r="0.9" fill="currentColor" />
+          </svg>
+          <svg class="plate-corner plate-corner--bl" width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <path d="M1 15V5C1 2.79086 2.79086 1 5 1H15" stroke="currentColor" stroke-width="1.1"
+              stroke-linecap="round" />
+            <path d="M3.5 12.5V6C3.5 4.61929 4.61929 3.5 6 3.5H12.5" stroke="currentColor" stroke-width="0.7"
+              stroke-linecap="round" stroke-opacity="0.6" />
+            <circle cx="2.2" cy="2.2" r="0.9" fill="currentColor" />
+          </svg>
+          <svg class="plate-corner plate-corner--br" width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <path d="M1 15V5C1 2.79086 2.79086 1 5 1H15" stroke="currentColor" stroke-width="1.1"
+              stroke-linecap="round" />
+            <path d="M3.5 12.5V6C3.5 4.61929 4.61929 3.5 6 3.5H12.5" stroke="currentColor" stroke-width="0.7"
+              stroke-linecap="round" stroke-opacity="0.6" />
+            <circle cx="2.2" cy="2.2" r="0.9" fill="currentColor" />
+          </svg>
+          <span class="countdown-number" id="count-minutes">--</span>
+          <span class="countdown-unit-label">Minutos</span>
+        </div>
+        <span class="countdown-separator" aria-hidden="true">&#9670;</span>
+        <div class="countdown-unit" data-countdown-card>
+          <svg class="plate-corner plate-corner--tl" width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <path d="M1 15V5C1 2.79086 2.79086 1 5 1H15" stroke="currentColor" stroke-width="1.1"
+              stroke-linecap="round" />
+            <path d="M3.5 12.5V6C3.5 4.61929 4.61929 3.5 6 3.5H12.5" stroke="currentColor" stroke-width="0.7"
+              stroke-linecap="round" stroke-opacity="0.6" />
+            <circle cx="2.2" cy="2.2" r="0.9" fill="currentColor" />
+          </svg>
+          <svg class="plate-corner plate-corner--tr" width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <path d="M1 15V5C1 2.79086 2.79086 1 5 1H15" stroke="currentColor" stroke-width="1.1"
+              stroke-linecap="round" />
+            <path d="M3.5 12.5V6C3.5 4.61929 4.61929 3.5 6 3.5H12.5" stroke="currentColor" stroke-width="0.7"
+              stroke-linecap="round" stroke-opacity="0.6" />
+            <circle cx="2.2" cy="2.2" r="0.9" fill="currentColor" />
+          </svg>
+          <svg class="plate-corner plate-corner--bl" width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <path d="M1 15V5C1 2.79086 2.79086 1 5 1H15" stroke="currentColor" stroke-width="1.1"
+              stroke-linecap="round" />
+            <path d="M3.5 12.5V6C3.5 4.61929 4.61929 3.5 6 3.5H12.5" stroke="currentColor" stroke-width="0.7"
+              stroke-linecap="round" stroke-opacity="0.6" />
+            <circle cx="2.2" cy="2.2" r="0.9" fill="currentColor" />
+          </svg>
+          <svg class="plate-corner plate-corner--br" width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <path d="M1 15V5C1 2.79086 2.79086 1 5 1H15" stroke="currentColor" stroke-width="1.1"
+              stroke-linecap="round" />
+            <path d="M3.5 12.5V6C3.5 4.61929 4.61929 3.5 6 3.5H12.5" stroke="currentColor" stroke-width="0.7"
+              stroke-linecap="round" stroke-opacity="0.6" />
+            <circle cx="2.2" cy="2.2" r="0.9" fill="currentColor" />
+          </svg>
+          <span class="countdown-number" id="count-seconds">--</span>
+          <span class="countdown-unit-label">Segundos</span>
+        </div>
+      </div>
+      <p class="countdown-text">Tu tiempo tambi&eacute;n puede trabajar para ti.</p>
+    </div>
+  </section>
 
   <!-- ========================================================
        PARA QUIEN ES
        ======================================================== -->
   <section id="para-quien" aria-labelledby="para-quien-title">
     <div class="container">
-      <p class="section-label" data-anim="fade-up">Tu momento</p>
-      <h2 class="section-title" id="para-quien-title" data-anim="fade-up">Este evento es para ti si&hellip;</h2>
-      <div class="gold-line" data-anim="fade-up"></div>
-
-      <div class="checklist" data-anim="stagger-grid">
-        <div class="check-item">
-          <div class="check-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-          <p>Ya has logrado generar ingresos, pero quieres aprender <strong>nuevas formas de hacer crecer tu dinero.</strong></p>
-        </div>
-        <div class="check-item">
-          <div class="check-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-          <p>Quieres <strong>tomar mejores decisiones financieras</strong> con lo que ya tienes.</p>
-        </div>
-        <div class="check-item">
-          <div class="check-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-          <p>Quieres <strong>fortalecer tu seguridad</strong> personal y profesional.</p>
-        </div>
-        <div class="check-item">
-          <div class="check-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-          <p>Sientes que existen <strong>creencias o limites</strong> que todavia frenan tu crecimiento.</p>
-        </div>
-        <div class="check-item">
-          <div class="check-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-          <p>Quieres conocer <strong>nuevas oportunidades de inversion</strong> reales.</p>
-        </div>
-        <div class="check-item">
-          <div class="check-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-          <p>Quieres <strong>relacionarte con personas</strong> que tambien estan buscando crecer.</p>
-        </div>
+      <div class="editorial-header text-center" data-anim="fade-up">
+        <span class="editorial-kicker">Pregunta clave</span>
+        <h2 class="editorial-title" id="para-quien-title">&iquest;Tu dinero seguiria creciendo si ma&ntilde;ana dejas de
+          trabajar?</h2>
+        <div class="editorial-gold-divider"></div>
+        <p class="editorial-lead">
+          Aprender a generar dinero es solo el comienzo. El siguiente paso es aprender a hacerlo crecer. Este encuentro
+          presencial en Arequipa es para ti si:
+        </p>
       </div>
-    </div>
-  </section>
 
-  <div class="topo-divider" aria-hidden="true">
-    <img src="images/decorations/topo_wave_divider.svg" alt="" loading="lazy" />
-  </div>
+      <div class="checklist-bento editorial-cards-grid" data-anim="bento-grid">
+        <!-- 01 -->
+        <article class="bento-item bento-1 editorial-card">
+          <div class="editorial-card-content">
+            <span class="editorial-card-num">N&deg; 01</span>
+            <p>Aprende <span class="highlight">nuevas formas</span> de crecer tu dinero.</p>
+          </div>
+          <div class="editorial-card-ornament" aria-hidden="true">
+            <img src="assets/images/bento_editorial_1.svg?v=2" alt="" class="editorial-engraving" />
+          </div>
+        </article>
 
-  <!-- ========================================================
-       QUE VAS A VIVIR (SESIONES)
-       ======================================================== -->
-  <section id="sesiones" aria-labelledby="sesiones-title">
-    <div class="topo-bg-layer" aria-hidden="true">
-      <img src="images/decorations/topo_contours_large.svg" alt="" loading="lazy" />
-    </div>
-    <div class="container">
-      <p class="section-label" data-anim="label">El programa</p>
-      <h2 class="section-title" id="sesiones-title" data-anim="fade-up">Que vas a vivir</h2>
-      <div class="gold-line" data-anim="fade-up"></div>
-      <p class="section-desc" data-anim="fade-up">Cuatro experiencias diseñadas para transformar la forma en que piensas, sientes y actuas.</p>
+        <!-- 02 -->
+        <article class="bento-item bento-2 editorial-card editorial-arch">
+          <div class="editorial-arch-header">
+            <span class="editorial-card-num">N&deg; 02</span>
+          </div>
+          <div class="editorial-card-ornament" aria-hidden="true">
+            <img src="assets/images/bento_editorial_2.svg?v=2" alt="" class="editorial-engraving" />
+          </div>
+          <div class="editorial-card-content">
+            <p>Toma <span class="highlight">mejores decisiones</span> financieras.</p>
+          </div>
+        </article>
 
-      <div class="sessions-grid" data-anim="stagger-grid">
-        <div class="session-card">
-          <div class="session-number">01</div>
-          <h3 class="session-title">Tu voz tiene poder</h3>
-          <p class="session-desc">Aprende herramientas para comunicarte con mayor seguridad y hacer que tu voz tenga impacto real.</p>
-          <div class="session-speaker">
-            <div class="session-speaker-dot"></div>
-            <span class="session-speaker-name">Luz Macedo</span>
+        <!-- 03 -->
+        <article class="bento-item bento-3 editorial-card theme-light">
+          <div class="editorial-card-content">
+            <span class="editorial-card-num">N&deg; 03</span>
+            <p>Fortalece tu <span class="highlight">seguridad financiera.</span></p>
           </div>
-        </div>
-        <div class="session-card">
-          <div class="session-number">02</div>
-          <h3 class="session-title">Activa tu poder</h3>
-          <p class="session-desc">Fortalece tu seguridad, confianza y capacidad para avanzar hacia tus objetivos sin frenos.</p>
-          <div class="session-speaker">
-            <div class="session-speaker-dot"></div>
-            <span class="session-speaker-name">Mayk Huamani</span>
+          <div class="editorial-card-ornament" aria-hidden="true">
+            <img src="assets/images/bento_editorial_3.svg?v=2" alt="" class="editorial-engraving" />
           </div>
-        </div>
-        <div class="session-card">
-          <div class="session-number">03</div>
-          <h3 class="session-title">Sana tu historia, transforma tu futuro</h3>
-          <p class="session-desc">Identifica creencias y limitaciones que pueden estar frenando tu crecimiento y liberalas.</p>
-          <div class="session-speaker">
-            <div class="session-speaker-dot"></div>
-            <span class="session-speaker-name">Aleyda Fernandez</span>
+        </article>
+
+        <!-- 04 -->
+        <article class="bento-item bento-4 editorial-card">
+          <div class="editorial-card-content">
+            <span class="editorial-card-num">N&deg; 04</span>
+            <p>Descubre <span class="highlight">oportunidades reales</span> de inversión.</p>
           </div>
-        </div>
-        <div class="session-card">
-          <div class="session-number">04</div>
-          <h3 class="session-title">Haz que tu dinero trabaje para ti</h3>
-          <p class="session-desc">Descubre nuevas alternativas para pensar en crecimiento y construccion de capital a largo plazo.</p>
-          <div class="session-speaker">
-            <div class="session-speaker-dot"></div>
-            <span class="session-speaker-name">Albert Ponce &mdash; Agroinvest Peru</span>
+          <div class="editorial-card-ornament" aria-hidden="true">
+            <img src="assets/images/bento_editorial_4.svg?v=2" alt="" class="editorial-engraving" />
           </div>
-        </div>
+        </article>
+
+        <!-- 05 -->
+        <article class="bento-item bento-5 editorial-card">
+          <div class="editorial-card-content">
+            <span class="editorial-card-num">N&deg; 05</span>
+            <p>Rompe <span class="highlight">límites y creencias</span> limitantes.</p>
+          </div>
+          <div class="editorial-card-ornament" aria-hidden="true">
+            <img src="assets/images/bento_editorial_5.svg?v=2" alt="" class="editorial-engraving" />
+          </div>
+        </article>
+
+        <!-- 06 -->
+        <article class="bento-item bento-6 editorial-card">
+          <div class="editorial-card-content">
+            <span class="editorial-card-num">N&deg; 06</span>
+            <p>Conecta con personas con tu <span class="highlight">misma visión.</span></p>
+          </div>
+          <div class="editorial-card-ornament" aria-hidden="true">
+            <img src="assets/images/bento_editorial_6.svg?v=2" alt="" class="editorial-engraving" />
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
   <!-- ========================================================
-       CTA STRIP (mid-page)
+       TRANSICIÓN EDITORIAL Y BOTÁNICA (HERO / PROGRAMA)
        ======================================================== -->
-  <div class="cta-strip">
-    <div class="container">
-      <p class="reveal">Estos temas te esperan el <strong>10 de octubre</strong> en Miraflores</p>
-      <a href="#registro" class="btn-primary reveal" id="cta-strip-btn">
-        Reservar mi lugar &rarr;
-      </a>
+  <div class="editorial-section-transition" aria-hidden="true">
+    <div class="transition-line transition-line--left"></div>
+    <div class="transition-crest">
+      <svg width="44" height="24" viewBox="0 0 44 24" fill="none" stroke="#C5A059" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M22 2 Q17 13 6 13 Q2 13 1 11" stroke-width="1.2" />
+        <path d="M22 2 Q27 13 38 13 Q42 13 43 11" stroke-width="1.2" />
+        <path d="M22 7 C18 15 11 19 2 21" stroke-width="0.9" opacity="0.6" />
+        <path d="M22 7 C26 15 33 19 42 21" stroke-width="0.9" opacity="0.6" />
+        <circle cx="22" cy="4" r="2.2" fill="#E2D2A4" />
+        <path d="M13 11 C9 8 11 4 16 6 C17 9 15 11 13 11 Z" fill="#C5A059" fill-opacity="0.35" stroke-width="0.8" />
+        <path d="M31 11 C35 8 33 4 28 6 C27 9 29 11 31 11 Z" fill="#C5A059" fill-opacity="0.35" stroke-width="0.8" />
+      </svg>
     </div>
+    <div class="transition-line transition-line--right"></div>
   </div>
+
+  <!-- ========================================================
+       EL PROGRAMA — QUE VAS A VIVIR
+       Cuatro capítulos editoriales de lujo, estética botánica de grabado,
+       azul noche profundo y números distintivos.
+       ======================================================== -->
+  <section id="sesiones" class="sesiones-editorial" aria-labelledby="sesiones-title">
+    <!-- Atmósfera luminosa y profundidad azul noche con aureola central -->
+    <div class="sesiones-ambient-glow" aria-hidden="true"></div>
+
+    <!-- Textura sutil y grano orgánico de papel editorial -->
+    <div class="sesiones-grain" aria-hidden="true"></div>
+
+    <!-- Medallón botánico / cartela central grabada de fondo (marca de agua imperial sutil) -->
+    <div class="sesiones-bg-medallion" aria-hidden="true">
+      <svg width="680" height="680" viewBox="0 0 680 680" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="340" cy="340" r="320" stroke-width="0.8" stroke-dasharray="3 6" opacity="0.4" />
+        <circle cx="340" cy="340" r="280" stroke-width="1.2" opacity="0.5" />
+        <circle cx="340" cy="340" r="240" stroke-width="0.7" opacity="0.3" />
+        <circle cx="340" cy="340" r="160" stroke-width="1" stroke-dasharray="2 4" opacity="0.45" />
+        <circle cx="340" cy="340" r="80" stroke-width="1.2" opacity="0.5" />
+        <!-- Rayos cardinales de precisión y foco -->
+        <line x1="340" y1="20" x2="340" y2="660" stroke-width="0.8" opacity="0.35" />
+        <line x1="20" y1="340" x2="660" y2="340" stroke-width="0.8" opacity="0.35" />
+        <line x1="113" y1="113" x2="567" y2="567" stroke-width="0.6" opacity="0.25" />
+        <line x1="567" y1="113" x2="113" y2="567" stroke-width="0.6" opacity="0.25" />
+        <!-- Corona de laureles grabados alrededor del círculo interior -->
+        <path d="M340 180 C320 200 310 240 315 280 C320 310 330 330 340 340" stroke-width="1" opacity="0.5" />
+        <path d="M340 180 C360 200 370 240 365 280 C360 310 350 330 340 340" stroke-width="1" opacity="0.5" />
+        <path d="M340 500 C320 480 310 440 315 400 C320 370 330 350 340 340" stroke-width="1" opacity="0.5" />
+        <path d="M340 500 C360 480 370 440 365 400 C360 370 350 350 340 340" stroke-width="1" opacity="0.5" />
+        <!-- Puntos ornamentales -->
+        <circle cx="340" cy="60" r="3" fill="#E2D2A4" opacity="0.6" />
+        <circle cx="340" cy="620" r="3" fill="#E2D2A4" opacity="0.6" />
+        <circle cx="60" cy="340" r="3" fill="#E2D2A4" opacity="0.6" />
+        <circle cx="620" cy="340" r="3" fill="#E2D2A4" opacity="0.6" />
+      </svg>
+    </div>
+
+    <!-- Ramas botánicas framing en los laterales (ricas en detalle botánico y hojas grabadas) -->
+    <div class="sesiones-botanical sesiones-botanical--left" aria-hidden="true">
+      <svg width="340" height="680" viewBox="0 0 340 680" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Rama botánica principal ascendente y serpenteante desde el margen izquierdo -->
+        <path class="bough-stem" d="M-20 40 Q80 120 120 230 Q160 350 110 480 Q70 580 -10 660" stroke-width="1.8" opacity="0.75" />
+        <path class="bough-substem" d="M120 230 Q180 190 235 210 Q285 230 330 310" stroke-width="1.3" opacity="0.65" />
+        <path class="bough-substem" d="M110 480 Q170 470 220 520 Q260 560 280 640" stroke-width="1.2" opacity="0.6" />
+        <path class="bough-substem" d="M70 110 Q120 70 170 65 Q220 60 260 90" stroke-width="1.1" opacity="0.55" />
+        <!-- Hojas de olivo lanceoladas con relleno sutil y nervaduras en champagne claro -->
+        <path d="M170 65 C195 45 225 50 235 70 C215 85 185 85 170 65 Z" fill="#C5A059" fill-opacity="0.08" stroke-width="1" />
+        <path d="M170 65 Q205 65 235 70" stroke="#E2D2A4" stroke-width="0.7" />
+        <path d="M235 210 C265 190 295 195 305 220 C285 235 255 230 235 210 Z" fill="#C5A059" fill-opacity="0.08" stroke-width="1" />
+        <path d="M235 210 Q270 210 305 220" stroke="#E2D2A4" stroke-width="0.7" />
+        <path d="M120 230 C135 185 160 170 175 190 C165 215 140 235 120 230 Z" fill="#C5A059" fill-opacity="0.08" stroke-width="1" />
+        <path d="M220 520 C250 495 278 505 285 530 C265 545 238 540 220 520 Z" fill="#C5A059" fill-opacity="0.08" stroke-width="1" />
+        <path d="M220 520 Q255 515 285 530" stroke="#E2D2A4" stroke-width="0.7" />
+        <!-- Espirales y zarcillos -->
+        <path d="M260 90 Q278 100 275 115 Q265 125 252 118" stroke="#E2D2A4" stroke-width="0.9" opacity="0.7" />
+        <path d="M330 310 Q342 322 338 335 Q326 342 316 332" stroke="#E2D2A4" stroke-width="0.9" opacity="0.7" />
+        <!-- Perlas / semillas de olivo -->
+        <circle cx="235" cy="70" r="2.5" fill="#E2D2A4" />
+        <circle cx="305" cy="220" r="2.5" fill="#E2D2A4" />
+        <circle cx="285" cy="530" r="2.5" fill="#E2D2A4" />
+      </svg>
+    </div>
+
+    <div class="sesiones-botanical sesiones-botanical--right" aria-hidden="true">
+      <svg width="340" height="680" viewBox="0 0 340 680" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Rama botánica simétrica derecha -->
+        <path class="bough-stem" d="M360 40 Q260 120 220 230 Q180 350 230 480 Q270 580 350 660" stroke-width="1.8" opacity="0.75" />
+        <path class="bough-substem" d="M220 230 Q160 190 105 210 Q55 230 10 310" stroke-width="1.3" opacity="0.65" />
+        <path class="bough-substem" d="M230 480 Q170 470 120 520 Q80 560 60 640" stroke-width="1.2" opacity="0.6" />
+        <path class="bough-substem" d="M270 110 Q220 70 170 65 Q120 60 80 90" stroke-width="1.1" opacity="0.55" />
+        <!-- Hojas de olivo derechas -->
+        <path d="M170 65 C145 45 115 50 105 70 C125 85 155 85 170 65 Z" fill="#C5A059" fill-opacity="0.08" stroke-width="1" />
+        <path d="M170 65 Q135 65 105 70" stroke="#E2D2A4" stroke-width="0.7" />
+        <path d="M105 210 C75 190 45 195 35 220 C55 235 85 230 105 210 Z" fill="#C5A059" fill-opacity="0.08" stroke-width="1" />
+        <path d="M105 210 Q70 210 35 220" stroke="#E2D2A4" stroke-width="0.7" />
+        <path d="M120 520 C90 495 62 505 55 530 C75 545 102 540 120 520 Z" fill="#C5A059" fill-opacity="0.08" stroke-width="1" />
+        <path d="M120 520 Q85 515 55 530" stroke="#E2D2A4" stroke-width="0.7" />
+        <!-- Zarcillos y perlas -->
+        <path d="M80 90 Q62 100 65 115 Q75 125 88 118" stroke="#E2D2A4" stroke-width="0.9" opacity="0.7" />
+        <circle cx="105" cy="70" r="2.5" fill="#E2D2A4" />
+        <circle cx="35" cy="220" r="2.5" fill="#E2D2A4" />
+        <circle cx="55" cy="530" r="2.5" fill="#E2D2A4" />
+      </svg>
+    </div>
+
+    <div class="container">
+      <!-- Encabezado Editorial del Programa -->
+      <div class="sesiones-header">
+        <p class="section-label programa-kicker" id="sesiones-kicker">El programa</p>
+        <h2 class="section-title programa-title" id="sesiones-title">Que vas a vivir</h2>
+        <div class="editorial-gold-line" aria-hidden="true">
+          <span class="line-diamond-left">&#9670;</span>
+          <span class="line-bar"><span class="line-fill"></span></span>
+          <span class="line-diamond-right">&#9670;</span>
+        </div>
+        <p class="section-desc programa-desc">Cuatro experiencias diseñadas para transformar la forma en que piensas,
+          sientes y actúas.</p>
+      </div>
+
+      <!-- Cuatro Capítulos Editoriales en Composición Artística -->
+      <div class="programa-chapters-grid">
+
+        <!-- ==================== CAPÍTULO 01 ==================== -->
+        <article class="chapter-card chapter-card--01" id="chapter-01" data-chapter="01">
+          <div class="chapter-card-glow" aria-hidden="true"></div>
+          <div class="chapter-card-inner">
+            <div class="chapter-card-border" aria-hidden="true"></div>
+
+            <!-- Grabado Botánico Integrado 01: ramas / crecimiento -->
+            <div class="chapter-engraving" aria-hidden="true">
+              <svg class="engraving-svg" viewBox="0 0 240 240" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Rama central y bifurcación orgánica -->
+                <g class="engraving-stem">
+                  <path d="M40 210 Q90 190 120 140 Q145 95 175 40" stroke-width="1.8" opacity="0.9" />
+                  <path d="M120 140 Q85 115 65 75" stroke-width="1.3" opacity="0.8" />
+                  <path d="M140 105 Q175 90 205 60" stroke-width="1.2" opacity="0.8" />
+                  <path d="M90 170 Q55 160 30 135" stroke-width="1.1" opacity="0.75" />
+                  <path d="M155 70 Q135 45 130 20" stroke-width="1.1" opacity="0.75" />
+                </g>
+                <!-- Hojas lanceoladas con nervaduras interiores -->
+                <g class="engraving-foliage">
+                  <path d="M65 75 C45 68 40 48 55 35 C70 42 75 60 65 75 Z" fill="#081426" fill-opacity="0.6" stroke-width="1.1" />
+                  <path d="M65 75 Q58 55 55 35" stroke="#E2D2A4" stroke-width="0.8" />
+                  <path d="M205 60 C218 42 215 25 198 25 C185 35 190 52 205 60 Z" fill="#081426" fill-opacity="0.6" stroke-width="1.1" />
+                  <path d="M205 60 Q200 42 198 25" stroke="#E2D2A4" stroke-width="0.8" />
+                  <path d="M175 40 C170 20 182 8 195 15 C198 30 188 42 175 40 Z" fill="#081426" fill-opacity="0.6" stroke-width="1.1" />
+                  <path d="M30 135 C15 125 18 108 32 105 C42 115 40 130 30 135 Z" fill="#081426" fill-opacity="0.6" stroke-width="1.0" />
+                  <path d="M130 20 C120 8 128 0 138 4 C142 12 138 20 130 20 Z" stroke-width="0.9" />
+                </g>
+                <!-- Espirales de zarcillos sutiles y brotes -->
+                <g class="engraving-accents">
+                  <path d="M65 75 Q75 68 76 60 Q72 54 66 58" stroke="#E2D2A4" stroke-width="0.8" />
+                  <path d="M140 105 Q150 115 158 112 Q160 104 152 102" stroke="#E2D2A4" stroke-width="0.8" />
+                  <circle cx="175" cy="40" r="2.2" fill="#E2D2A4" />
+                  <circle cx="205" cy="60" r="1.8" fill="#E2D2A4" />
+                  <circle cx="65" cy="75" r="1.8" fill="#E2D2A4" />
+                </g>
+              </svg>
+            </div>
+
+            <!-- Cabecera del Capítulo: Tag y Numeral Discreto -->
+            <div class="chapter-meta">
+              <span class="chapter-tag">CAP&Iacute;TULO 01</span>
+              <span class="chapter-num" aria-hidden="true">01</span>
+            </div>
+
+            <!-- Contenido Editorial -->
+            <div class="chapter-body">
+              <h3 class="chapter-title">Tu voz tiene poder</h3>
+              <p class="chapter-desc">Aprende herramientas para comunicarte con mayor seguridad y hacer que tu voz tenga
+                impacto real.</p>
+            </div>
+
+            <!-- Firma del Ponente -->
+            <footer class="chapter-footer">
+              <div class="chapter-sig-rule" aria-hidden="true"></div>
+              <div class="chapter-speaker">
+                <svg class="chapter-speaker-leaf" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path
+                    d="M12 2C6.5 2 2 6.5 2 12c0 3.5 2 6.5 5 8 .5-2 1.5-4 3-5.5 1.5-1.5 3.5-2.5 5.5-3 1.5-3 4.5-5 6.5-5 .5 2-1.5 5-3 6.5-1.5 1.5-3.5 2.5-5.5 3-.5 2 0 4 1 5 3.5-1 6.5-4 6.5-9 0-5.5-4.5-10-10-10z" />
+                </svg>
+                <span class="chapter-speaker-name">Luz Macedo</span>
+              </div>
+            </footer>
+          </div>
+        </article>
+
+        <!-- ==================== CAPÍTULO 02 ==================== -->
+        <article class="chapter-card chapter-card--02" id="chapter-02" data-chapter="02">
+          <div class="chapter-card-glow" aria-hidden="true"></div>
+          <div class="chapter-card-inner">
+            <div class="chapter-card-border" aria-hidden="true"></div>
+
+            <!-- Grabado Botánico Integrado 02: composición circular / fuerza / expansión -->
+            <div class="chapter-engraving" aria-hidden="true">
+              <svg class="engraving-svg" viewBox="0 0 240 240" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Corona Circular de Laurel y Astrolabio Interior -->
+                <g class="engraving-rings">
+                  <circle cx="120" cy="120" r="76" stroke-width="1.3" opacity="0.65" />
+                  <circle cx="120" cy="120" r="71" stroke-width="0.8" stroke-dasharray="2 3" stroke="#E2D2A4" opacity="0.75" />
+                  <circle cx="120" cy="120" r="54" stroke-width="1.1" opacity="0.65" />
+                  <circle cx="120" cy="120" r="36" stroke-width="0.8" opacity="0.55" />
+                </g>
+                <!-- Líneas Radiales de Expansión y Fuerza -->
+                <g class="engraving-rays">
+                  <line x1="120" y1="36" x2="120" y2="204" stroke-width="0.9" stroke="#E2D2A4" opacity="0.65" />
+                  <line x1="36" y1="120" x2="204" y2="120" stroke-width="0.9" stroke="#E2D2A4" opacity="0.65" />
+                  <line x1="60" y1="60" x2="180" y2="180" stroke-width="0.7" opacity="0.45" />
+                  <line x1="180" y1="60" x2="60" y2="180" stroke-width="0.7" opacity="0.45" />
+                </g>
+                <!-- Hojas de laurel rodeando el círculo -->
+                <g class="engraving-wreath">
+                  <path d="M120 44 C110 32 112 20 120 12 C128 20 130 32 120 44 Z" fill="#081426" fill-opacity="0.6" stroke-width="1.0" />
+                  <path d="M174 66 C186 58 195 64 198 74 C188 80 178 76 174 66 Z" fill="#081426" fill-opacity="0.6" stroke-width="1.0" />
+                  <path d="M196 120 C208 112 218 118 220 128 C210 134 200 130 196 120 Z" fill="#081426" fill-opacity="0.6" stroke-width="1.0" />
+                  <path d="M174 174 C186 182 188 194 178 200 C170 192 170 180 174 174 Z" fill="#081426" fill-opacity="0.6" stroke-width="1.0" />
+                  <path d="M66 66 C54 58 45 64 42 74 C52 80 62 76 66 66 Z" fill="#081426" fill-opacity="0.6" stroke-width="1.0" />
+                  <path d="M44 120 C32 112 22 118 20 128 C30 134 40 130 44 120 Z" fill="#081426" fill-opacity="0.6" stroke-width="1.0" />
+                  <path d="M66 174 C54 182 52 194 62 200 C70 192 70 180 66 174 Z" fill="#081426" fill-opacity="0.6" stroke-width="1.0" />
+                  <!-- Rosa de los vientos / Estrella central de fuerza y foco -->
+                  <path d="M120 102 L124 116 L138 120 L124 124 L120 138 L116 124 L102 120 L116 116 Z" fill="#C5A059" fill-opacity="0.3" stroke="#C5A059" stroke-width="1.2" />
+                  <circle cx="120" cy="120" r="3.5" fill="#E2D2A4" />
+                </g>
+              </svg>
+            </div>
+
+            <!-- Cabecera del Capítulo -->
+            <div class="chapter-meta">
+              <span class="chapter-tag">CAP&Iacute;TULO 02</span>
+              <span class="chapter-num" aria-hidden="true">02</span>
+            </div>
+
+            <!-- Contenido Editorial -->
+            <div class="chapter-body">
+              <h3 class="chapter-title">Activa tu poder</h3>
+              <p class="chapter-desc">Fortalece tu seguridad, confianza y capacidad para avanzar hacia tus objetivos sin
+                frenos.</p>
+            </div>
+
+            <!-- Firma del Ponente -->
+            <footer class="chapter-footer">
+              <div class="chapter-sig-rule" aria-hidden="true"></div>
+              <div class="chapter-speaker">
+                <svg class="chapter-speaker-leaf" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path
+                    d="M12 2C6.5 2 2 6.5 2 12c0 3.5 2 6.5 5 8 .5-2 1.5-4 3-5.5 1.5-1.5 3.5-2.5 5.5-3 1.5-3 4.5-5 6.5-5 .5 2-1.5 5-3 6.5-1.5 1.5-3.5 2.5-5.5 3-.5 2 0 4 1 5 3.5-1 6.5-4 6.5-9 0-5.5-4.5-10-10-10z" />
+                </svg>
+                <span class="chapter-speaker-name">Mayk Huamani</span>
+              </div>
+            </footer>
+          </div>
+        </article>
+
+        <!-- ==================== CAPÍTULO 03 ==================== -->
+        <article class="chapter-card chapter-card--03" id="chapter-03" data-chapter="03">
+          <div class="chapter-card-glow" aria-hidden="true"></div>
+          <div class="chapter-card-inner">
+            <div class="chapter-card-border" aria-hidden="true"></div>
+
+            <!-- Grabado Botánico Integrado 03: raíces / transformación -->
+            <div class="chapter-engraving" aria-hidden="true">
+              <svg class="engraving-svg" viewBox="0 0 240 240" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Tallo ascendente que surge de la raíz transformada -->
+                <g class="engraving-trunk">
+                  <path d="M120 110 Q118 70 120 30 Q122 15 125 5" stroke-width="1.8" opacity="0.85" />
+                  <path d="M120 70 Q95 50 78 30" stroke-width="1.2" opacity="0.75" />
+                  <path d="M120 55 Q145 40 162 20" stroke-width="1.2" opacity="0.75" />
+                  <path d="M78 30 C64 22 68 8 82 12 C88 22 84 30 78 30 Z" fill="#081426" fill-opacity="0.6" stroke-width="1.0" />
+                  <path d="M162 20 C174 12 172 0 158 2 C154 12 158 20 162 20 Z" fill="#081426" fill-opacity="0.6" stroke-width="1.0" />
+                </g>
+                <!-- Red Profunda e Intrincada de Raíces (Grabado Antiguo) -->
+                <g class="engraving-roots">
+                  <path d="M120 110 Q115 140 85 168 Q65 185 30 200" stroke-width="1.8" opacity="0.88" />
+                  <path d="M120 110 Q128 142 155 170 Q180 188 215 205" stroke-width="1.8" opacity="0.88" />
+                  <path d="M120 120 Q118 160 115 225" stroke-width="1.4" opacity="0.8" />
+                  <path d="M85 168 Q60 178 38 185 M85 168 Q95 195 82 228" stroke-width="1.1" opacity="0.7" />
+                  <path d="M155 170 Q180 180 205 186 M155 170 Q145 195 158 228" stroke-width="1.1" opacity="0.7" />
+                  <path d="M102 145 Q82 158 65 165 M138 145 Q158 158 175 165" stroke-width="1.0" opacity="0.65" />
+                  <path d="M116 175 Q100 195 95 220 M124 175 Q140 195 145 220" stroke-width="0.9" opacity="0.6" />
+                </g>
+                <!-- Filamentos y perlas minerales de renovación -->
+                <g class="engraving-filaments">
+                  <path d="M52 180 L48 190 M72 172 L68 182 M168 172 L172 182 M188 180 L192 190" stroke="#E2D2A4" stroke-width="0.7" opacity="0.7" />
+                  <circle cx="120" cy="110" r="3" fill="#E2D2A4" opacity="0.8" />
+                  <circle cx="85" cy="168" r="2.2" fill="#E2D2A4" opacity="0.8" />
+                  <circle cx="155" cy="170" r="2.2" fill="#E2D2A4" opacity="0.8" />
+                </g>
+              </svg>
+            </div>
+
+            <!-- Cabecera del Capítulo -->
+            <div class="chapter-meta">
+              <span class="chapter-tag">CAP&Iacute;TULO 03</span>
+              <span class="chapter-num" aria-hidden="true">03</span>
+            </div>
+
+            <!-- Contenido Editorial -->
+            <div class="chapter-body">
+              <h3 class="chapter-title">Sana tu historia, transforma tu futuro</h3>
+              <p class="chapter-desc">Identifica creencias y limitaciones que pueden estar frenando tu crecimiento y
+                libéralas.</p>
+            </div>
+
+            <!-- Firma del Ponente -->
+            <footer class="chapter-footer">
+              <div class="chapter-sig-rule" aria-hidden="true"></div>
+              <div class="chapter-speaker">
+                <svg class="chapter-speaker-leaf" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path
+                    d="M12 2C6.5 2 2 6.5 2 12c0 3.5 2 6.5 5 8 .5-2 1.5-4 3-5.5 1.5-1.5 3.5-2.5 5.5-3 1.5-3 4.5-5 6.5-5 .5 2-1.5 5-3 6.5-1.5 1.5-3.5 2.5-5.5 3-.5 2 0 4 1 5 3.5-1 6.5-4 6.5-9 0-5.5-4.5-10-10-10z" />
+                </svg>
+                <span class="chapter-speaker-name">Aleyda Fern&aacute;ndez</span>
+              </div>
+            </footer>
+          </div>
+        </article>
+
+        <!-- ==================== CAPÍTULO 04 ==================== -->
+        <article class="chapter-card chapter-card--04" id="chapter-04" data-chapter="04">
+          <div class="chapter-card-glow" aria-hidden="true"></div>
+          <div class="chapter-card-inner">
+            <div class="chapter-card-border" aria-hidden="true"></div>
+
+            <!-- Grabado Botánico Integrado 04: ramas ascendentes / crecimiento / capital -->
+            <div class="chapter-engraving" aria-hidden="true">
+              <svg class="engraving-svg" viewBox="0 0 240 240" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Arco de cuadrante y calibración geométrica de riqueza y capital -->
+                <g class="engraving-quadrant">
+                  <path d="M30 210 L210 210 L210 30" stroke-width="1.1" opacity="0.45" />
+                  <path d="M30 210 Q150 210 210 30" stroke-width="1.5" stroke="#E2D2A4" opacity="0.65" />
+                  <path d="M42 210 Q145 210 198 44" stroke-width="0.8" stroke-dasharray="2 3" opacity="0.45" />
+                  <line x1="30" y1="210" x2="210" y2="30" stroke-width="0.8" opacity="0.4" />
+                  <line x1="30" y1="210" x2="175" y2="80" stroke-width="0.7" opacity="0.35" />
+                  <line x1="30" y1="210" x2="135" y2="135" stroke-width="0.7" opacity="0.35" />
+                </g>
+                <!-- Rama Botánica Ascendente y Enredadera de Crecimiento -->
+                <g class="engraving-vine">
+                  <path d="M30 218 Q60 190 75 160 Q95 125 125 105 Q150 85 175 55 Q195 30 220 12" stroke-width="1.9" opacity="0.9" />
+                  <path d="M75 160 Q100 170 120 175" stroke-width="1.1" opacity="0.75" />
+                  <path d="M125 105 Q145 118 165 120" stroke-width="1.1" opacity="0.75" />
+                  <path d="M175 55 Q200 68 215 75" stroke-width="1.1" opacity="0.75" />
+                </g>
+                <!-- Hojas de Olivo / Hojas de Capital Ascendente -->
+                <g class="engraving-foliage">
+                  <path d="M75 160 C60 148 58 132 70 124 C82 130 84 146 75 160 Z" fill="#081426" fill-opacity="0.6" stroke-width="1.1" />
+                  <path d="M120 175 C136 178 145 166 140 156 C128 160 122 166 120 175 Z" fill="#081426" fill-opacity="0.6" stroke-width="1.0" />
+                  <path d="M125 105 C112 92 114 76 126 70 C136 80 135 94 125 105 Z" fill="#081426" fill-opacity="0.6" stroke-width="1.1" />
+                  <path d="M165 120 C180 122 190 110 182 100 C170 104 165 112 165 120 Z" fill="#081426" fill-opacity="0.6" stroke-width="1.0" />
+                  <path d="M175 55 C162 42 164 26 176 20 C186 28 185 44 175 55 Z" fill="#081426" fill-opacity="0.6" stroke-width="1.1" />
+                  <path d="M220 12 C208 0 212 -12 225 -10 C234 -2 232 10 220 12 Z" fill="#081426" fill-opacity="0.6" stroke-width="1.2" />
+                  <path d="M175 55 Q188 44 184 36 Q176 34 172 40" stroke="#E2D2A4" stroke-width="0.8" />
+                  <!-- Brotes / Perlas de capital acumulado -->
+                  <circle cx="210" cy="30" r="2.5" fill="#E2D2A4" />
+                  <circle cx="155" cy="72" r="2" fill="#E2D2A4" />
+                  <circle cx="105" cy="135" r="2" fill="#E2D2A4" />
+                  <circle cx="30" cy="210" r="2.5" fill="#E2D2A4" />
+                </g>
+              </svg>
+            </div>
+
+            <!-- Cabecera del Capítulo -->
+            <div class="chapter-meta">
+              <span class="chapter-tag">CAP&Iacute;TULO 04</span>
+              <span class="chapter-num" aria-hidden="true">04</span>
+            </div>
+
+            <!-- Contenido Editorial -->
+            <div class="chapter-body">
+              <h3 class="chapter-title">Haz que tu dinero trabaje para ti</h3>
+              <p class="chapter-desc">Descubre nuevas alternativas para pensar en crecimiento y construcción de capital
+                a largo plazo.</p>
+            </div>
+
+            <!-- Firma del Ponente -->
+            <footer class="chapter-footer">
+              <div class="chapter-sig-rule" aria-hidden="true"></div>
+              <div class="chapter-speaker">
+                <svg class="chapter-speaker-leaf" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path
+                    d="M12 2C6.5 2 2 6.5 2 12c0 3.5 2 6.5 5 8 .5-2 1.5-4 3-5.5 1.5-1.5 3.5-2.5 5.5-3 1.5-3 4.5-5 6.5-5 .5 2-1.5 5-3 6.5-1.5 1.5-3.5 2.5-5.5 3-.5 2 0 4 1 5 3.5-1 6.5-4 6.5-9 0-5.5-4.5-10-10-10z" />
+                </svg>
+                <span class="chapter-speaker-name">Albert Ponce &mdash; Agroinvest Peru</span>
+              </div>
+            </footer>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       CINTA MOVIL — BANNER DE REGISTRO EN MOVIMIENTO CONTINUO
+       ======================================================== -->
+  <section id="banner-cinta" class="cinta-movil-section" aria-label="Cinta de registro y acceso oficial">
+    <a href="#registro" class="cinta-movil-link" id="cinta-cta-link" title="Ir al formulario de registro gratuito">
+
+      <!-- Cinta Track Superior (Sentido Izquierda) -->
+      <div class="cinta-row cinta-row--primary">
+        <div class="cinta-track cinta-track--left" id="cinta-track-left">
+          <div class="cinta-group">
+            <span class="cinta-icon-wrap" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M12 2C6.5 2 2 6.5 2 12c0 3.5 2 6.5 5 8 .5-2 1.5-4 3-5.5 1.5-1.5 3.5-2.5 5.5-3 1.5-3 4.5-5 6.5-5 .5 2-1.5 5-3 6.5-1.5 1.5-3.5 2.5-5.5 3-.5 2 0 4 1 5 3.5-1 6.5-4 6.5-9 0-5.5-4.5-10-10-10z" />
+              </svg>
+            </span>
+            <span class="cinta-text">INVERSIONISTA IMPARABLE</span>
+            <span class="cinta-diamond">&#9670;</span>
+            <span class="cinta-icon-wrap" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+            </span>
+            <span class="cinta-text">10 DE OCTUBRE &bull; AREQUIPA</span>
+            <span class="cinta-diamond">&#9670;</span>
+            <span class="cinta-icon-wrap" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </span>
+            <span class="cinta-text">CAMPUS MAR&Iacute;A MONTESSORI</span>
+            <span class="cinta-diamond">&#9670;</span>
+            <span class="cinta-pill">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="6" width="20" height="12" rx="2" />
+                <circle cx="12" cy="12" r="2" />
+              </svg>
+              ENTRADA LIBRE
+            </span>
+            <span class="cinta-text">AFORO PROTOCOLAR LIMITADO</span>
+            <span class="cinta-diamond">&#9670;</span>
+            <span class="cinta-pill cinta-pill--cta">
+              REG&Iacute;STRATE AQU&Iacute;
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+            <span class="cinta-diamond">&#9670;</span>
+          </div>
+          <div class="cinta-group" aria-hidden="true">
+            <span class="cinta-icon-wrap" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M12 2C6.5 2 2 6.5 2 12c0 3.5 2 6.5 5 8 .5-2 1.5-4 3-5.5 1.5-1.5 3.5-2.5 5.5-3 1.5-3 4.5-5 6.5-5 .5 2-1.5 5-3 6.5-1.5 1.5-3.5 2.5-5.5 3-.5 2 0 4 1 5 3.5-1 6.5-4 6.5-9 0-5.5-4.5-10-10-10z" />
+              </svg>
+            </span>
+            <span class="cinta-text">INVERSIONISTA IMPARABLE</span>
+            <span class="cinta-diamond">&#9670;</span>
+            <span class="cinta-icon-wrap" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+            </span>
+            <span class="cinta-text">10 DE OCTUBRE &bull; AREQUIPA</span>
+            <span class="cinta-diamond">&#9670;</span>
+            <span class="cinta-icon-wrap" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </span>
+            <span class="cinta-text">CAMPUS MAR&Iacute;A MONTESSORI</span>
+            <span class="cinta-diamond">&#9670;</span>
+            <span class="cinta-pill">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="6" width="20" height="12" rx="2" />
+                <circle cx="12" cy="12" r="2" />
+              </svg>
+              ENTRADA LIBRE
+            </span>
+            <span class="cinta-text">AFORO PROTOCOLAR LIMITADO</span>
+            <span class="cinta-diamond">&#9670;</span>
+            <span class="cinta-pill cinta-pill--cta">
+              REG&Iacute;STRATE AQU&Iacute;
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+            <span class="cinta-diamond">&#9670;</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cinta Track Inferior (Sentido Derecha) -->
+      <div class="cinta-row cinta-row--secondary">
+        <div class="cinta-track cinta-track--right" id="cinta-track-right">
+          <div class="cinta-group">
+            <span class="cinta-icon-wrap" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 19V5M5 12l7-7 7 7" />
+              </svg>
+            </span>
+            <span class="cinta-tag">4 CONFERENCIAS MAGISTRALES</span>
+            <span class="cinta-diamond-sm">&#9670;</span>
+            <span class="cinta-italic">Multiplica tu conocimiento y haz crecer tu capital</span>
+            <span class="cinta-diamond-sm">&#9670;</span>
+            <span class="cinta-icon-wrap" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </span>
+            <span class="cinta-tag">VIERNES 10 OCTUBRE &bull; 3:00 P.M.</span>
+            <span class="cinta-diamond-sm">&#9670;</span>
+            <span class="cinta-icon-wrap" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </span>
+            <span class="cinta-italic">Organizado por Agroinvest Per&uacute;</span>
+            <span class="cinta-diamond-sm">&#9670;</span>
+            <span class="cinta-tag">MIRAFLORES, AREQUIPA</span>
+            <span class="cinta-diamond-sm">&#9670;</span>
+            <span class="cinta-italic">Confirmaci&oacute;n inmediata por WhatsApp</span>
+            <span class="cinta-diamond-sm">&#9670;</span>
+          </div>
+          <div class="cinta-group" aria-hidden="true">
+            <span class="cinta-icon-wrap" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 19V5M5 12l7-7 7 7" />
+              </svg>
+            </span>
+            <span class="cinta-tag">4 CONFERENCIAS MAGISTRALES</span>
+            <span class="cinta-diamond-sm">&#9670;</span>
+            <span class="cinta-italic">Multiplica tu conocimiento y haz crecer tu capital</span>
+            <span class="cinta-diamond-sm">&#9670;</span>
+            <span class="cinta-icon-wrap" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </span>
+            <span class="cinta-tag">VIERNES 10 OCTUBRE &bull; 3:00 P.M.</span>
+            <span class="cinta-diamond-sm">&#9670;</span>
+            <span class="cinta-icon-wrap" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </span>
+            <span class="cinta-italic">Organizado por Agroinvest Per&uacute;</span>
+            <span class="cinta-diamond-sm">&#9670;</span>
+            <span class="cinta-tag">MIRAFLORES, AREQUIPA</span>
+            <span class="cinta-diamond-sm">&#9670;</span>
+            <span class="cinta-italic">Confirmaci&oacute;n inmediata por WhatsApp</span>
+            <span class="cinta-diamond-sm">&#9670;</span>
+          </div>
+        </div>
+      </div>
+    </a>
+  </section>
 
   <!-- ========================================================
        PONENTES
@@ -267,55 +991,55 @@
   <section id="ponentes" aria-labelledby="ponentes-title">
     <div class="container">
       <p class="section-label" data-anim="label">Los expertos</p>
-      <h2 class="section-title" id="ponentes-title" data-anim="fade-up">Conoce a quienes te acompanaran</h2>
+      <h2 class="section-title" id="ponentes-title" data-anim="fade-up">Conoce a quienes te acompañaran</h2>
       <div class="gold-line" data-anim="fade-up"></div>
 
       <div class="speakers-grid" data-anim="stagger-grid">
-        <div class="speaker-card" data-tilt>
+        <div class="speaker-card theme-dark" data-tilt>
           <div class="speaker-img-wrap">
-            <img src="images/ponentes/luz_macedo.jpg" alt="Luz Macedo - Ponente" loading="lazy" />
+            <img src="images/ponentes/luz macedo.jpeg" alt="Luz Macedo - Ponente" loading="lazy" />
             <div class="speaker-img-overlay" aria-hidden="true"></div>
           </div>
           <div class="speaker-info">
             <h3 class="speaker-name">Luz Macedo</h3>
-            <p class="speaker-role">Coach de Comunicacion y Liderazgo</p>
-            <p class="speaker-bio">[Credenciales reales por confirmar]</p>
+            <p class="speaker-role">Coach de Comunicación</p>
+            <p class="speaker-bio">Especialista en asertividad e impacto personal.</p>
           </div>
         </div>
 
-        <div class="speaker-card" data-tilt>
+        <div class="speaker-card theme-light" data-tilt>
           <div class="speaker-img-wrap">
-            <img src="images/ponentes/mayk_huamani.jpg" alt="Mayk Huamani - Ponente" loading="lazy" />
+            <img src="images/ponentes/aleyda.jpeg" alt="Aleyda Fernandez - Ponente" loading="lazy" />
+            <div class="speaker-img-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="speaker-info">
+            <h3 class="speaker-name">Aleyda Fernández</h3>
+            <p class="speaker-role">Coach de Transformación</p>
+            <p class="speaker-bio">Experta en sanación y desbloqueo financiero.</p>
+          </div>
+        </div>
+
+        <div class="speaker-card theme-dark" data-tilt>
+          <div class="speaker-img-wrap">
+            <img src="images/ponentes/mayk huamani.jpeg" alt="Mayk Huamani - Ponente" loading="lazy" />
             <div class="speaker-img-overlay" aria-hidden="true"></div>
           </div>
           <div class="speaker-info">
             <h3 class="speaker-name">Mayk Huamani</h3>
-            <p class="speaker-role">Especialista en Desarrollo Personal</p>
-            <p class="speaker-bio">[Credenciales reales por confirmar]</p>
+            <p class="speaker-role">Desarrollo Personal</p>
+            <p class="speaker-bio">Mentor en activación de potencial y confianza.</p>
           </div>
         </div>
 
-        <div class="speaker-card" data-tilt>
+        <div class="speaker-card theme-light" data-tilt>
           <div class="speaker-img-wrap">
-            <img src="images/ponentes/aleyda_fernandez.jpg" alt="Aleyda Fernandez - Ponente" loading="lazy" />
-            <div class="speaker-img-overlay" aria-hidden="true"></div>
-          </div>
-          <div class="speaker-info">
-            <h3 class="speaker-name">Aleyda Fernandez</h3>
-            <p class="speaker-role">Terapeuta y Coach de Transformacion</p>
-            <p class="speaker-bio">[Credenciales reales por confirmar]</p>
-          </div>
-        </div>
-
-        <div class="speaker-card" data-tilt>
-          <div class="speaker-img-wrap">
-            <img src="images/ponentes/albert_ponce.jpg" alt="Albert Ponce - Agroinvest Peru" loading="lazy" />
+            <img src="images/ponentes/albert ponce.jpeg" alt="Albert Ponce - Agroinvest Peru" loading="lazy" />
             <div class="speaker-img-overlay" aria-hidden="true"></div>
           </div>
           <div class="speaker-info">
             <h3 class="speaker-name">Albert Ponce</h3>
-            <p class="speaker-role">Agroinvest Peru</p>
-            <p class="speaker-bio">[Credenciales reales por confirmar]</p>
+            <p class="speaker-role">Estratega Agroinvest</p>
+            <p class="speaker-bio">Inversiones de tierra y modelos productivos.</p>
           </div>
         </div>
       </div>
@@ -325,168 +1049,503 @@
   <div class="section-divider"></div>
 
   <!-- ========================================================
-       TRANSFORMACION FLOW
+       EL VIAJE — VIAJE DE CRECIMIENTO EDITORIAL BOTÁNICO
+       Camino orgánico vertical: Semilla -> Brote -> Crecimiento -> Fruto -> Árbol
        ======================================================== -->
-  <section id="transformacion" aria-labelledby="transform-title">
-    <div class="topo-bg-layer" aria-hidden="true">
-      <img src="images/decorations/topo_contours_large.svg" alt="" loading="lazy" />
-    </div>
-    <div class="container">
-      <p class="section-label" data-anim="label">El viaje</p>
-      <h2 class="section-title" id="transform-title" data-anim="fade-up">4 horas para cambiar la forma<br>en que ves tu crecimiento</h2>
-      <div class="gold-line" data-anim="fade-up"></div>
+  <section id="transformacion" class="viaje-editorial" aria-labelledby="transform-title">
+    <!-- Atmósfera luminosa y profundidad azul noche -->
+    <div class="viaje-ambient-glow" aria-hidden="true"></div>
+    <div class="viaje-grain" aria-hidden="true"></div>
 
-      <div class="transform-flow" id="transform-flow">
-        <div class="transform-step" data-anim="transform-step">
-          <div class="transform-step-num">I</div>
-          <div class="transform-step-content">
-            <h3 class="transform-step-title">Crece</h3>
-            <p class="transform-step-desc">Fortalece tu comunicacion y seguridad personal.</p>
-          </div>
-        </div>
-        <div class="transform-arrow" aria-hidden="true" data-anim="transform-arrow">&#8595;</div>
-        <div class="transform-step" data-anim="transform-step">
-          <div class="transform-step-num">II</div>
-          <div class="transform-step-content">
-            <h3 class="transform-step-title">Activa</h3>
-            <p class="transform-step-desc">Descubre el poder que ya tienes dentro de ti.</p>
-          </div>
-        </div>
-        <div class="transform-arrow" aria-hidden="true" data-anim="transform-arrow">&#8595;</div>
-        <div class="transform-step" data-anim="transform-step">
-          <div class="transform-step-num">III</div>
-          <div class="transform-step-content">
-            <h3 class="transform-step-title">Transforma</h3>
-            <p class="transform-step-desc">Rompe creencias que pueden estar limitando tu crecimiento.</p>
-          </div>
-        </div>
-        <div class="transform-arrow" aria-hidden="true" data-anim="transform-arrow">&#8595;</div>
-        <div class="transform-step" data-anim="transform-step">
-          <div class="transform-step-num">IV</div>
-          <div class="transform-step-content">
-            <h3 class="transform-step-title">Invierte</h3>
-            <p class="transform-step-desc">Conoce nuevas formas de hacer crecer tu dinero.</p>
-          </div>
-        </div>
-        <div class="transform-arrow" aria-hidden="true" data-anim="transform-arrow">&#8595;</div>
-        <div class="transform-step" data-anim="transform-step">
-          <div class="transform-step-num">V</div>
-          <div class="transform-step-content">
-            <h3 class="transform-step-title">Trasciende</h3>
-            <p class="transform-step-desc">Empieza a pensar en el futuro que quieres construir.</p>
-          </div>
+    <div class="container viaje-container">
+      <!-- Encabezado Editorial de El Viaje -->
+      <div class="viaje-header">
+        <p class="section-label viaje-kicker" id="transform-kicker">El viaje</p>
+        <h2 class="section-title viaje-title" id="transform-title">4 horas para cambiar la forma<br>en que ves tu crecimiento</h2>
+        <div class="editorial-gold-line" aria-hidden="true">
+          <span class="line-diamond-left">&#9670;</span>
+          <span class="line-bar"><span class="line-fill"></span></span>
+          <span class="line-diamond-right">&#9670;</span>
         </div>
       </div>
-    </div>
-  </section>
 
-  <div class="topo-divider" aria-hidden="true">
-    <img src="images/decorations/topo_wave_divider.svg" alt="" loading="lazy" />
-  </div>
+      <!-- Timeline Orgánico con Tallo Conector y 5 Etapas -->
+      <div class="viaje-timeline" id="viaje-timeline">
+        <!-- Espina dorsal / Tallo botánico conector en Desktop -->
+        <svg class="viaje-spine-desktop" viewBox="0 0 1000 1350" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round" preserveAspectRatio="none" aria-hidden="true">
+          <!-- Tallo / Rama orgánica principal sinuosa -->
+          <path class="viaje-stem-main" d="M 450 70 C 490 140, 520 220, 550 320 C 580 430, 480 500, 450 600 C 420 700, 520 780, 550 880 C 570 980, 520 1040, 500 1120" stroke="#C5A059" stroke-width="2.2" opacity="0.65" />
+          <path class="viaje-stem-accent" d="M 450 70 Q 480 200 550 320 Q 520 460 450 600 Q 480 750 550 880 Q 530 1020 500 1120" stroke="#E2D2A4" stroke-width="0.9" stroke-dasharray="3 4" opacity="0.35" />
 
-  <!-- ========================================================
-       VIDEO SECTION
-       ======================================================== -->
-  <section id="video" aria-labelledby="video-title">
-    <div class="container">
-      <p class="section-label reveal">Siente la energia</p>
-      <h2 class="section-title reveal" id="video-title">Mira lo que te espera</h2>
-      <div class="gold-line reveal"></div>
+          <!-- Ramitas de conexión física (twigs) hacia cada etapa -->
+          <!-- Conexión Etapa I (izquierda) -->
+          <path class="viaje-twig viaje-twig--1" d="M 450 70 Q 380 65 310 75" stroke-width="1.6" opacity="0.6" />
+          <circle class="viaje-node-dot" cx="450" cy="70" r="4.5" fill="#E2D2A4" stroke="#C5A059" stroke-width="1.5" />
+          <path d="M 450 70 C 438 58 424 64 430 74 C 440 76 448 72 450 70 Z" fill="#C5A059" fill-opacity="0.18" stroke-width="0.8" />
 
-      <!-- 
-        INSTRUCCION: 
-        Cuando tengas el video de YouTube, reemplaza todo el div.video-placeholder
-        con el siguiente bloque (cambia VIDEO_ID por el ID real):
-        
-        <div class="video-embed reveal">
-          <iframe src="https://www.youtube.com/embed/VIDEO_ID"
-                  title="Inversionista Imparable — Video del evento"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen loading="lazy"></iframe>
-        </div>
-      -->
-      <div class="video-placeholder reveal" role="button" tabindex="0" aria-label="Video de presentacion del evento">
-        <div class="video-placeholder-text">
-          <div class="video-play-btn" aria-hidden="true">&#9654;</div>
-          <p>Video del evento proximamente</p>
-        </div>
-      </div>
-    </div>
-  </section>
+          <!-- Conexión Etapa II (derecha) -->
+          <path class="viaje-twig viaje-twig--2" d="M 550 320 Q 620 315 690 325" stroke-width="1.6" opacity="0.6" />
+          <circle class="viaje-node-dot" cx="550" cy="320" r="4.5" fill="#E2D2A4" stroke="#C5A059" stroke-width="1.5" />
+          <path d="M 550 320 C 562 308 576 314 570 324 C 560 326 552 322 550 320 Z" fill="#C5A059" fill-opacity="0.18" stroke-width="0.8" />
 
-  <!-- ========================================================
-       BENEFICIOS — LO QUE TE LLEVARAS
-       ======================================================== -->
-  <section id="beneficios" aria-labelledby="beneficios-title">
-    <div class="container">
-      <p class="section-label" data-anim="label">Lo que te llevaras</p>
-      <h2 class="section-title" id="beneficios-title" data-anim="fade-up">No solo vas a escuchar.<br>Vas a salir con herramientas.</h2>
-      <div class="gold-line" data-anim="fade-up"></div>
+          <!-- Conexión Etapa III (izquierda) -->
+          <path class="viaje-twig viaje-twig--3" d="M 450 600 Q 380 595 310 605" stroke-width="1.6" opacity="0.6" />
+          <circle class="viaje-node-dot" cx="450" cy="600" r="4.5" fill="#E2D2A4" stroke="#C5A059" stroke-width="1.5" />
+          <path d="M 450 600 C 438 588 424 594 430 604 C 440 606 448 602 450 600 Z" fill="#C5A059" fill-opacity="0.18" stroke-width="0.8" />
 
-      <div class="benefits-grid" data-anim="stagger-grid">
-        <div class="benefit-item">
-          <span class="benefit-check" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-          <p><strong>Herramientas</strong> para comunicarte con mayor seguridad e impacto.</p>
-        </div>
-        <div class="benefit-item">
-          <span class="benefit-check" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-          <p><strong>Nuevas perspectivas</strong> para superar limites personales que te frenan.</p>
-        </div>
-        <div class="benefit-item">
-          <span class="benefit-check" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-          <p><strong>Ideas claras</strong> para tomar mejores decisiones con tu dinero.</p>
-        </div>
-        <div class="benefit-item">
-          <span class="benefit-check" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-          <p><strong>Nuevas formas</strong> de pensar sobre crecimiento e inversion a largo plazo.</p>
-        </div>
-        <div class="benefit-item">
-          <span class="benefit-check" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-          <p><strong>Conexiones reales</strong> con personas que comparten tus objetivos de crecimiento.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+          <!-- Conexión Etapa IV (derecha) -->
+          <path class="viaje-twig viaje-twig--4" d="M 550 880 Q 620 875 690 885" stroke-width="1.6" opacity="0.6" />
+          <circle class="viaje-node-dot" cx="550" cy="880" r="4.5" fill="#E2D2A4" stroke="#C5A059" stroke-width="1.5" />
+          <path d="M 550 880 C 562 868 576 874 570 884 C 560 886 552 882 550 880 Z" fill="#C5A059" fill-opacity="0.18" stroke-width="0.8" />
 
-  <!-- ========================================================
-       PRUEBA SOCIAL
-       ======================================================== -->
-  <section id="prueba-social" aria-labelledby="social-title">
-    <div class="container">
-      <p class="section-label reveal">Confianza</p>
-      <h2 class="section-title reveal" id="social-title">Personas que ya decidieron<br>dar el siguiente paso</h2>
-      <div class="gold-line reveal"></div>
+          <!-- Conexión Etapa V (centro) -->
+          <circle class="viaje-node-dot" cx="500" cy="1120" r="5" fill="#E2D2A4" stroke="#C5A059" stroke-width="1.8" />
+        </svg>
 
-      <!-- 
-        INSTRUCCION: Al ser la primera edicion, usamos un mensaje honesto.
-        Cuando tengas testimonios reales, reemplaza este bloque con las tarjetas.
-      -->
-      <div class="social-proof-note reveal">
-        <p>
-          <strong>Primera edicion del evento.</strong><br>
-          Tenemos el compromiso de ofrecerte una experiencia de alto nivel.
-          Cuando el evento concluya, aqui encontraras los testimonios reales de quienes vivieron Inversionista Imparable.
-        </p>
-      </div>
+        <!-- Espina dorsal en Mobile (alineada a la izquierda) -->
+        <svg class="viaje-spine-mobile" viewBox="0 0 60 1350" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round" preserveAspectRatio="none" aria-hidden="true">
+          <path class="viaje-stem-mobile" d="M 28 30 Q 36 250 24 500 Q 14 750 32 980 Q 22 1160 28 1320" stroke-width="1.8" opacity="0.6" />
+          <path d="M 28 30 Q 20 250 32 500 Q 40 750 22 980 Q 34 1160 28 1320" stroke-width="0.8" stroke-dasharray="2 3" opacity="0.3" />
+          <circle cx="28" cy="70" r="4" fill="#E2D2A4" />
+          <circle cx="28" cy="320" r="4" fill="#E2D2A4" />
+          <circle cx="28" cy="600" r="4" fill="#E2D2A4" />
+          <circle cx="28" cy="880" r="4" fill="#E2D2A4" />
+          <circle cx="28" cy="1160" r="4.5" fill="#E2D2A4" />
+        </svg>
 
-      <!-- 
-        TESTIMONIOS (descomenta y edita cuando tengas testimonios reales):
-        <div class="testimonial-grid">
-          <div class="testimonial-card reveal delay-1">
-            <div class="testimonial-quote">&#8220;</div>
-            <p class="testimonial-text">Tu testimonio real aqui.</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">A</div>
-              <div>
-                <div class="testimonial-author-name">Nombre Apellido</div>
-                <div class="testimonial-author-role">Cargo / Empresa</div>
-              </div>
+        <!-- ==================== ETAPA I: CRECE ==================== -->
+        <article class="viaje-step viaje-step--left viaje-step--1" id="viaje-step-1" data-viaje="1">
+          <div class="viaje-step-inner">
+            <!-- Grabado Botánico I: Semilla o pequeño brote germinal con raíces -->
+            <div class="viaje-illustration" aria-hidden="true">
+              <svg viewBox="0 0 160 160" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+                <g class="engraving-roots" stroke-width="1.1" opacity="0.65">
+                  <path d="M80 110 Q72 125 60 138 Q52 145 42 148" />
+                  <path d="M80 110 Q85 128 92 142 Q96 148 108 152" />
+                  <path d="M75 118 Q68 128 64 135" stroke-dasharray="1 2" stroke-width="0.8" />
+                  <path d="M85 122 Q90 132 94 138" stroke-dasharray="1 2" stroke-width="0.8" />
+                </g>
+                <g class="engraving-seed" stroke-width="1.4">
+                  <path d="M68 112 C62 98 66 82 78 78 C74 90 72 104 68 112 Z" fill="#C5A059" fill-opacity="0.12" />
+                  <path d="M92 112 C98 98 94 82 82 78 C86 90 88 104 92 112 Z" fill="#C5A059" fill-opacity="0.12" />
+                  <ellipse cx="80" cy="98" rx="8" ry="12" fill="#E2D2A4" fill-opacity="0.15" stroke-width="1.2" />
+                  <circle cx="80" cy="98" r="3" fill="#E2D2A4" stroke="none" />
+                </g>
+                <g class="engraving-shoot" stroke-width="1.3">
+                  <path d="M80 86 Q80 62 80 42" stroke-width="1.6" />
+                  <path d="M80 60 C68 52 58 56 54 66 C65 72 75 68 80 60 Z" fill="#C5A059" fill-opacity="0.12" />
+                  <path d="M80 60 Q66 61 54 66" stroke="#E2D2A4" stroke-width="0.8" />
+                  <path d="M80 48 C92 40 102 44 106 54 C95 60 85 56 80 48 Z" fill="#C5A059" fill-opacity="0.12" />
+                  <path d="M80 48 Q94 49 106 54" stroke="#E2D2A4" stroke-width="0.8" />
+                  <circle cx="80" cy="40" r="2.2" fill="#E2D2A4" />
+                </g>
+              </svg>
+            </div>
+            <div class="viaje-meta">
+              <span class="viaje-tag">ETAPA I</span>
+              <span class="viaje-roman" aria-hidden="true">I</span>
+            </div>
+            <div class="viaje-body">
+              <h3 class="viaje-step-title">Crece</h3>
+              <p class="viaje-step-desc">Fortalece tu comunicacion y seguridad personal.</p>
             </div>
           </div>
-        </div>
-      -->
+        </article>
+
+        <!-- ==================== ETAPA II: ACTIVA ==================== -->
+        <article class="viaje-step viaje-step--right viaje-step--2" id="viaje-step-2" data-viaje="2">
+          <div class="viaje-step-inner">
+            <!-- Grabado Botánico II: Rama que comienza a crecer / hojas abriéndose -->
+            <div class="viaje-illustration" aria-hidden="true">
+              <svg viewBox="0 0 160 160" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M50 145 Q65 110 75 75 Q85 45 110 22" stroke-width="1.7" />
+                <path d="M75 75 Q95 70 120 78" stroke-width="1.2" opacity="0.7" />
+                <path d="M65 110 Q45 105 28 112" stroke-width="1.1" opacity="0.7" />
+                <g class="engraving-foliage" stroke-width="1.2">
+                  <path d="M110 22 C115 8 130 12 132 25 C122 35 112 32 110 22 Z" fill="#C5A059" fill-opacity="0.1" />
+                  <path d="M110 22 Q122 21 132 25" stroke="#E2D2A4" stroke-width="0.8" />
+                  <path d="M120 78 C136 68 148 76 146 90 C132 94 122 88 120 78 Z" fill="#C5A059" fill-opacity="0.1" />
+                  <path d="M120 78 Q134 81 146 90" stroke="#E2D2A4" stroke-width="0.8" />
+                  <path d="M82 52 C98 38 112 42 114 56 C100 62 88 58 82 52 Z" fill="#C5A059" fill-opacity="0.1" />
+                  <path d="M28 112 C16 102 18 88 30 84 C40 94 36 108 28 112 Z" fill="#C5A059" fill-opacity="0.1" />
+                  <path d="M28 112 Q25 98 30 84" stroke="#E2D2A4" stroke-width="0.8" />
+                  <path d="M68 88 C50 78 52 64 64 62 C74 72 72 84 68 88 Z" fill="#C5A059" fill-opacity="0.1" />
+                </g>
+                <path d="M110 22 Q115 32 122 30 Q126 26 120 22" stroke="#E2D2A4" stroke-width="0.9" opacity="0.8" />
+                <circle cx="132" cy="25" r="2" fill="#E2D2A4" />
+                <circle cx="146" cy="90" r="1.8" fill="#E2D2A4" />
+              </svg>
+            </div>
+            <div class="viaje-meta">
+              <span class="viaje-tag">ETAPA II</span>
+              <span class="viaje-roman" aria-hidden="true">II</span>
+            </div>
+            <div class="viaje-body">
+              <h3 class="viaje-step-title">Activa</h3>
+              <p class="viaje-step-desc">Descubre el poder que ya tienes dentro de ti.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ==================== ETAPA III: TRANSFORMA ==================== -->
+        <article class="viaje-step viaje-step--left viaje-step--3" id="viaje-step-3" data-viaje="3">
+          <div class="viaje-step-inner">
+            <!-- Grabado Botánico III: Rama cambiando de dirección / nueva brotación -->
+            <div class="viaje-illustration" aria-hidden="true">
+              <svg viewBox="0 0 160 160" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+                <g class="engraving-branches" stroke-width="1.6">
+                  <path d="M25 135 Q55 125 75 95 Q90 70 85 45 Q80 25 65 15" stroke-width="1.8" />
+                  <path d="M75 95 Q105 92 128 72 Q145 52 142 28" stroke-width="1.5" />
+                  <path d="M85 45 Q108 40 125 32" stroke-width="1.1" opacity="0.75" />
+                </g>
+                <circle cx="75" cy="95" r="14" stroke="#E2D2A4" stroke-width="0.8" stroke-dasharray="2 3" opacity="0.5" />
+                <circle cx="75" cy="95" r="4" fill="#C5A059" fill-opacity="0.25" stroke="#E2D2A4" stroke-width="1.2" />
+                <g class="engraving-foliage" stroke-width="1.1">
+                  <path d="M65 15 C52 8 46 18 50 28 C60 30 66 22 65 15 Z" fill="#C5A059" fill-opacity="0.1" />
+                  <path d="M142 28 C152 18 144 8 132 12 C128 22 136 28 142 28 Z" fill="#C5A059" fill-opacity="0.1" />
+                  <path d="M125 32 C135 22 145 28 140 38 C130 42 124 36 125 32 Z" fill="#C5A059" fill-opacity="0.1" />
+                  <path d="M128 72 C142 66 146 78 140 88 C128 88 124 78 128 72 Z" fill="#C5A059" fill-opacity="0.1" />
+                  <path d="M40 108 C25 102 24 88 36 84 C48 92 46 104 40 108 Z" fill="#C5A059" fill-opacity="0.1" />
+                </g>
+                <circle cx="65" cy="15" r="2.2" fill="#E2D2A4" />
+                <circle cx="142" cy="28" r="2.2" fill="#E2D2A4" />
+              </svg>
+            </div>
+            <div class="viaje-meta">
+              <span class="viaje-tag">ETAPA III</span>
+              <span class="viaje-roman" aria-hidden="true">III</span>
+            </div>
+            <div class="viaje-body">
+              <h3 class="viaje-step-title">Transforma</h3>
+              <p class="viaje-step-desc">Rompe creencias que pueden estar limitando tu crecimiento.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ==================== ETAPA IV: INVIERTE ==================== -->
+        <article class="viaje-step viaje-step--right viaje-step--4" id="viaje-step-4" data-viaje="4">
+          <div class="viaje-step-inner">
+            <!-- Grabado Botánico IV: Frutos maduros de olivo / Crecimiento y valor -->
+            <div class="viaje-illustration" aria-hidden="true">
+              <svg viewBox="0 0 160 160" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 30 Q70 45 110 75 Q135 98 145 135" stroke-width="1.8" />
+                <path d="M70 45 Q85 85 92 125" stroke-width="1.3" opacity="0.8" />
+                <path d="M110 75 Q85 95 65 125" stroke-width="1.1" opacity="0.7" />
+                <g class="engraving-fruit">
+                  <ellipse cx="96" cy="115" rx="10" ry="15" transform="rotate(-15 96 115)" fill="#071326" fill-opacity="0.75" stroke="#C5A059" stroke-width="1.4" />
+                  <path d="M92 108 Q94 116 93 122" stroke="#E2D2A4" stroke-width="0.8" opacity="0.75" />
+                  <circle cx="94" cy="106" r="1.5" fill="#E2D2A4" />
+                  <ellipse cx="116" cy="105" rx="9" ry="14" transform="rotate(25 116 105)" fill="#071326" fill-opacity="0.75" stroke="#C5A059" stroke-width="1.4" />
+                  <path d="M118 98 Q120 106 117 112" stroke="#E2D2A4" stroke-width="0.8" opacity="0.75" />
+                  <ellipse cx="68" cy="118" rx="9" ry="13" transform="rotate(-35 68 118)" fill="#071326" fill-opacity="0.75" stroke="#C5A059" stroke-width="1.3" />
+                  <ellipse cx="132" cy="80" rx="8" ry="12" transform="rotate(40 132 80)" fill="#071326" fill-opacity="0.75" stroke="#C5A059" stroke-width="1.3" />
+                </g>
+                <g class="engraving-foliage" stroke-width="1.1">
+                  <path d="M70 45 C75 25 95 28 98 42 C88 52 76 50 70 45 Z" fill="#C5A059" fill-opacity="0.12" />
+                  <path d="M70 45 Q85 36 98 42" stroke="#E2D2A4" stroke-width="0.7" />
+                  <path d="M110 75 C128 58 142 66 138 80 C124 85 114 80 110 75 Z" fill="#C5A059" fill-opacity="0.12" />
+                  <path d="M52 68 C36 60 38 45 50 42 C60 52 58 64 52 68 Z" fill="#C5A059" fill-opacity="0.12" />
+                </g>
+                <circle cx="96" cy="128" r="2" fill="#E2D2A4" />
+                <circle cx="116" cy="118" r="2" fill="#E2D2A4" />
+              </svg>
+            </div>
+            <div class="viaje-meta">
+              <span class="viaje-tag">ETAPA IV</span>
+              <span class="viaje-roman" aria-hidden="true">IV</span>
+            </div>
+            <div class="viaje-body">
+              <h3 class="viaje-step-title">Invierte</h3>
+              <p class="viaje-step-desc">Conoce nuevas formas de hacer crecer tu dinero.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ==================== ETAPA V: TRASCIENDE ==================== -->
+        <article class="viaje-step viaje-step--center viaje-step--5" id="viaje-step-5" data-viaje="5">
+          <div class="viaje-step-inner">
+            <!-- Grabado Botánico V: Copa de árbol expansiva ramificándose fuera de los límites -->
+            <div class="viaje-illustration" aria-hidden="true">
+              <svg viewBox="0 0 240 150" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+                <g class="engraving-canopy-trunks" stroke-width="2">
+                  <path d="M120 148 Q120 110 120 85" stroke-width="2.5" />
+                  <path d="M120 85 Q95 55 50 35 Q20 22 -10 18" stroke-width="2" />
+                  <path d="M120 85 Q145 55 190 35 Q220 22 250 18" stroke-width="2" />
+                  <path d="M120 70 Q110 38 95 10 Q88 -5 85 -20" stroke-width="1.6" />
+                  <path d="M120 70 Q130 38 145 10 Q152 -5 155 -20" stroke-width="1.6" />
+                </g>
+                <g class="engraving-canopy-branches" stroke-width="1.2" opacity="0.85">
+                  <path d="M50 35 Q40 10 25 -10" />
+                  <path d="M190 35 Q200 10 215 -10" />
+                  <path d="M95 10 Q65 5 45 -5" />
+                  <path d="M145 10 Q175 5 195 -5" />
+                </g>
+                <g class="engraving-canopy-foliage" stroke-width="1">
+                  <path d="M50 35 C35 25 38 10 52 8 C62 18 58 30 50 35 Z" fill="#C5A059" fill-opacity="0.12" />
+                  <path d="M190 35 C205 25 202 10 188 8 C178 18 182 30 190 35 Z" fill="#C5A059" fill-opacity="0.12" />
+                  <path d="M120 30 C108 18 114 5 120 -5 C126 5 132 18 120 30 Z" fill="#C5A059" fill-opacity="0.15" />
+                  <path d="M95 10 C80 2 82 -10 95 -12 C104 -2 102 8 95 10 Z" fill="#C5A059" fill-opacity="0.12" />
+                  <path d="M145 10 C160 2 158 -10 145 -12 C136 -2 138 8 145 10 Z" fill="#C5A059" fill-opacity="0.12" />
+                  <path d="M25 15 C10 10 8 -2 20 -5 C30 5 30 12 25 15 Z" fill="#C5A059" fill-opacity="0.1" />
+                  <path d="M215 15 C230 10 232 -2 220 -5 C210 5 210 12 215 15 Z" fill="#C5A059" fill-opacity="0.1" />
+                </g>
+                <g class="engraving-canopy-accents">
+                  <circle cx="120" cy="5" r="3" fill="#E2D2A4" />
+                  <circle cx="50" cy="35" r="2.2" fill="#E2D2A4" />
+                  <circle cx="190" cy="35" r="2.2" fill="#E2D2A4" />
+                  <circle cx="95" cy="10" r="2" fill="#E2D2A4" />
+                  <circle cx="145" cy="10" r="2" fill="#E2D2A4" />
+                  <line x1="120" y1="2" x2="120" y2="-18" stroke="#E2D2A4" stroke-width="0.8" stroke-dasharray="1 2" opacity="0.6" />
+                </g>
+              </svg>
+            </div>
+            <div class="viaje-meta">
+              <span class="viaje-tag">ETAPA V &bull; CULMINACI&Oacute;N</span>
+              <span class="viaje-roman" aria-hidden="true">V</span>
+            </div>
+            <div class="viaje-body">
+              <h3 class="viaje-step-title">Trasciende</h3>
+              <p class="viaje-step-desc">Empieza a pensar en el futuro que quieres construir.</p>
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
+
+  <!-- Divisor Botánico Editorial -->
+  <div class="section-transition" aria-hidden="true">
+    <div class="transition-line transition-line--left"></div>
+    <div class="transition-crest">
+      <svg width="44" height="24" viewBox="0 0 44 24" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 2 Q17 13 6 13 Q2 13 1 11" stroke-width="1.2" />
+        <path d="M22 2 Q27 13 38 13 Q42 13 43 11" stroke-width="1.2" />
+        <path d="M22 7 C18 15 11 19 2 21" stroke-width="0.9" opacity="0.6" />
+        <path d="M22 7 C26 15 33 19 42 21" stroke-width="0.9" opacity="0.6" />
+        <circle cx="22" cy="4" r="2.2" fill="#E2D2A4" />
+        <path d="M13 11 C9 8 11 4 16 6 C17 9 15 11 13 11 Z" fill="#C5A059" fill-opacity="0.35" stroke-width="0.8" />
+        <path d="M31 11 C35 8 33 4 28 6 C27 9 29 11 31 11 Z" fill="#C5A059" fill-opacity="0.35" stroke-width="0.8" />
+      </svg>
+    </div>
+    <div class="transition-line transition-line--right"></div>
+  </div>
+
+
+  <!-- ========================================================
+       BENEFICIOS — LO QUE TE LLEVARÁS (HERBARIO DE CONOCIMIENTOS)
+       Composición editorial asimétrica, archivo personal de herramientas,
+       metáfora botánica (raíces, ramas, hojas, semillas), pieza principal
+       dominante y grabados de trazo fino integrados.
+       ======================================================== -->
+  <section id="beneficios" class="herbario-section" aria-labelledby="beneficios-title">
+    <!-- Atmósfera de luz y grano editorial -->
+    <div class="herbario-glow" aria-hidden="true"></div>
+    <div class="herbario-grain" aria-hidden="true"></div>
+
+    <!-- Marca de agua botánica de fondo: grabado de raíces y zarcillos que enlazan el lienzo -->
+    <div class="herbario-backdrop-svg" aria-hidden="true">
+      <svg viewBox="0 0 1440 900" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+        <path class="bg-vine-branch" d="M-40 380 Q320 280 580 440 T1100 360 T1480 480" stroke-width="0.9" opacity="0.12" stroke-dasharray="3 6" />
+        <path class="bg-vine-sub" d="M480 120 Q560 260 580 440 Q600 620 540 820" stroke-width="0.75" opacity="0.08" />
+        <path class="bg-vine-sub" d="M960 780 Q920 600 1020 460 Q1120 320 1280 180" stroke-width="0.7" opacity="0.08" />
+        <circle cx="580" cy="440" r="3.5" fill="#E2D2A4" opacity="0.2" />
+        <circle cx="1020" cy="460" r="3" fill="#E2D2A4" opacity="0.2" />
+      </svg>
+    </div>
+
+    <div class="container">
+      <!-- Encabezado editorial con generoso espacio negativo -->
+      <header class="herbario-header">
+        <p class="herbario-kicker" id="beneficios-kicker">Lo que te llevarás</p>
+        <h2 class="herbario-title" id="beneficios-title">
+          <span class="herbario-title-lead">No solo vas a escuchar.</span>
+          <span class="herbario-title-accent">Vas a salir con herramientas.</span>
+        </h2>
+        
+        <div class="herbario-divider" aria-hidden="true">
+          <span class="herbario-divider-line"></span>
+          <span class="herbario-divider-leaf">
+            <svg width="32" height="16" viewBox="0 0 32 16" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 8 C9 2, 14 3, 16 8 C18 13, 23 14, 30 8" stroke-width="1.2" />
+              <path d="M16 8 C14 4, 18 2, 20 4 C20 7, 18 8, 16 8 Z" fill="#C5A059" fill-opacity="0.25" stroke-width="0.8" />
+              <circle cx="16" cy="8" r="1.8" fill="#E2D2A4" />
+            </svg>
+          </span>
+          <span class="herbario-divider-line"></span>
+        </div>
+      </header>
+
+      <!-- Composición Asimétrica: Archivo de 5 Herramientas -->
+      <div class="herbario-archive-grid" id="herbario-grid">
+
+        <!-- ==================== ELEMENTO 01 (Tallo / Expresión) ==================== -->
+        <article class="folio-piece folio-piece--01" id="folio-01">
+          <div class="folio-piece-inner">
+            <div class="folio-metaphor-tag">
+              <span class="folio-badge-num">01</span>
+              <span class="folio-badge-label">Herramienta I &bull; Comunicación</span>
+            </div>
+            
+            <div class="folio-content">
+              <h3 class="folio-heading"><span class="folio-keyword">Herramientas</span> para comunicarte con mayor seguridad e impacto.</h3>
+            </div>
+
+            <!-- Grabado Botánico Integrado: Tallo ascendente y brote -->
+            <div class="folio-engraving folio-engraving--stem" aria-hidden="true">
+              <svg viewBox="0 0 160 220" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+                <path class="engrave-line" d="M30 200 Q75 140 85 80 Q92 40 120 15" stroke-width="1.4" opacity="0.65" />
+                <path class="engrave-line" d="M85 80 Q55 60 40 45" stroke-width="1.0" opacity="0.5" />
+                <path d="M40 45 C30 38 35 24 48 28 C55 38 50 48 40 45 Z" fill="#061224" fill-opacity="0.5" stroke-width="0.9" />
+                <path d="M40 45 Q44 34 48 28" stroke="#E2D2A4" stroke-width="0.6" />
+                <path d="M120 15 C132 8 138 20 128 26 C118 28 114 20 120 15 Z" fill="#061224" fill-opacity="0.5" stroke-width="0.9" />
+                <path d="M60 145 Q85 130 110 135" stroke-width="0.9" opacity="0.5" />
+                <circle cx="120" cy="15" r="2.2" fill="#E2D2A4" opacity="0.8" />
+              </svg>
+            </div>
+          </div>
+        </article>
+
+        <!-- ==================== ELEMENTO 02 (Follaje / Perspectiva) ==================== -->
+        <article class="folio-piece folio-piece--02" id="folio-02">
+          <div class="folio-piece-inner">
+            <div class="folio-bracket folio-bracket--tl" aria-hidden="true"></div>
+            <div class="folio-bracket folio-bracket--br" aria-hidden="true"></div>
+
+            <div class="folio-metaphor-tag">
+              <span class="folio-badge-num">02</span>
+              <span class="folio-badge-label">Herramienta II &bull; Mentalidad</span>
+            </div>
+
+            <div class="folio-content">
+              <h3 class="folio-heading"><span class="folio-keyword">Nuevas perspectivas</span> para superar límites personales que te frenan.</h3>
+            </div>
+
+            <!-- Grabado Botánico Integrado: Hojas de olivo que escapan sutilmente del marco -->
+            <div class="folio-engraving folio-engraving--leaf" aria-hidden="true">
+              <svg viewBox="0 0 200 180" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+                <path class="engrave-line" d="M180 160 Q120 120 80 80 Q50 50 20 40" stroke-width="1.3" opacity="0.65" />
+                <path d="M80 80 C60 55 70 30 92 40 C102 60 95 78 80 80 Z" fill="#061224" fill-opacity="0.5" stroke-width="0.9" />
+                <path d="M80 80 Q86 58 92 40" stroke="#E2D2A4" stroke-width="0.6" />
+                <path d="M20 40 C5 30 10 12 25 15 C35 25 32 38 20 40 Z" fill="#061224" fill-opacity="0.5" stroke-width="0.9" />
+                <path d="M130 130 C155 110 168 125 158 140 C145 150 135 140 130 130 Z" fill="#061224" fill-opacity="0.5" stroke-width="0.9" />
+                <circle cx="92" cy="40" r="2.2" fill="#E2D2A4" opacity="0.8" />
+              </svg>
+            </div>
+          </div>
+        </article>
+
+        <!-- ==================== ELEMENTO 03 (PIEZA PRINCIPAL / Raíces y Decisión Financiera) ==================== -->
+        <article class="folio-piece folio-piece--masterpiece" id="folio-03">
+          <div class="masterpiece-glow" aria-hidden="true"></div>
+          <div class="folio-piece-inner">
+            <!-- Esquinas ornamentales con muesca escalonada imperial -->
+            <div class="masterpiece-frame" aria-hidden="true">
+              <span class="corner-mark corner-mark--tl"></span>
+              <span class="corner-mark corner-mark--tr"></span>
+              <span class="corner-mark corner-mark--bl"></span>
+              <span class="corner-mark corner-mark--br"></span>
+            </div>
+
+            <div class="folio-metaphor-tag">
+              <span class="masterpiece-seal" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C5A059" stroke-width="1.5">
+                  <circle cx="12" cy="12" r="10" stroke-dasharray="2 3" />
+                  <polygon points="12 4 14.5 9 20 9.8 16 13.7 17 19.2 12 16.5 7 19.2 8 13.7 4 9.8 9.5 9 12 4" fill="#C5A059" fill-opacity="0.3" />
+                </svg>
+              </span>
+              <span class="folio-badge-num">03</span>
+              <span class="folio-badge-label">Pieza Central &bull; Fundamento Financiero</span>
+            </div>
+
+            <div class="folio-content">
+              <h3 class="folio-heading folio-heading--masterpiece">
+                <span class="folio-keyword-dominant">Ideas claras</span>
+                <span class="folio-text-follow">para tomar mejores decisiones con tu dinero.</span>
+              </h3>
+            </div>
+
+            <!-- Grabado Botánico Integrado: Sistema de raíces profundas entrelazadas -->
+            <div class="folio-engraving folio-engraving--roots" aria-hidden="true">
+              <svg viewBox="0 0 380 220" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Raíz principal descendente -->
+                <path class="engrave-line" d="M190 10 Q180 60 170 110 Q160 160 140 210" stroke-width="1.8" opacity="0.65" />
+                <path class="engrave-line" d="M170 110 Q215 140 260 180 Q290 205 320 215" stroke-width="1.4" opacity="0.55" />
+                <path class="engrave-line" d="M180 60 Q130 90 90 130 Q60 165 30 185" stroke-width="1.3" opacity="0.5" />
+                <!-- Raicillas capilares finas de absorción de conocimiento -->
+                <path d="M170 110 Q150 135 125 150" stroke-width="0.8" opacity="0.4" />
+                <path d="M215 140 Q230 165 240 195" stroke-width="0.8" opacity="0.4" />
+                <path d="M130 90 Q115 115 105 145" stroke-width="0.8" opacity="0.4" />
+                <path d="M260 180 Q280 190 295 210" stroke-width="0.7" opacity="0.35" />
+                <circle cx="140" cy="210" r="2" fill="#E2D2A4" opacity="0.7" />
+                <circle cx="320" cy="215" r="2" fill="#E2D2A4" opacity="0.7" />
+                <circle cx="30" cy="185" r="2" fill="#E2D2A4" opacity="0.7" />
+              </svg>
+            </div>
+          </div>
+        </article>
+
+        <!-- ==================== ELEMENTO 04 (Semilla / Trascendencia) ==================== -->
+        <article class="folio-piece folio-piece--04" id="folio-04">
+          <div class="folio-piece-inner">
+            <div class="folio-metaphor-tag">
+              <span class="folio-badge-num">04</span>
+              <span class="folio-badge-label">Herramienta IV &bull; Visión de Futuro</span>
+            </div>
+
+            <div class="folio-content">
+              <h3 class="folio-heading"><span class="folio-keyword">Nuevas formas</span> de pensar sobre crecimiento e inversión a largo plazo.</h3>
+            </div>
+
+            <!-- Grabado Botánico Integrado: Semilla y brote germinado -->
+            <div class="folio-engraving folio-engraving--seed" aria-hidden="true">
+              <svg viewBox="0 0 170 170" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+                <path class="engrave-line" d="M45 130 C30 110 32 80 50 65 C70 50 100 55 110 80 C120 105 105 135 80 145 C65 150 50 145 45 130 Z" stroke-width="1.2" opacity="0.6" fill="#061224" fill-opacity="0.4" />
+                <!-- Líneas de corte botánico grabadas -->
+                <path d="M50 65 Q75 95 80 145" stroke-width="0.7" opacity="0.35" />
+                <path d="M65 55 Q85 85 95 125" stroke-width="0.6" opacity="0.3" stroke-dasharray="2 3" />
+                <!-- Pequeño brote superior ascendente -->
+                <path class="engrave-line" d="M100 55 Q115 35 140 25" stroke-width="1.3" opacity="0.65" />
+                <path d="M140 25 C148 18 155 25 150 32 C142 38 135 32 140 25 Z" fill="#061224" fill-opacity="0.5" stroke-width="0.8" />
+                <circle cx="140" cy="25" r="2.2" fill="#E2D2A4" opacity="0.8" />
+              </svg>
+            </div>
+          </div>
+        </article>
+
+        <!-- ==================== ELEMENTO 05 (Ramificación / Red Humana) ==================== -->
+        <article class="folio-piece folio-piece--05" id="folio-05">
+          <div class="folio-piece-inner">
+            <div class="folio-metaphor-tag">
+              <span class="folio-badge-num">05</span>
+              <span class="folio-badge-label">Herramienta V &bull; Comunidad</span>
+            </div>
+
+            <div class="folio-content">
+              <h3 class="folio-heading"><span class="folio-keyword">Conexiones reales</span> con personas que comparten tus objetivos de crecimiento.</h3>
+            </div>
+
+            <!-- Grabado Botánico Integrado: Ramificación sinuosa que enlaza la red -->
+            <div class="folio-engraving folio-engraving--branch" aria-hidden="true">
+              <svg viewBox="0 0 220 160" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+                <path class="engrave-line" d="M20 140 Q80 110 130 90 Q170 75 210 40" stroke-width="1.3" opacity="0.65" />
+                <path class="engrave-line" d="M80 110 Q110 65 145 45" stroke-width="1.0" opacity="0.5" />
+                <path class="engrave-line" d="M130 90 Q160 115 190 120" stroke-width="0.9" opacity="0.5" />
+                <!-- Nodos de conexión (red humana) -->
+                <circle cx="20" cy="140" r="2.8" fill="#E2D2A4" opacity="0.8" />
+                <circle cx="80" cy="110" r="2.5" fill="#E2D2A4" opacity="0.8" />
+                <circle cx="130" cy="90" r="3.2" fill="#E2D2A4" opacity="0.9" />
+                <circle cx="210" cy="40" r="2.8" fill="#E2D2A4" opacity="0.8" />
+                <circle cx="145" cy="45" r="2.2" fill="#E2D2A4" opacity="0.7" />
+                <circle cx="190" cy="120" r="2.2" fill="#E2D2A4" opacity="0.7" />
+              </svg>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
 
   <!-- ========================================================
        UBICACION
@@ -494,7 +1553,7 @@
   <section id="ubicacion" aria-labelledby="ubicacion-title">
     <div class="container">
       <p class="section-label reveal">Nos vemos aqui</p>
-      <h2 class="section-title reveal" id="ubicacion-title">Nos vemos en Miraflores</h2>
+      <h2 class="section-title reveal" id="ubicacion-title">Nos vemos en Miraflores, Arequipa</h2>
       <div class="gold-line reveal"></div>
 
       <div class="location-content">
@@ -506,29 +1565,35 @@
             <p>
               Auditorio del Campus Maria Montessori<br>
               Calle Moquegua #741<br>
-              Miraflores, Lima &mdash; Peru
+              Miraflores, Arequipa &mdash; Peru
             </p>
           </div>
           <div class="location-details">
             <div class="location-detail-item">
-              <div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
-              <span>A pocos minutos de la Av. Larco</span>
+              <div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg></div>
+              <span>Ubicacion estrategica y de facil acceso en Miraflores, Arequipa</span>
             </div>
             <div class="location-detail-item">
-              <div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div>
-              <span>Acceso para personas con movilidad reducida</span>
+              <div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                  <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                  <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                </svg></div>
+              <span>Auditorio exclusivo, moderno y con seguridad para los asistentes</span>
             </div>
-            <!-- Agrega: estacionamiento, metro, referencias cuando confirmes -->
           </div>
         </div>
 
         <div class="map-embed reveal-right">
-          <iframe
-            title="Mapa del evento — Calle Moquegua 741, Miraflores"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.8!2d-77.0298!3d-12.1191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c8a3aad8e84f%3A0x6e5e5e5e5e5e5e5e!2sCalle+Moquegua+741%2C+Miraflores%2C+Lima!5e0!3m2!1ses!2spe!4v1234567890"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
+          <iframe title="Mapa del evento — Calle Moquegua 741, Miraflores, Arequipa"
+            src="https://maps.google.com/maps?q=Calle+Moquegua+741,+Miraflores,+Arequipa&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
           </iframe>
         </div>
       </div>
@@ -536,55 +1601,193 @@
   </section>
 
   <!-- ========================================================
-       REGISTRO (mid-page)
+       REGISTRO — CULMINACIÓN EDITORIAL DE DECISIÓN
+       Pieza central de cierre, marco imperial con filigranas botánicas integradas,
+       inputs sofisticados y botón protagonista de alto contraste champagne.
        ======================================================== -->
-  <section id="registro" aria-labelledby="registro-title">
+  <section id="registro" class="registro-culminacion" aria-labelledby="registro-title">
+    <!-- Atmósfera cinematográfica y resplandor sutil -->
+    <div class="registro-ambient-glow" aria-hidden="true"></div>
+    <div class="registro-grain" aria-hidden="true"></div>
+
+    <!-- Ramas botánicas framing en las esquinas del fondo -->
+    <div class="registro-botanical registro-botanical--left" aria-hidden="true">
+      <svg width="320" height="480" viewBox="0 0 320 480" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+        <path class="reg-branch-path" d="M-30 460 Q90 380 140 260 Q180 160 260 50" stroke-width="1.3" opacity="0.45" />
+        <path class="reg-branch-path" d="M140 260 Q195 240 240 260" stroke-width="0.9" opacity="0.35" />
+        <path class="reg-branch-path" d="M90 380 Q145 390 190 430" stroke-width="0.8" opacity="0.3" />
+        <path d="M260 50 C280 30 300 40 295 60 C275 70 255 65 260 50 Z" fill="#C5A059" fill-opacity="0.08" stroke-width="0.9" />
+        <path d="M180 160 C205 140 225 150 220 170 C200 180 180 175 180 160 Z" fill="#C5A059" fill-opacity="0.08" stroke-width="0.9" />
+        <circle cx="260" cy="50" r="2.2" fill="#E2D2A4" opacity="0.6" />
+      </svg>
+    </div>
+
+    <div class="registro-botanical registro-botanical--right" aria-hidden="true">
+      <svg width="320" height="480" viewBox="0 0 320 480" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+        <path class="reg-branch-path" d="M350 460 Q230 380 180 260 Q140 160 60 50" stroke-width="1.3" opacity="0.45" />
+        <path class="reg-branch-path" d="M180 260 Q125 240 80 260" stroke-width="0.9" opacity="0.35" />
+        <path class="reg-branch-path" d="M230 380 Q175 390 130 430" stroke-width="0.8" opacity="0.3" />
+        <path d="M60 50 C40 30 20 40 25 60 C45 70 65 65 60 50 Z" fill="#C5A059" fill-opacity="0.08" stroke-width="0.9" />
+        <circle cx="60" cy="50" r="2.2" fill="#E2D2A4" opacity="0.6" />
+      </svg>
+    </div>
+
     <div class="container">
-      <p class="section-label reveal">Asegura tu lugar</p>
-      <h2 class="section-title reveal" id="registro-title">Completa tu registro gratuito</h2>
-      <div class="gold-line reveal"></div>
+      <!-- Encabezado editorial -->
+      <header class="registro-header">
+        <p class="section-label registro-kicker" id="registro-kicker">Asegura tu lugar</p>
+        <h2 class="section-title registro-headline" id="registro-title">Completa tu registro gratuito</h2>
+        <div class="registro-gold-line" aria-hidden="true">
+          <span class="reg-line-diamond">&#9670;</span>
+          <span class="reg-line-bar"></span>
+          <span class="reg-line-diamond">&#9670;</span>
+        </div>
+      </header>
 
-      <div class="registro-inner reveal">
-        <p class="form-title">Un solo paso te separa del evento</p>
-        <p class="form-subtitle">10 de Octubre &bull; 3:00 P.M. &bull; Miraflores &bull; Gratuito</p>
+      <!-- Contenedor Premium del Formulario -->
+      <div class="registro-editorial-plate" id="registro-card">
+        <!-- Esquinas con Muesca Imperial y Doble Marco Interior -->
+        <div class="plate-inner-frame" aria-hidden="true">
+          <span class="plate-corner plate-corner--tl"></span>
+          <span class="plate-corner plate-corner--tr"></span>
+          <span class="plate-corner plate-corner--bl"></span>
+          <span class="plate-corner plate-corner--br"></span>
+        </div>
 
-        <form id="form-registro" data-formspree
-              action="https://formspree.io/f/XXXXXXXX"
-              method="POST"
-              novalidate>
-          <div class="form-group">
-            <label for="reg-name">Nombre y apellido</label>
-            <input type="text" id="reg-name" name="nombre" placeholder="Tu nombre completo" required autocomplete="name" />
-          </div>
-          <div class="form-group">
-            <label for="reg-phone">WhatsApp</label>
-            <input type="tel" id="reg-phone" name="whatsapp" placeholder="+51 999 999 999" required autocomplete="tel" />
-          </div>
-          <div class="form-group">
-            <label for="reg-email">Correo electronico</label>
-            <input type="email" id="reg-email" name="email" placeholder="tu@correo.com" required autocomplete="email" />
-          </div>
-          <div class="form-group">
-            <label for="reg-interest">Lo que mas me interesa</label>
-            <select id="reg-interest" name="interes">
-              <option value="">Selecciona una opcion...</option>
-              <option value="crecimiento">Crecimiento personal</option>
-              <option value="inversion">Inversion</option>
-              <option value="finanzas">Finanzas personales</option>
-              <option value="inmobiliario">Oportunidades inmobiliarias</option>
-            </select>
+        <!-- Grabados botánicos de esquina integrados al fondo del contenedor -->
+        <div class="plate-botanical-engraving plate-botanical-engraving--tl" aria-hidden="true">
+          <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 10 Q50 35 70 80" stroke-width="1.1" opacity="0.3" />
+            <path d="M10 10 Q35 50 80 70" stroke-width="1.1" opacity="0.3" />
+            <path d="M30 22 C42 16 48 24 40 32 C32 36 26 28 30 22 Z" fill="#C5A059" fill-opacity="0.06" stroke-width="0.8" opacity="0.35" />
+            <path d="M22 30 C16 42 24 48 32 40 C36 32 28 26 22 30 Z" fill="#C5A059" fill-opacity="0.06" stroke-width="0.8" opacity="0.35" />
+            <circle cx="10" cy="10" r="2" fill="#E2D2A4" opacity="0.5" />
+          </svg>
+        </div>
+        <div class="plate-botanical-engraving plate-botanical-engraving--br" aria-hidden="true">
+          <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M110 110 Q70 85 50 40" stroke-width="1.1" opacity="0.3" />
+            <path d="M110 110 Q85 70 40 50" stroke-width="1.1" opacity="0.3" />
+            <path d="M90 98 C78 104 72 96 80 88 C88 84 94 92 90 98 Z" fill="#C5A059" fill-opacity="0.06" stroke-width="0.8" opacity="0.35" />
+            <circle cx="110" cy="110" r="2" fill="#E2D2A4" opacity="0.5" />
+          </svg>
+        </div>
+
+        <div class="plate-content">
+          <div class="plate-header">
+            <p class="form-title">Registrate ahora</p>
+            <p class="form-subtitle">10 de Octubre &bull; 3:00 P.M. &bull; Miraflores, Arequipa &bull; Entrada Gratuita</p>
           </div>
 
-          <button type="submit" class="btn-primary" id="registro-submit-btn">
-            Quiero mi entrada gratuita
-          </button>
-          <p class="btn-scarcity"><span>Cupos limitados.</span> Tu lugar no esta garantizado hasta completar el registro.</p>
+          <form id="form-registro" data-formspree action="https://formspree.io/f/XXXXXXXX" method="POST" novalidate>
+            <div class="form-group">
+              <label for="reg-name">Nombre y apellido</label>
+              <div class="input-icon-wrap">
+                <span class="input-icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </span>
+                <input type="text" id="reg-name" name="nombre" placeholder="Tu nombre completo" required
+                  autocomplete="name" />
+              </div>
+            </div>
 
-          <p class="form-privacy">
-            <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></span>
-            Tus datos seran utilizados unicamente para gestionar tu registro y comunicar informacion relacionada con el evento.
-          </p>
-        </form>
+            <div class="form-group">
+              <label for="reg-phone">WhatsApp</label>
+              <div class="input-icon-wrap">
+                <span class="input-icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                    </path>
+                  </svg>
+                </span>
+                <input type="tel" id="reg-phone" name="whatsapp" placeholder="+51 999 999 999" required
+                  autocomplete="tel" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-email">Correo electronico</label>
+              <div class="input-icon-wrap">
+                <span class="input-icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </span>
+                <input type="email" id="reg-email" name="email" placeholder="tu@correo.com" required
+                  autocomplete="email" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-interest">Lo que mas te interesa</label>
+              <div class="input-icon-wrap select-wrap">
+                <span class="input-icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                  </svg>
+                </span>
+                <select id="reg-interest" name="interes">
+                  <option value="">Selecciona tu interes principal...</option>
+                  <option value="inmobiliario">Oportunidades en Tierra y Agro (Patrimonio Tangible)</option>
+                  <option value="finanzas">Finanzas e Inteligencia de Capital</option>
+                  <option value="crecimiento">Crecimiento Personal y Liderazgo</option>
+                  <option value="inversion">Inversion y Estrategia Patrimonial</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-registro-solid" id="registro-submit-btn">
+              <span>Registrate ahora</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+            <p class="btn-scarcity"><span>Entrada gratuita</span> &bull; Cupos limitados</p>
+
+            <p class="form-privacy">
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg></span>
+              Tus datos estan seguros. Uso exclusivo para acreditar tu ingreso.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       AUSPICIADORES — CON EL RESPALDO DE (FIRMA INSTITUCIONAL DISCRETA)
+       ======================================================== -->
+  <section id="auspiciadores" class="auspiciadores-endorsement" aria-labelledby="auspiciadores-title">
+    <div class="container">
+      <div class="auspiciadores-inner">
+        <p class="auspiciadores-kicker" id="auspiciadores-title">Con el respaldo de</p>
+        <div class="auspiciadores-line" aria-hidden="true"></div>
+        <div class="auspiciadores-logos-wrap">
+          <div class="sponsor-brand">
+            <img src="images/auspiciadore/candelariadelmar.png" alt="Candelaria del Mar" loading="lazy" />
+          </div>
+          <div class="sponsor-brand">
+            <img src="images/auspiciadore/capital.png" alt="Capital" loading="lazy" />
+          </div>
+          <div class="sponsor-brand">
+            <img src="images/auspiciadore/mariamontessori.png" alt="Maria Montessori" loading="lazy" />
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -607,7 +1810,8 @@
             <div class="faq-icon" aria-hidden="true">+</div>
           </button>
           <div class="faq-answer" id="faq-a1" role="region" aria-labelledby="faq-q1">
-            <p>Si. El registro al evento es completamente gratuito, sujeto a disponibilidad de cupos. Solo completa el formulario y asegura tu lugar.</p>
+            <p>Si. El registro al evento es completamente gratuito, sujeto a disponibilidad de cupos. Solo completa el
+              formulario y asegura tu lugar.</p>
           </div>
         </div>
 
@@ -617,7 +1821,8 @@
             <div class="faq-icon" aria-hidden="true">+</div>
           </button>
           <div class="faq-answer" id="faq-a2" role="region" aria-labelledby="faq-q2">
-            <p>El evento es el <strong>10 de octubre de 2026</strong> desde las <strong>3:00 p.m.</strong> Te recomendamos llegar 15 minutos antes para registrarte en la entrada.</p>
+            <p>El evento es el <strong>10 de octubre de 2026</strong> desde las <strong>3:00 p.m.</strong> Te
+              recomendamos llegar 15 minutos antes para registrarte en la entrada.</p>
           </div>
         </div>
 
@@ -627,7 +1832,7 @@
             <div class="faq-icon" aria-hidden="true">+</div>
           </button>
           <div class="faq-answer" id="faq-a3" role="region" aria-labelledby="faq-q3">
-            <p>En el Auditorio del Campus Maria Montessori, Calle Moquegua #741, Miraflores, Lima.</p>
+            <p>En el Auditorio del Campus Maria Montessori, Calle Moquegua #741, Miraflores, Arequipa.</p>
           </div>
         </div>
 
@@ -637,7 +1842,8 @@
             <div class="faq-icon" aria-hidden="true">+</div>
           </button>
           <div class="faq-answer" id="faq-a4" role="region" aria-labelledby="faq-q4">
-            <p>No necesariamente. El evento esta disenado para personas interesadas en crecimiento personal, financiero y nuevas oportunidades de inversion, sin importar su nivel de experiencia.</p>
+            <p>No necesariamente. El evento esta disenado para personas interesadas en crecimiento personal, financiero
+              y nuevas oportunidades de inversion, sin importar su nivel de experiencia.</p>
           </div>
         </div>
 
@@ -647,7 +1853,8 @@
             <div class="faq-icon" aria-hidden="true">+</div>
           </button>
           <div class="faq-answer" id="faq-a5" role="region" aria-labelledby="faq-q5">
-            <p>Despues de completar el registro recibiras la confirmacion por WhatsApp y/o correo electronico con todos los detalles del evento.</p>
+            <p>Despues de completar el registro recibiras la confirmacion por WhatsApp y/o correo electronico con todos
+              los detalles del evento.</p>
           </div>
         </div>
 
@@ -657,7 +1864,8 @@
             <div class="faq-icon" aria-hidden="true">+</div>
           </button>
           <div class="faq-answer" id="faq-a6" role="region" aria-labelledby="faq-q6">
-            <p>No. El acceso al evento es completamente gratuito. No existe ningun costo de inscripcion ni de participacion.</p>
+            <p>No. El acceso al evento es completamente gratuito. No existe ningun costo de inscripcion ni de
+              participacion.</p>
           </div>
         </div>
       </div>
@@ -671,28 +1879,66 @@
     <div class="topo-bg-layer" aria-hidden="true">
       <img src="images/decorations/topo_contours_large.svg" alt="" loading="lazy" />
     </div>
+    <!-- Ramas botánicas framing que convergen sutilmente hacia el CTA final -->
+    <div class="cta-botanical cta-botanical--left" aria-hidden="true">
+      <svg width="260" height="340" viewBox="0 0 260 340" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M-20 280 Q80 250 140 190 Q190 140 240 50" stroke-width="1.4" opacity="0.65" />
+        <path d="M140 190 Q190 200 240 230" stroke-width="1.1" opacity="0.5" />
+        <path d="M80 250 Q120 280 170 300" stroke-width="1" opacity="0.45" />
+        <path d="M190 140 C210 120 235 125 240 145 C225 155 200 155 190 140 Z" fill="#C5A059" fill-opacity="0.08" stroke-width="0.9" />
+        <path d="M140 190 C155 170 175 175 180 190 C165 200 148 198 140 190 Z" fill="#C5A059" fill-opacity="0.08" stroke-width="0.9" />
+      </svg>
+    </div>
+    <div class="cta-botanical cta-botanical--right" aria-hidden="true">
+      <svg width="260" height="340" viewBox="0 0 260 340" fill="none" stroke="#C5A059" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M280 280 Q180 250 120 190 Q70 140 20 50" stroke-width="1.4" opacity="0.65" />
+        <path d="M120 190 Q70 200 20 230" stroke-width="1.1" opacity="0.5" />
+        <path d="M180 250 Q140 280 90 300" stroke-width="1" opacity="0.45" />
+        <path d="M70 140 C50 120 25 125 20 145 C35 155 60 155 70 140 Z" fill="#C5A059" fill-opacity="0.08" stroke-width="0.9" />
+        <path d="M120 190 C105 170 85 175 80 190 C95 200 112 198 120 190 Z" fill="#C5A059" fill-opacity="0.08" stroke-width="0.9" />
+      </svg>
+    </div>
     <div class="container" style="position:relative;z-index:2;">
-      <p class="cta-final-event">Inversionista Imparable &bull; 10 de Octubre &bull; Miraflores</p>
+      <p class="cta-final-event">Inversionista Imparable &bull; 10 de Octubre &bull; Miraflores, Arequipa</p>
       <h2 class="cta-final-headline reveal" id="cta-final-title">
         Tu siguiente nivel<br>comienza aqui.
       </h2>
       <p class="cta-final-sub reveal">
-        Ya aprendiste a generar ingresos.<br>
-        Ahora aprende a tomar mejores decisiones con tu dinero.
+        Aprender a generar dinero es solo el comienzo.<br>
+        El siguiente paso es aprender a hacerlo crecer.
       </p>
 
       <div class="cta-final-info reveal">
-        <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> <strong>10 de Octubre, 2026</strong></span>
-        <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> <strong>3:00 P.M.</strong></span>
-        <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> <strong>Miraflores, Lima</strong></span>
-        <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> <strong>Entrada Gratuita</strong></span>
+        <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg> <strong>10 de Octubre, 2026</strong></span>
+        <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg> <strong>3:00 P.M.</strong></span>
+        <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg> <strong>Miraflores, Arequipa</strong></span>
+        <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+            </polygon>
+          </svg> <strong>Entrada Gratuita</strong></span>
       </div>
 
       <div class="cta-btn-wrap reveal">
         <a href="#registro" class="btn-primary" id="cta-final-btn">
-          Quiero mi entrada gratuita
+          Registrate ahora
         </a>
-        <p class="btn-scarcity"><span>Cupos limitados.</span> Registrate hoy.</p>
+        <p class="btn-scarcity"><span>Entrada gratuita</span> &bull; Cupos limitados</p>
       </div>
     </div>
   </section>
@@ -704,7 +1950,7 @@
     <div class="footer-logo">Inversionista Imparable</div>
     <p class="footer-text">
       &copy; 2026 Inversionista Imparable &mdash; Todos los derechos reservados.<br>
-      Evento organizado por <strong>Agroinvest Peru</strong> | Miraflores, Lima
+      Evento organizado por <strong>Agroinvest Peru</strong> | Miraflores, Arequipa
     </p>
   </footer>
 
@@ -715,4 +1961,5 @@
   <script src="js/main.js"></script>
   <script src="js/animations.js"></script>
 </body>
+
 </html>
