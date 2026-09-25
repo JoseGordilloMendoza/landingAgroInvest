@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Neoclassical Arch & Blooming Acanthus Fronds (Breaking Limits) -->
+  <!-- Classical Architectural Arch (Engraved stone profile) -->
+  <g class="engraving-arch" stroke="#C5A059">
+    <path d="M50 260 L50 150 C50 85 90 45 140 45 C190 45 230 85 230 150 L230 260" stroke-width="1.6"/>
+    <path d="M62 260 L62 152 C62 95 98 58 140 58 C182 58 218 95 218 152 L218 260" stroke-width="0.9" stroke-dasharray="3 3" stroke="#E2D2A4"/>
+    <!-- Keystone -->
+    <path d="M130 40 L150 40 L145 60 L135 60 Z" stroke-width="1.3" fill="#081426" stroke="#C5A059"/>
+    <!-- Radiating Sunbeam Hatches behind foliage -->
+    <g stroke="#142C4E" stroke-width="0.8" opacity="0.8">
+      <line x1="140" y1="140" x2="75" y2="85"/>
+      <line x1="140" y1="140" x2="100" y2="62"/>
+      <line x1="140" y1="140" x2="130" y2="52"/>
+      <line x1="140" y1="140" x2="150" y2="52"/>
+      <line x1="140" y1="140" x2="180" y2="62"/>
+      <line x1="140" y1="140" x2="205" y2="85"/>
+    </g>
+  </g>
+
+  <!-- Unfurling Acanthus Botanical Blossom Breaking Outward -->
+  <g class="engraving-acanthus" stroke="#C5A059">
+    <!-- Center stem rising through arch -->
+    <path d="M140 260 Q140 185 140 120 Q140 90 140 65" stroke-width="1.8"/>
+    <!-- Left Acanthus Scroll (Breaking through left pillar) -->
+    <path d="M140 185 Q105 168 75 180 Q45 192 28 174 Q20 155 35 142 Q52 136 70 154" stroke-width="1.4"/>
+    <path d="M75 180 Q52 165 58 150" stroke-width="0.9" stroke="#E2D2A4"/>
+    <!-- Right Acanthus Scroll (Breaking through right pillar) -->
+    <path d="M140 185 Q175 168 205 180 Q235 192 252 174 Q260 155 245 142 Q228 136 210 154" stroke-width="1.4"/>
+    <path d="M205 180 Q228 165 222 150" stroke-width="0.9" stroke="#E2D2A4"/>
+
+    <!-- Mid-level Acanthus Fronds -->
+    <path d="M140 135 Q110 112 92 88 Q82 70 98 60 Q112 64 122 82" stroke-width="1.3"/>
+    <path d="M140 135 Q170 112 188 88 Q198 70 182 60 Q168 64 158 82" stroke-width="1.3"/>
+
+    <!-- Apex Palmette / Lotus Blossom -->
+    <path d="M140 75 C128 58 128 35 140 20 C152 35 152 58 140 75 Z" fill="#081426" fill-opacity="0.85" stroke="#E2D2A4" stroke-width="1.5"/>
+  </g>
+  <!-- Acanthus Leaf Veining & Shading -->
+  <g stroke="#E2D2A4" stroke-width="0.8">
+    <path d="M35 142 Q48 154 65 160 M52 136 Q60 148 76 158"/>
+    <path d="M245 142 Q232 154 215 160 M228 136 Q220 148 204 158"/>
+    <path d="M98 60 Q106 75 118 88 M182 60 Q174 75 162 88"/>
+    <line x1="140" y1="65" x2="140" y2="24"/>
+  </g>
+</svg>

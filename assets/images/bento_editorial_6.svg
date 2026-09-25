@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 200" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Symmetrical Interconnected Antique Canopy & Root Pergola (Connection & Vision) -->
+  <!-- Left Grand Ancient Bough -->
+  <g class="engraving-canopy-left" stroke="#C5A059">
+    <!-- Left Trunk & Roots -->
+    <path d="M35 195 Q48 165 52 130 Q58 90 98 65 Q138 42 178 38" stroke-width="1.6"/>
+    <!-- Root filaments left -->
+    <path d="M35 195 Q22 198 10 200 M35 195 Q42 198 52 200 M32 185 Q20 190 12 192" stroke-width="1.0" opacity="0.7"/>
+    <!-- Secondary Branching -->
+    <path d="M52 130 Q75 118 102 112 Q130 110 160 112" stroke-width="1.1"/>
+    <path d="M98 65 Q120 82 150 88" stroke-width="1.0"/>
+    <!-- Tendril flourishes -->
+    <path d="M178 38 Q190 28 184 18 Q172 15 166 26" stroke-width="0.9" stroke="#E2D2A4"/>
+  </g>
+
+  <!-- Right Grand Ancient Bough -->
+  <g class="engraving-canopy-right" stroke="#C5A059">
+    <!-- Right Trunk & Roots -->
+    <path d="M325 195 Q312 165 308 130 Q302 90 262 65 Q222 42 182 38" stroke-width="1.6"/>
+    <!-- Root filaments right -->
+    <path d="M325 195 Q338 198 350 200 M325 195 Q318 198 308 200 M328 185 Q340 190 348 192" stroke-width="1.0" opacity="0.7"/>
+    <!-- Secondary Branching -->
+    <path d="M308 130 Q285 118 258 112 Q230 110 200 112" stroke-width="1.1"/>
+    <path d="M262 65 Q240 82 210 88" stroke-width="1.0"/>
+    <!-- Tendril flourishes -->
+    <path d="M182 38 Q170 28 176 18 Q188 15 194 26" stroke-width="0.9" stroke="#E2D2A4"/>
+  </g>
+
+  <!-- Central Intertwined Knot & Rosette -->
+  <g class="engraving-center-knot" stroke="#E2D2A4">
+    <path d="M178 38 Q180 46 182 38 M160 112 Q180 122 200 112" stroke-width="1.3"/>
+    <circle cx="180" cy="38" r="4.5" fill="#081426" stroke="#C5A059" stroke-width="1.3"/>
+    <circle cx="180" cy="38" r="1.8" fill="#E2D2A4"/>
+  </g>
+
+  <!-- Botanical Foliage along the Canopy Arch -->
+  <g class="engraving-canopy-leaves" stroke="#C5A059" fill="#081426" fill-opacity="0.7">
+    <path d="M98 65 C86 52 90 38 104 32 C116 42 112 55 98 65 Z" stroke-width="1.2"/>
+    <path d="M138 42 C128 28 134 15 148 10 C158 20 152 34 138 42 Z" stroke-width="1.2"/>
+    <path d="M262 65 C274 52 270 38 256 32 C244 42 248 55 262 65 Z" stroke-width="1.2"/>
+    <path d="M222 42 C232 28 226 15 212 10 C202 20 208 34 222 42 Z" stroke-width="1.2"/>
+    <!-- Mid Canopy Foliage -->
+    <path d="M102 112 C90 100 92 86 106 84 C116 94 114 104 102 112 Z" stroke-width="1.1"/>
+    <path d="M258 112 C270 100 268 86 254 84 C244 94 246 104 258 112 Z" stroke-width="1.1"/>
+  </g>
+  <!-- Delicate leaf veining -->
+  <g stroke="#E2D2A4" stroke-width="0.7">
+    <path d="M98 65 L100 40 M138 42 L142 18 M262 65 L260 40 M222 42 L218 18"/>
+  </g>
+</svg>

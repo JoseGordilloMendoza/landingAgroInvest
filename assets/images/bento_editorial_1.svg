@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Classical Botanical Sapling & Spreading Roots (Taille-douce Engraving) -->
+  <!-- Spreading Roots Network -->
+  <g class="engraving-roots" stroke="#C5A059" opacity="0.8">
+    <path d="M140 225 Q135 245 105 260 Q90 268 65 272" stroke-width="1.6"/>
+    <path d="M140 225 Q145 248 175 262 Q195 270 220 274" stroke-width="1.6"/>
+    <path d="M140 230 Q138 252 135 275" stroke-width="1.4"/>
+    <path d="M105 260 Q85 265 60 268 M175 262 Q200 266 225 266" stroke-width="1.0" opacity="0.7"/>
+    <path d="M125 240 Q105 252 85 258 M155 240 Q175 252 195 258" stroke-width="1.0" opacity="0.7"/>
+    <path d="M135 255 Q120 268 105 274 M145 255 Q160 268 175 274" stroke-width="0.8" opacity="0.5"/>
+    <!-- Root Hair Hatching -->
+    <path d="M95 258 L90 266 M115 252 L112 262 M165 252 L168 262 M185 258 L190 266" stroke-width="0.7" stroke="#E2D2A4" opacity="0.6"/>
+  </g>
+
+  <!-- Trunk with Intaglio Hatching & Bark Contour -->
+  <g class="engraving-trunk">
+    <!-- Main stem contours -->
+    <path d="M140 225 Q137 175 140 130 Q142 95 140 60" stroke="#C5A059" stroke-width="2.6"/>
+    <path d="M136 220 Q133 175 136 135 Q138 100 137 70" stroke="#E2D2A4" stroke-width="1.0" opacity="0.85"/>
+    <path d="M144 220 Q141 175 144 135 Q146 100 143 70" stroke="#8A6D3B" stroke-width="1.0" opacity="0.7"/>
+    <!-- Bark Hatch Lines -->
+    <g stroke="#142C4E" stroke-width="0.8" opacity="0.75">
+      <line x1="135" y1="210" x2="145" y2="213"/>
+      <line x1="135" y1="195" x2="145" y2="198"/>
+      <line x1="135" y1="180" x2="145" y2="183"/>
+      <line x1="136" y1="165" x2="144" y2="168"/>
+      <line x1="136" y1="150" x2="144" y2="153"/>
+      <line x1="137" y1="135" x2="143" y2="138"/>
+      <line x1="138" y1="120" x2="142" y2="122"/>
+      <line x1="138" y1="105" x2="142" y2="107"/>
+      <line x1="138" y1="90" x2="142" y2="92"/>
+    </g>
+  </g>
+
+  <!-- Curving Botanical Boughs & Vines -->
+  <g class="engraving-branches" stroke="#C5A059">
+    <!-- Lower Left Branch -->
+    <path d="M138 175 Q105 160 85 140 Q68 120 60 95" stroke-width="1.6"/>
+    <path d="M85 140 Q65 148 45 162 Q30 172 20 190" stroke-width="1.1"/>
+    <!-- Tendril Spiral Left -->
+    <path d="M60 95 Q52 82 58 72 Q68 66 74 76 Q78 88 68 94 Q62 96 58 90" stroke-width="0.9" stroke="#E2D2A4"/>
+    
+    <!-- Lower Right Branch -->
+    <path d="M142 165 Q175 150 195 130 Q212 110 220 85" stroke-width="1.6"/>
+    <path d="M195 130 Q215 138 235 152 Q250 162 260 180" stroke-width="1.1"/>
+    <!-- Tendril Spiral Right -->
+    <path d="M220 85 Q228 72 222 62 Q212 56 206 66 Q202 78 212 84 Q218 86 222 80" stroke-width="0.9" stroke="#E2D2A4"/>
+
+    <!-- Mid-level Branches -->
+    <path d="M139 125 Q115 105 100 80 Q90 60 85 35" stroke-width="1.4"/>
+    <path d="M141 115 Q165 95 180 70 Q190 50 195 25" stroke-width="1.4"/>
+    <!-- Upper crown shoots -->
+    <path d="M140 75 Q130 50 135 25" stroke-width="1.3"/>
+    <path d="M140 75 Q150 50 145 25" stroke-width="1.1"/>
+  </g>
+
+  <!-- Detailed Botanical Leaves with Internal Rib Hatching -->
+  <g class="engraving-foliage">
+    <!-- Leaf 1 (Left Lower) -->
+    <path d="M60 95 C40 88 35 68 48 55 C65 58 72 78 60 95 Z" stroke="#C5A059" stroke-width="1.3" fill="#081426" fill-opacity="0.7"/>
+    <path d="M60 95 Q54 77 48 55" stroke="#E2D2A4" stroke-width="0.9"/>
+    <path d="M56 87 L48 82 M57 78 L50 73 M58 69 L52 65" stroke="#E2D2A4" stroke-width="0.6"/>
+
+    <!-- Leaf 2 (Right Lower) -->
+    <path d="M195 130 C215 122 225 105 218 90 C202 92 195 110 195 130 Z" stroke="#C5A059" stroke-width="1.3" fill="#081426" fill-opacity="0.7"/>
+    <path d="M195 130 Q206 112 218 90" stroke="#E2D2A4" stroke-width="0.9"/>
+    <path d="M201 120 L210 117 M204 110 L213 107 M207 100 L215 97" stroke="#E2D2A4" stroke-width="0.6"/>
+
+    <!-- Leaf 3 (Outer Far Left) -->
+    <path d="M45 162 C25 155 18 138 30 125 C44 130 48 148 45 162 Z" stroke="#C5A059" stroke-width="1.2" fill="#081426" fill-opacity="0.7"/>
+    <path d="M45 162 Q37 145 30 125 M40 152 L32 147 M42 142 L35 138" stroke="#E2D2A4" stroke-width="0.7"/>
+
+    <!-- Leaf 4 (Outer Far Right) -->
+    <path d="M235 152 C255 145 262 128 250 115 C236 120 232 138 235 152 Z" stroke="#C5A059" stroke-width="1.2" fill="#081426" fill-opacity="0.7"/>
+    <path d="M235 152 Q243 135 250 115 M240 143 L248 139 M238 133 L245 130" stroke="#E2D2A4" stroke-width="0.7"/>
+
+    <!-- Leaf 5 (Mid Left) -->
+    <path d="M100 80 C88 65 85 45 98 32 C110 40 110 60 100 80 Z" stroke="#C5A059" stroke-width="1.3" fill="#081426" fill-opacity="0.7"/>
+    <path d="M100 80 Q98 58 98 32 M99 68 L92 60 M100 56 L94 49 M100 45 L95 40" stroke="#E2D2A4" stroke-width="0.7"/>
+
+    <!-- Leaf 6 (Mid Right) -->
+    <path d="M180 70 C192 55 195 35 182 22 C170 30 170 50 180 70 Z" stroke="#C5A059" stroke-width="1.3" fill="#081426" fill-opacity="0.7"/>
+    <path d="M180 70 Q182 48 182 22 M181 58 L188 50 M180 46 L186 39 M180 35 L185 30" stroke="#E2D2A4" stroke-width="0.7"/>
+
+    <!-- Apex Tender Sprout -->
+    <path d="M140 45 C130 30 132 15 140 6 C148 15 150 30 140 45 Z" stroke="#C5A059" stroke-width="1.4" fill="#081426" fill-opacity="0.8"/>
+    <line x1="140" y1="45" x2="140" y2="6" stroke="#E2D2A4" stroke-width="0.9"/>
+    <path d="M140 35 L134 28 M140 35 L146 28 M140 24 L135 18 M140 24 L145 18" stroke="#E2D2A4" stroke-width="0.7"/>
+  </g>
+  <!-- Micro Botanical Pearls -->
+  <g fill="#E2D2A4">
+    <circle cx="85" cy="35" r="1.8"/>
+    <circle cx="195" cy="25" r="1.8"/>
+    <circle cx="20" cy="190" r="1.8"/>
+    <circle cx="260" cy="180" r="1.8"/>
+    <circle cx="140" cy="6" r="2.2"/>
+  </g>
+</svg>

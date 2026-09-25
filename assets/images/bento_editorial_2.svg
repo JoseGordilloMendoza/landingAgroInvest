@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Classical Astrolabe & Laurel Wreath (Wisdom & Decisions) -->
+  <!-- Classical Laurel Wreath Boughs -->
+  <g class="engraving-laurel-wreath" stroke="#C5A059">
+    <!-- Left Laurel Stem -->
+    <path d="M130 235 C75 235 35 190 35 130 C35 70 75 25 125 20" stroke-width="1.4"/>
+    <!-- Left Leaves -->
+    <path d="M48 195 C34 186 32 172 42 162 C48 172 54 184 48 195 Z" fill="#081426" fill-opacity="0.7" stroke-width="1.1"/>
+    <path d="M35 155 C22 146 22 132 32 122 C38 132 44 144 35 155 Z" fill="#081426" fill-opacity="0.7" stroke-width="1.1"/>
+    <path d="M38 115 C26 104 28 90 40 82 C46 92 50 106 38 115 Z" fill="#081426" fill-opacity="0.7" stroke-width="1.1"/>
+    <path d="M55 78 C45 66 50 52 64 46 C68 58 68 70 55 78 Z" fill="#081426" fill-opacity="0.7" stroke-width="1.1"/>
+    <path d="M85 48 C76 36 86 24 100 22 C102 34 100 44 85 48 Z" fill="#081426" fill-opacity="0.7" stroke-width="1.1"/>
+    <!-- Leaf veins left -->
+    <path d="M48 195 L40 178 M35 155 L30 138 M38 115 L35 98 M55 78 L56 62 M85 48 L92 34" stroke="#E2D2A4" stroke-width="0.7"/>
+
+    <!-- Right Laurel Stem -->
+    <path d="M130 235 C185 235 225 190 225 130 C225 70 185 25 135 20" stroke-width="1.4"/>
+    <!-- Right Leaves -->
+    <path d="M212 195 C226 186 228 172 218 162 C212 172 206 184 212 195 Z" fill="#081426" fill-opacity="0.7" stroke-width="1.1"/>
+    <path d="M225 155 C238 146 238 132 228 122 C222 132 216 144 225 155 Z" fill="#081426" fill-opacity="0.7" stroke-width="1.1"/>
+    <path d="M222 115 C234 104 232 90 220 82 C214 92 210 106 222 115 Z" fill="#081426" fill-opacity="0.7" stroke-width="1.1"/>
+    <path d="M205 78 C215 66 210 52 196 46 C192 58 192 70 205 78 Z" fill="#081426" fill-opacity="0.7" stroke-width="1.1"/>
+    <path d="M175 48 C184 36 174 24 160 22 C158 34 160 44 175 48 Z" fill="#081426" fill-opacity="0.7" stroke-width="1.1"/>
+    <!-- Leaf veins right -->
+    <path d="M212 195 L220 178 M225 155 L230 138 M222 115 L225 98 M205 78 L204 62 M175 48 L168 34" stroke="#E2D2A4" stroke-width="0.7"/>
+
+    <!-- Antique Ribbon Knot at Base -->
+    <path d="M120 232 C124 240 130 244 138 244 C146 244 150 238 144 232 C135 226 128 226 120 232 Z" stroke="#E2D2A4" stroke-width="1.3"/>
+    <path d="M124 242 Q110 252 100 258 M136 242 Q150 252 160 258" stroke="#C5A059" stroke-width="1.3"/>
+  </g>
+
+  <!-- Celestial Astrolabe / Armillary Compass Sphere -->
+  <g class="engraving-astrolabe" stroke="#C5A059">
+    <!-- Outer Meridian Ring with Ticks -->
+    <circle cx="130" cy="130" r="62" stroke-width="1.6"/>
+    <circle cx="130" cy="130" r="58" stroke-width="0.8" stroke-dasharray="2 3" stroke="#E2D2A4"/>
+    <circle cx="130" cy="130" r="46" stroke-width="1.1"/>
+    <circle cx="130" cy="130" r="32" stroke-width="0.8" stroke="#142C4E"/>
+
+    <!-- Orbital Coordinate Ellipses -->
+    <ellipse cx="130" cy="130" rx="46" ry="18" stroke-width="1.1" transform="rotate(-30 130 130)"/>
+    <ellipse cx="130" cy="130" rx="46" ry="18" stroke-width="1.1" transform="rotate(30 130 130)"/>
+    <!-- Cardinal Cross Hairlines -->
+    <line x1="130" y1="66" x2="130" y2="194" stroke-width="1.1" stroke="#E2D2A4"/>
+    <line x1="66" y1="130" x2="194" y2="130" stroke-width="1.1" stroke="#E2D2A4"/>
+
+    <!-- 8-Point Compass Rose Core -->
+    <path d="M130 102 L135 125 L158 130 L135 135 L130 158 L125 135 L102 130 L125 125 Z" fill="#C5A059" fill-opacity="0.35" stroke="#C5A059" stroke-width="1.3"/>
+    <circle cx="130" cy="130" r="4" fill="#E2D2A4" stroke="#C5A059" stroke-width="1.2"/>
+    <!-- North Fleur-de-lis Pointer -->
+    <path d="M130 92 L132 100 L128 100 Z" fill="#E2D2A4" stroke="#C5A059" stroke-width="0.8"/>
+  </g>
+</svg>

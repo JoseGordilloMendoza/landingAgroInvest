@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Classical Heraldic Oak & Acorn Crest (For Luxury Ivory Card - Deep Midnight & Antique Bronze) -->
+  <!-- Outer Guilloche Oval -->
+  <g class="engraving-crest-frame" stroke="#8A6D3B">
+    <ellipse cx="130" cy="130" rx="72" ry="96" stroke-width="1.6"/>
+    <ellipse cx="130" cy="130" rx="66" ry="90" stroke-width="0.9" stroke-dasharray="2 3" stroke="#050D1A"/>
+    <ellipse cx="130" cy="130" rx="60" ry="84" stroke-width="0.7"/>
+  </g>
+
+  <!-- Symmetrical Oak Branches with Acorns -->
+  <g class="engraving-oak-left" stroke="#050D1A">
+    <!-- Main stem left -->
+    <path d="M130 226 C90 226 62 185 62 130 C62 80 85 45 124 35" stroke-width="1.4"/>
+    <!-- Oak Leaf 1 -->
+    <path d="M62 175 C48 170 45 155 55 150 C46 142 48 128 60 128 C52 118 62 108 72 115 C74 135 70 162 62 175 Z" fill="#E8DEC8" fill-opacity="0.6" stroke-width="1.2"/>
+    <!-- Acorn 1 -->
+    <path d="M52 188 C48 192 48 200 54 204 C62 200 62 192 57 188 Z" fill="#8A6D3B" fill-opacity="0.45" stroke="#8A6D3B" stroke-width="1.2"/>
+    <path d="M50 188 Q54 184 59 188" stroke="#8A6D3B" stroke-width="1.6"/>
+    <!-- Oak Leaf 2 -->
+    <path d="M72 105 C60 98 58 84 68 80 C62 70 70 60 82 64 C80 50 94 45 100 55 C100 72 90 92 72 105 Z" fill="#E8DEC8" fill-opacity="0.6" stroke-width="1.2"/>
+    <!-- Acorn 2 -->
+    <path d="M82 54 C78 50 82 40 88 40 C95 40 98 50 94 54 Z" fill="#8A6D3B" fill-opacity="0.45" stroke="#8A6D3B" stroke-width="1.2"/>
+  </g>
+
+  <g class="engraving-oak-right" stroke="#050D1A">
+    <!-- Main stem right -->
+    <path d="M130 226 C170 226 198 185 198 130 C198 80 175 45 136 35" stroke-width="1.4"/>
+    <!-- Oak Leaf 1 -->
+    <path d="M198 175 C212 170 215 155 205 150 C214 142 212 128 200 128 C208 118 198 108 188 115 C186 135 190 162 198 175 Z" fill="#E8DEC8" fill-opacity="0.6" stroke-width="1.2"/>
+    <!-- Acorn 1 -->
+    <path d="M208 188 C212 192 212 200 206 204 C198 200 198 192 203 188 Z" fill="#8A6D3B" fill-opacity="0.45" stroke="#8A6D3B" stroke-width="1.2"/>
+    <path d="M210 188 Q206 184 201 188" stroke="#8A6D3B" stroke-width="1.6"/>
+    <!-- Oak Leaf 2 -->
+    <path d="M188 105 C200 98 202 84 192 80 C198 70 190 60 178 64 C180 50 166 45 160 55 C160 72 170 92 188 105 Z" fill="#E8DEC8" fill-opacity="0.6" stroke-width="1.2"/>
+    <!-- Acorn 2 -->
+    <path d="M178 54 C182 50 178 40 172 40 C165 40 162 50 166 54 Z" fill="#8A6D3B" fill-opacity="0.45" stroke="#8A6D3B" stroke-width="1.2"/>
+  </g>
+
+  <!-- Central Intaglio Cartouche & Banknote Shading -->
+  <g class="engraving-cartouche" stroke="#8A6D3B">
+    <path d="M130 75 C150 75 162 86 162 115 C162 155 130 178 130 178 C130 178 98 155 98 115 C98 86 110 75 130 75 Z" stroke-width="1.6" fill="#F0E8DA" fill-opacity="0.5"/>
+    <path d="M130 82 C145 82 155 92 155 115 C155 146 130 166 130 166 C130 166 105 146 105 115 C105 92 115 82 130 82 Z" stroke-width="0.9" stroke="#050D1A"/>
+    <!-- Horizontal Banknote Hatching -->
+    <g stroke="#8A6D3B" stroke-width="0.8">
+      <line x1="114" y1="108" x2="146" y2="108"/>
+      <line x1="111" y1="115" x2="149" y2="115"/>
+      <line x1="112" y1="122" x2="148" y2="122"/>
+      <line x1="116" y1="129" x2="144" y2="129"/>
+      <line x1="120" y1="136" x2="140" y2="136"/>
+      <line x1="125" y1="143" x2="135" y2="143"/>
+    </g>
+    <!-- Top Coronet / Heraldic Trefoil -->
+    <path d="M118 70 L122 58 L130 66 L138 58 L142 70 Z" fill="#8A6D3B" stroke="#050D1A" stroke-width="1.1"/>
+  </g>
+</svg>
