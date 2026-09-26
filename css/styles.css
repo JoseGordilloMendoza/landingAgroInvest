@@ -3065,16 +3065,17 @@ footer { background: var(--black); border-top: 1px solid var(--glass-border); pa
   transform-origin: top right;
 }
 
-/* The main trunk path — initial state: invisible (JS draws it) */
+/* The main trunk path — starts fully hidden.
+   JS sets the exact stroke-dasharray/dashoffset via setAttribute at runtime.
+   This CSS rule only provides a non-JS fallback so the trunks don't flash. */
 .hilo-trunk {
-  stroke-dasharray: var(--trunk-len, 4000);
-  stroke-dashoffset: var(--trunk-len, 4000);
+  opacity: 0;   /* hidden until JS init runs */
 }
 
-/* All branch sub-paths & leaves start invisible */
+/* Branch children start hidden — GSAP autoAlpha takes over on init */
 .hilo-branch path,
 .hilo-branch ellipse {
-  opacity: 0;
+  visibility: hidden;   /* JS will set autoAlpha which overrides this */
 }
 
 /* ---- Reduced-motion & narrow viewport: hide entirely ---- */

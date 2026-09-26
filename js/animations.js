@@ -1601,29 +1601,28 @@ console.log('%c GSAP Animations Loaded ', 'background:#D4AF37;color:#05130E;font
   scaleSVGs();
 
   /* ── 3. Measure trunk total lengths & set dash arrays ───── */
+  // Use SVG *attributes* (not CSS style) so the renderer reads them reliably
   trunks.forEach(trunk => {
     const len = trunk.getTotalLength ? trunk.getTotalLength() : 2200;
-    trunk.style.strokeDasharray  = len;
-    trunk.style.strokeDashoffset = len;
-    // Store for animation reference
+    trunk.setAttribute('stroke-dasharray',  len);
+    trunk.setAttribute('stroke-dashoffset', len);
     trunk._hiloLen = len;
   });
+  // CSS hides trunks until JS is ready; reveal now (dashoffset=len → still invisible)
+  gsap.set(trunks, { opacity: 1 });
 
   /* ── 4. Master trunk draw — tied to whole-page scroll ───── */
-  // We use a proxy object so GSAP can tween a numeric value,
-  // then write it to all trunks on each tick (avoids multiple triggers).
-  const proxy = { progress: 0 };
-
   ScrollTrigger.create({
     trigger:    document.body,
     start:      'top top',
     end:        'bottom bottom',
-    scrub:      1.6,           // smooth 1.6s lag for organic feel
+    scrub:      1.6,
     onUpdate: self => {
-      const p = self.progress;   // 0 → 1 as user scrolls top → bottom
+      const p = self.progress;   // 0 → 1
       trunks.forEach(trunk => {
         const len = trunk._hiloLen || 2200;
-        trunk.style.strokeDashoffset = len * (1 - p);
+        // setAttribute keeps us in SVG-attribute land (most reliable)
+        trunk.setAttribute('stroke-dashoffset', len * (1 - p));
       });
     }
   });
@@ -1649,46 +1648,49 @@ console.log('%c GSAP Animations Loaded ', 'background:#D4AF37;color:#05130E;font
     const paths    = groups.flatMap(g => [...g.querySelectorAll('path')]);
     const ellipses = groups.flatMap(g => [...g.querySelectorAll('ellipse')]);
 
-    // Prepare path draw animation via strokeDashoffset (no premium plugin)
+    // Measure and set via SVG attributes — the browser SVG renderer reads
+    // stroke-dashoffset as an SVG attribute first, before CSS. Using
+    // setAttribute ensures the draw effect actually works.
     paths.forEach(p => {
       const len = p.getTotalLength ? p.getTotalLength() : 60;
-      p.style.strokeDasharray  = len;
-      p.style.strokeDashoffset = len;
+      p.setAttribute('stroke-dasharray',  len);
+      p.setAttribute('stroke-dashoffset', len);  // fully hidden = not drawn
       p._pathLen = len;
     });
 
-    // Set initial opacity states
-    gsap.set(paths,    { opacity: 0 });
-    gsap.set(ellipses, { opacity: 0, scale: 0, transformOrigin: 'center center' });
+    // Hide branches initially via opacity (keeps stroke-dash state intact)
+    gsap.set(paths,    { autoAlpha: 0 });
+    gsap.set(ellipses, { autoAlpha: 0, scale: 0, transformOrigin: 'center center' });
 
-    // Create a scrubbed timeline per node
+    // Scrubbed timeline — plays forward on scroll down, reverses on scroll up
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger:    section,
-        start:      'top 78%',
-        end:        'top 28%',
-        scrub:      1.2,
+        start:      'top 80%',
+        end:        'top 20%',
+        scrub:      1.0,
       }
     });
 
-    // Animate each path's dashoffset to 0 (draw the branch)
+    // Draw each branch path sequentially using attr (SVG attribute target)
     paths.forEach((p, i) => {
+      const len = p._pathLen || 60;
       tl.to(p, {
-        strokeDashoffset: 0,
-        opacity:          1,
-        duration:         0.9,
-        ease:             'power2.inOut',
-      }, i * 0.08);
+        attr: { 'stroke-dashoffset': 0 },  // draw the path
+        autoAlpha: 1,
+        duration:  0.8,
+        ease:      'power2.inOut',
+      }, i * 0.10);
     });
 
-    // Bloom the leaf ellipses
+    // Bloom leaf ellipses — scale + fade in after branch draws
     tl.to(ellipses, {
-      opacity:  0.65,
-      scale:    1,
-      duration: 0.7,
-      ease:     'power2.out',
-      stagger:  0.08
-    }, 0.2);
+      autoAlpha:  0.65,
+      scale:      1,
+      duration:   0.6,
+      ease:       'back.out(1.6)',
+      stagger:    0.07
+    }, paths.length * 0.10 + 0.05);
   });
 
 
