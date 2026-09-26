@@ -1,5 +1,5 @@
-/* ============================================================
-   INVERSIONISTA IMPARABLE — GSAP ANIMATIONS
+﻿/* ============================================================
+   INVERSIONISTA IMPARABLE â€” GSAP ANIMATIONS
    Requires: gsap 3.12+ and ScrollTrigger plugin
    Follows gsap-core skill best practices:
    - autoAlpha instead of opacity for fade in/out
@@ -34,7 +34,7 @@ mm.add(
     const dur = reduceMotion ? 0 : undefined; // override duration when reduced motion
 
     /* ======================================================
-       1. HERO — ORCHESTRATED TIMELINE ENTRANCE
+       1. HERO â€” ORCHESTRATED TIMELINE ENTRANCE
        ====================================================== */
     const heroTl = gsap.timeline({ delay: 0.08 });
 
@@ -136,7 +136,7 @@ mm.add(
 
 
     /* ======================================================
-       1.5 HERO — ORGANIC FLOATING LEAVES CANVAS (100% BOTANICAL)
+       1.5 HERO â€” ORGANIC FLOATING LEAVES CANVAS (100% BOTANICAL)
            Interactive breeze reaction to pointer, zero lag, 60fps GPU render
        ====================================================== */
     const canvas = document.getElementById('hero-particles-canvas');
@@ -354,8 +354,8 @@ mm.add(
     });
 
     /* ======================================================
-       3. SECTION LABELS — letter-by-letter reveal (scramble)
-          data-anim="label"  — built with pure GSAP stagger
+       3. SECTION LABELS â€” letter-by-letter reveal (scramble)
+          data-anim="label"  â€” built with pure GSAP stagger
        ====================================================== */
     document.querySelectorAll('[data-anim="label"]').forEach((label) => {
       // Split text into individual spans
@@ -387,7 +387,7 @@ mm.add(
     });
 
     /* ======================================================
-       4. STAGGER GRIDS — cards, check-items, benefits
+       4. STAGGER GRIDS â€” cards, check-items, benefits
           parent has data-anim="stagger-grid"
           children are the direct cards/items
        ====================================================== */
@@ -436,17 +436,17 @@ mm.add(
     });
 
     /* ======================================================
-       5. TRANSFORM FLOW — steps stagger sequentially,
+       5. TRANSFORM FLOW â€” steps stagger sequentially,
     /* ======================================================
-       5. EL VIAJE — VIAJE DE CRECIMIENTO (GSAP SCROLLTRIGGER)
-       Revelación progresiva de la rama orgánica central,
-       secuencia de las 5 etapas (Semilla -> Brote -> Crecimiento -> Fruto -> Árbol),
-       micro-desplazamiento botánico al scroll e interacción de 200-400ms al hover.
+       5. EL VIAJE â€” VIAJE DE CRECIMIENTO (GSAP SCROLLTRIGGER)
+       RevelaciÃ³n progresiva de la rama orgÃ¡nica central,
+       secuencia de las 5 etapas (Semilla -> Brote -> Crecimiento -> Fruto -> Ãrbol),
+       micro-desplazamiento botÃ¡nico al scroll e interacciÃ³n de 200-400ms al hover.
        ====================================================== */
     const viajeSection = document.getElementById('transformacion');
     if (viajeSection) {
       if (!reduceMotion) {
-        // Section entrance timeline — triggers promptly on entering viewport
+        // Section entrance timeline â€” triggers promptly on entering viewport
         const viajeTl = gsap.timeline({
           scrollTrigger: {
             trigger: '#transformacion',
@@ -472,7 +472,7 @@ mm.add(
             0.14
           );
 
-        // 2. Dibujo progresivo de la rama orgánica central en PARALELO (sin bloquear las cards)
+        // 2. Dibujo progresivo de la rama orgÃ¡nica central en PARALELO (sin bloquear las cards)
         const mainStem = document.querySelector('.viaje-stem-main');
         if (mainStem) {
           const stemLength = mainStem.getTotalLength ? mainStem.getTotalLength() : 1500;
@@ -558,7 +558,7 @@ mm.add(
           });
         }
 
-        // 5. Interacción de 200-400ms al hover en cada etapa
+        // 5. InteracciÃ³n de 200-400ms al hover en cada etapa
         if (isDesktop) {
           steps.forEach((step, idx) => {
             const ill = step.querySelector('.viaje-illustration');
@@ -595,7 +595,7 @@ mm.add(
     }
 
     /* ======================================================
-       6. COUNTDOWN — LUXURY CHRONOMETER & EDITORIAL TIMEPIECE
+       6. COUNTDOWN â€” LUXURY CHRONOMETER & EDITORIAL TIMEPIECE
        ====================================================== */
     if (!reduceMotion) {
       // Subtle botanical branch emergence from lateral edges
@@ -678,15 +678,15 @@ mm.add(
 
     /* ======================================================
     /* ======================================================
-       6.2 EL PROGRAMA — LUXURY EDITORIAL CHAPTERS (GSAP SCROLLTRIGGER)
-       Capítulos secuenciales: fondo enriquecido, medallón imperial,
+       6.2 EL PROGRAMA â€” LUXURY EDITORIAL CHAPTERS (GSAP SCROLLTRIGGER)
+       CapÃ­tulos secuenciales: fondo enriquecido, medallÃ³n imperial,
        ramas laterales sin parallax descontrolado, entrada una a una
-       con stagger elegante, revelación botánica y números grabados.
+       con stagger elegante, revelaciÃ³n botÃ¡nica y nÃºmeros grabados.
        ====================================================== */
     const sesionesSection = document.getElementById('sesiones');
     if (sesionesSection) {
       if (!reduceMotion) {
-        // Section entrance timeline — executes once when entering viewport
+        // Section entrance timeline â€” executes once when entering viewport
         const sesionesTl = gsap.timeline({
           scrollTrigger: {
             trigger: '#sesiones',
@@ -701,7 +701,7 @@ mm.add(
             { autoAlpha: 0 },
             { autoAlpha: 1, duration: 0.65, ease: 'power2.out' }
           )
-          // 0.1 Medallón astrolabio central imperial
+          // 0.1 MedallÃ³n astrolabio central imperial
           .fromTo('.sesiones-bg-medallion',
             { autoAlpha: 0, scale: 0.92, rotation: -3 },
             { autoAlpha: 0.16, scale: 1, rotation: 0, duration: 0.7, ease: 'power2.out' },
@@ -742,7 +742,7 @@ mm.add(
             { autoAlpha: 1, y: 0, duration: 0.36, ease: 'power2.out' },
             '-=0.25'
           )
-          // 5. Capítulos: Las cuatro cards aparecen UNA A UNA con stagger ágil y fluido
+          // 5. CapÃ­tulos: Las cuatro cards aparecen UNA A UNA con stagger Ã¡gil y fluido
           .fromTo('.chapter-card',
             { autoAlpha: 0, y: 22, scale: 0.98 },
             {
@@ -780,7 +780,7 @@ mm.add(
     }
 
     /* ======================================================
-       6.5 CINTA MOVIL — INFINITE LUXURY MARQUEE TICKER (GSAP CORE)
+       6.5 CINTA MOVIL â€” INFINITE LUXURY MARQUEE TICKER (GSAP CORE)
        ====================================================== */
     const trackLeft  = document.getElementById('cinta-track-left');
     const trackRight = document.getElementById('cinta-track-right');
@@ -834,7 +834,7 @@ mm.add(
     }
 
     /* ======================================================
-       7. SPEAKER CARDS — ELEGANT HOVER LIFT (Lag-free)
+       7. SPEAKER CARDS â€” ELEGANT HOVER LIFT (Lag-free)
        ====================================================== */
     if (isDesktop) {
       document.querySelectorAll('[data-tilt]').forEach((card) => {
@@ -861,7 +861,7 @@ mm.add(
     }
 
     /* ======================================================
-       7.5 FORM INPUTS — GSAP FOCUS MICRO-INTERACTIONS
+       7.5 FORM INPUTS â€” GSAP FOCUS MICRO-INTERACTIONS
        ====================================================== */
     document.querySelectorAll('.input-icon-wrap input, .input-icon-wrap select').forEach((input) => {
       input.addEventListener('focus', () => {
@@ -875,7 +875,7 @@ mm.add(
     });
 
     /* ======================================================
-       8. CTA BUTTONS — SMOOTH HOVER PULSE (Lag-free)
+       8. CTA BUTTONS â€” SMOOTH HOVER PULSE (Lag-free)
        ====================================================== */
     if (isDesktop) {
       document.querySelectorAll('.btn-primary').forEach((btn) => {
@@ -902,7 +902,7 @@ mm.add(
     }
 
     /* ======================================================
-       9. CHAPTER CARDS — LUXURY EDITORIAL HOVER (5-6px LIFT & BOTANICAL EXTENSION)
+       9. CHAPTER CARDS â€” LUXURY EDITORIAL HOVER (5-6px LIFT & BOTANICAL EXTENSION)
        Subtle lift, warm border luminosity, number contrast, branch extension 2-3px,
        and speaker leaf micro-tilt
        ====================================================== */
@@ -941,7 +941,7 @@ mm.add(
             });
           }
           if (engraving) {
-            // Extensión de la rama botánica 2-3px al hover
+            // ExtensiÃ³n de la rama botÃ¡nica 2-3px al hover
             gsap.to(engraving, {
               x: 5,
               y: -3,
@@ -1030,8 +1030,8 @@ mm.add(
     }
 
     /* ======================================================
-       9.5 CARDS DE BENEFICIOS (PREGUNTA CLAVE) — CRECIMIENTO BOTÁNICO
-       Ilustraciones botánicas se revelan progresivamente y al hover
+       9.5 CARDS DE BENEFICIOS (PREGUNTA CLAVE) â€” CRECIMIENTO BOTÃNICO
+       Ilustraciones botÃ¡nicas se revelan progresivamente y al hover
        la rama se extiende 2-3px
        ====================================================== */
     if (isDesktop) {
@@ -1065,8 +1065,8 @@ mm.add(
     }
 
     /* ======================================================
-       9.8 LO QUE TE LLEVARÁS — HERBARIO DE CONOCIMIENTOS (GSAP SCROLLTRIGGER)
-       Revelación asimétrica cinematográfica, trazo fino progresivo,
+       9.8 LO QUE TE LLEVARÃS â€” HERBARIO DE CONOCIMIENTOS (GSAP SCROLLTRIGGER)
+       RevelaciÃ³n asimÃ©trica cinematogrÃ¡fica, trazo fino progresivo,
        pieza principal dominante, micro-movimiento de grabados 4-8px
        y parallax sutil al scroll.
        ====================================================== */
@@ -1097,7 +1097,7 @@ mm.add(
             { autoAlpha: 1, y: 0, duration: 0.35, ease: 'power3.out' },
             0.14
           )
-          // 2. Línea divisoria y hoja central
+          // 2. LÃ­nea divisoria y hoja central
           .fromTo('.herbario-divider-line',
             { scaleX: 0 },
             { scaleX: 1, duration: 0.3, ease: 'power2.inOut', transformOrigin: 'center' },
@@ -1139,20 +1139,20 @@ mm.add(
             { autoAlpha: 1, x: 0, y: 0, duration: 0.42, ease: 'power3.out' },
             0.30
           )
-          // Elemento 05 (Ramificación): entra desde abajo-derecha
+          // Elemento 05 (RamificaciÃ³n): entra desde abajo-derecha
           .fromTo('#folio-05',
             { autoAlpha: 0, x: 16, y: 16 },
             { autoAlpha: 1, x: 0, y: 0, duration: 0.42, ease: 'power3.out' },
             0.34
           )
-          // 5. Grabados botánicos se revelan progresivamente dentro de cada pieza
+          // 5. Grabados botÃ¡nicos se revelan progresivamente dentro de cada pieza
           .fromTo('.folio-engraving',
             { autoAlpha: 0, scale: 0.94 },
             { autoAlpha: 0.24, scale: 1, duration: 0.42, stagger: 0.04, ease: 'power2.out' },
             0.28
           );
 
-        // Parallax sutil en grabados botánicos durante scroll
+        // Parallax sutil en grabados botÃ¡nicos durante scroll
         if (isDesktop) {
           gsap.to('.folio-engraving--roots', {
             yPercent: 12,
@@ -1188,7 +1188,7 @@ mm.add(
     }
 
     /* ======================================================
-       10. CHECK ITEMS — staggered hover slide
+       10. CHECK ITEMS â€” staggered hover slide
        ====================================================== */
     document.querySelectorAll('.check-item').forEach((item) => {
       item.addEventListener('mouseenter', () => {
@@ -1208,8 +1208,8 @@ mm.add(
     });
 
     /* ======================================================
-       10.5 REGISTRO & AUSPICIADORES — CULMINACIÓN EDITORIAL DE DECISIÓN
-       Revelación de placa editorial, stagger en campos, expansión suave de botón,
+       10.5 REGISTRO & AUSPICIADORES â€” CULMINACIÃ“N EDITORIAL DE DECISIÃ“N
+       RevelaciÃ³n de placa editorial, stagger en campos, expansiÃ³n suave de botÃ³n,
        micro-movimiento flotante de ramas y firma institucional de sponsors.
        ====================================================== */
     const registroSec = document.getElementById('registro');
@@ -1224,7 +1224,7 @@ mm.add(
         });
 
         registroTl
-          // 1. Encabezado: fade + mínimo desplazamiento vertical
+          // 1. Encabezado: fade + mÃ­nimo desplazamiento vertical
           .fromTo('#registro-kicker',
             { autoAlpha: 0, y: 10 },
             { autoAlpha: 1, y: 0, duration: 0.32, ease: 'power2.out' }
@@ -1239,19 +1239,19 @@ mm.add(
             { scaleX: 1, duration: 0.36, ease: 'power2.inOut', transformOrigin: 'center' },
             '-=0.25'
           )
-          // 2. Revelación del contenedor del formulario (plate)
+          // 2. RevelaciÃ³n del contenedor del formulario (plate)
           .fromTo('#registro-card',
             { autoAlpha: 0, y: 18, scale: 0.985 },
             { autoAlpha: 1, y: 0, scale: 1, duration: 0.48, ease: 'power3.out' },
             '-=0.22'
           )
-          // 3. Aparición secuencial de los campos con stagger muy corto
+          // 3. ApariciÃ³n secuencial de los campos con stagger muy corto
           .fromTo('#registro-card .form-group',
             { autoAlpha: 0, y: 10 },
             { autoAlpha: 1, y: 0, duration: 0.32, stagger: 0.045, ease: 'power2.out' },
             '-=0.32'
           )
-          // 4. Botón aparece al final con ligera expansión
+          // 4. BotÃ³n aparece al final con ligera expansiÃ³n
           .fromTo('#registro-submit-btn',
             { autoAlpha: 0, y: 10, scale: 0.96 },
             { autoAlpha: 1, y: 0, scale: 1, duration: 0.42, ease: 'back.out(1.2)' },
@@ -1263,7 +1263,7 @@ mm.add(
             '-=0.22'
           );
 
-        // 5. Ramas ornamentales: flotación lenta e imperceptible
+        // 5. Ramas ornamentales: flotaciÃ³n lenta e imperceptible
         gsap.to('.registro-botanical--left', {
           y: -8,
           rotation: -1,
@@ -1282,7 +1282,7 @@ mm.add(
           delay: 0.5
         });
 
-        // Hover en el botón: desplazamiento de la flecha
+        // Hover en el botÃ³n: desplazamiento de la flecha
         const regBtn = document.getElementById('registro-submit-btn');
         if (regBtn) {
           const arrow = regBtn.querySelector('svg');
@@ -1305,7 +1305,7 @@ mm.add(
       }
     }
 
-    /* Auspiciadores: entrada sutil e interacción hover de luminosidad */
+    /* Auspiciadores: entrada sutil e interacciÃ³n hover de luminosidad */
     const auspiciadoresSec = document.getElementById('auspiciadores');
     if (auspiciadoresSec) {
       if (!reduceMotion) {
@@ -1385,7 +1385,7 @@ mm.add(
     });
 
     /* ======================================================
-       12. FAQ ITEMS — animated expand with GSAP
+       12. FAQ ITEMS â€” animated expand with GSAP
            (override the CSS max-height trick with proper anim)
        ====================================================== */
     document.querySelectorAll('.faq-item').forEach((item) => {
@@ -1406,7 +1406,7 @@ mm.add(
     });
 
     /* ======================================================
-       13. NAVBAR — gold shimmer on scroll
+       13. NAVBAR â€” gold shimmer on scroll
        ====================================================== */
     ScrollTrigger.create({
       start: 'top -80',
@@ -1419,8 +1419,8 @@ mm.add(
     });
 
     /* ======================================================
-       14. CTA FINAL SECTION — CULMINACIÓN (RAMAS CONVERGENTES)
-       Las ramas botánicas laterales convergen sutilmente hacia el CTA
+       14. CTA FINAL SECTION â€” CULMINACIÃ“N (RAMAS CONVERGENTES)
+       Las ramas botÃ¡nicas laterales convergen sutilmente hacia el CTA
        ====================================================== */
     const ctaSection = document.getElementById('cta-final');
     if (ctaSection) {
@@ -1461,8 +1461,8 @@ mm.add(
     }
 
     /* ======================================================
-       15. PARTICLES / ATMOSPHERE — FLOATING GOLDEN LEAVES
-           Theme: Raíces & Patrimonio Tangible (60 FPS GSAP)
+       15. PARTICLES / ATMOSPHERE â€” FLOATING GOLDEN LEAVES
+           Theme: RaÃ­ces & Patrimonio Tangible (60 FPS GSAP)
        ====================================================== */
     if (!reduceMotion) {
       const leavesContainer = document.getElementById('hero-leaves');
@@ -1548,168 +1548,261 @@ mm.add(
 console.log('%c GSAP Animations Loaded ', 'background:#D4AF37;color:#05130E;font-weight:700;padding:4px 8px;border-radius:3px;');
 
 
+
 /* ============================================================
-   HILO CONDUCTOR BOTÁNICO
-   Scroll-synced botanical vine that grows top→bottom as the
-   user scrolls and retracts when scrolling up.
-   Runs independently of the matchMedia block so it can safely
-   check viewport width and motion preferences itself.
+   HILO CONDUCTOR BOTÃNICO â€” v2 (Canvas-based, correct approach)
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   Architecture:
+   â€¢ Two <canvas> elements (left + right), position:absolute,
+     full document height in REAL pixels â€” no coordinate tricks.
+   â€¢ The full botanical illustration is drawn ONCE at startup.
+   â€¢ Scroll reveal: only CSS clip-path changes per scroll tick.
+     Zero canvas ops per frame â†’ excellent performance.
+   â€¢ clip-path: inset(0 0 Npx 0) cuts the canvas from the bottom.
+     As scroll progress increases, N decreases, revealing vine.
+   â€¢ The reveal frontier stays ~40% up from bottom of viewport,
+     giving the sensation of the vine growing below you.
    ============================================================ */
-(function initHiloConductor() {
+(function initBotanicalCanvas() {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-
-  // Skip on narrow viewports (vines hidden via CSS, no point in computing)
   if (window.innerWidth < 1280) return;
-
-  // Respect prefers-reduced-motion
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  /* ── 1. Reference DOM elements ──────────────────────────── */
-  const conductor = document.getElementById('hilo-conductor');
-  if (!conductor) return;
+  /* â”€â”€ Config â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  const CW      = 96;                  // canvas width px
+  const GOLD_R  = 201, GOLD_G = 169, GOLD_B = 110;  // #C9A96E
+  const gold    = (a) => `rgba(${GOLD_R},${GOLD_G},${GOLD_B},${a})`;
 
-  const trunks        = document.querySelectorAll('.hilo-trunk');
-  const branchGroups  = document.querySelectorAll('.hilo-branch');
-  // Section triggers mapped to node indices
-  const sectionIds = [
-    '#hero',            // node 0
-    '#countdown',       // node 1
-    '#para-quien',      // node 2
-    '#sesiones',        // node 3
-    '#ponentes',        // node 4
-    '#transformacion',  // node 5
-    '#beneficios',      // node 6
-    '#registro'         // node 7
-  ];
+  /* â”€â”€ Create canvases â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  function makeCanvas(side) {
+    const c = document.createElement('canvas');
+    c.id = `vine-canvas-${side}`;
+    c.style.cssText = [
+      'position:absolute',
+      'top:0',
+      `${side}:0`,
+      `width:${CW}px`,
+      'pointer-events:none',
+      'z-index:2',
+      'will-change:clip-path',
+    ].join(';');
+    document.body.appendChild(c);
+    return c;
+  }
 
-  /* ── 2. Scale SVG height to match full document ─────────── */
-  function scaleSVGs() {
-    const docH   = document.documentElement.scrollHeight;
-    const viewH  = window.innerHeight;
-    // The SVG viewBox height is 2000; we scale so viewBox fills docH.
-    const scaleY = docH / 2000;
+  const LC = makeCanvas('left');
+  const RC = makeCanvas('right');
 
-    document.querySelectorAll('.hilo-vine').forEach(svg => {
-      // Keep the SVG fixed in the viewport but use scaleY on internal
-      // coordinate space via a CSS custom property used by the trunk positions.
-      svg.style.height = viewH + 'px';        // viewport height (fixed)
-      // Use a CSS transform on the SVG itself to stretch its viewBox content
-      svg.style.transform = `scaleY(${scaleY})`;
-      svg.style.transformOrigin = 'top center';
+  /* â”€â”€ Dimensions (set once, read repeatedly) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  let docH = document.documentElement.scrollHeight;
+
+  function sizeCanvases() {
+    docH = document.documentElement.scrollHeight;
+    [LC, RC].forEach(c => {
+      c.width  = CW;
+      c.height = docH;
+      c.style.height = docH + 'px';
     });
   }
-  scaleSVGs();
+  sizeCanvases();
 
-  /* ── 3. Measure trunk total lengths & set dash arrays ───── */
-  // Use SVG *attributes* (not CSS style) so the renderer reads them reliably
-  trunks.forEach(trunk => {
-    const len = trunk.getTotalLength ? trunk.getTotalLength() : 2200;
-    trunk.setAttribute('stroke-dasharray',  len);
-    trunk.setAttribute('stroke-dashoffset', len);
-    trunk._hiloLen = len;
-  });
-  // CSS hides trunks until JS is ready; reveal now (dashoffset=len → still invisible)
-  gsap.set(trunks, { opacity: 1 });
+  /* â”€â”€ Drawing primitives â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
-  /* ── 4. Master trunk draw — tied to whole-page scroll ───── */
-  ScrollTrigger.create({
-    trigger:    document.body,
-    start:      'top top',
-    end:        'bottom bottom',
-    scrub:      1.6,
-    onUpdate: self => {
-      const p = self.progress;   // 0 → 1
-      trunks.forEach(trunk => {
-        const len = trunk._hiloLen || 2200;
-        // setAttribute keeps us in SVG-attribute land (most reliable)
-        trunk.setAttribute('stroke-dashoffset', len * (1 - p));
-      });
+  // Teardrop leaf shape centered at (0,0), pointing upward
+  function drawLeaf(ctx, x, y, rot, sz, alpha) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(rot);
+    ctx.beginPath();
+    // Upper body curves
+    ctx.moveTo(0, 0);
+    ctx.bezierCurveTo( sz * 0.55, -sz * 0.35,  sz * 0.75, -sz * 0.85,  0, -sz);
+    ctx.bezierCurveTo(-sz * 0.75, -sz * 0.85, -sz * 0.55, -sz * 0.35,  0,  0);
+    ctx.fillStyle   = gold(alpha * 0.28);
+    ctx.strokeStyle = gold(alpha * 0.42);
+    ctx.lineWidth   = 0.7;
+    ctx.fill();
+    ctx.stroke();
+    // Midrib vein
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(0, -sz * 0.82);
+    ctx.strokeStyle = gold(alpha * 0.30);
+    ctx.lineWidth   = 0.4;
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  // Organic branch with one level of sub-branches + leaf tips
+  function drawBranch(ctx, sx, sy, dirX, ang, len, weight, alpha) {
+    // End point: branch arcs outward + slightly upward (natural growth)
+    const ex = sx + dirX * len * Math.cos(ang);
+    const ey = sy - len * Math.sin(ang) * 0.7;
+    // Control point for organic curve
+    const cpx = sx + dirX * len * 0.45 * Math.cos(ang * 0.6);
+    const cpy = sy - len * 0.3 * Math.sin(ang * 0.6);
+
+    ctx.beginPath();
+    ctx.moveTo(sx, sy);
+    ctx.quadraticCurveTo(cpx, cpy, ex, ey);
+    ctx.strokeStyle = gold(alpha);
+    ctx.lineWidth   = weight;
+    ctx.stroke();
+
+    // Sub-branch A (goes further outward + up)
+    const sbLen = len * 0.52;
+    const sax   = ex + dirX * sbLen * Math.cos(ang + 0.55);
+    const say   = ey - sbLen * Math.sin(ang + 0.55) * 0.65;
+    ctx.beginPath();
+    ctx.moveTo(ex, ey);
+    ctx.quadraticCurveTo(
+      ex + dirX * sbLen * 0.4,  ey - sbLen * 0.2,
+      sax, say
+    );
+    ctx.strokeStyle = gold(alpha * 0.75);
+    ctx.lineWidth   = weight * 0.6;
+    ctx.stroke();
+    drawLeaf(ctx, sax, say, dirX > 0 ? -0.4 : 0.4, sbLen * 0.55, alpha);
+
+    // Sub-branch B (goes slightly downward + outward)
+    const sbx   = ex + dirX * sbLen * 0.85 * Math.cos(ang - 0.45);
+    const sby   = ey + sbLen * 0.25;
+    ctx.beginPath();
+    ctx.moveTo(ex, ey);
+    ctx.lineTo(sbx, sby);
+    ctx.strokeStyle = gold(alpha * 0.6);
+    ctx.lineWidth   = weight * 0.5;
+    ctx.stroke();
+    drawLeaf(ctx, sbx, sby, dirX > 0 ? 0.3 : -0.3, sbLen * 0.42, alpha * 0.85);
+
+    // Tip leaf on main branch
+    drawLeaf(ctx, ex, ey, dirX > 0 ? -0.6 : 0.6, len * 0.38, alpha * 0.9);
+  }
+
+  /* â”€â”€ Full vine illustration â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  function paintVine(canvas, mirror) {
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, CW, docH);
+    ctx.lineCap  = 'round';
+    ctx.lineJoin = 'round';
+
+    const dirX = mirror ? 1 : -1;   // branch direction: left canvas branches go left, right canvas goes right
+    // Stem X: inner edge (near content), oscillates gently
+    const stemCX = mirror ? CW * 0.22 : CW * 0.78;
+
+    // â”€â”€ Stem waypoints â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // 14 control points spanning the full document height
+    // Gentle S-curve oscillation (Â±8px) around the center X
+    const N   = 14;
+    const pts = [];
+    for (let i = 0; i < N; i++) {
+      const t    = i / (N - 1);
+      const wave = Math.sin(t * Math.PI * 3.5) * (mirror ? 7 : -7);
+      pts.push([stemCX + wave, t * docH]);
     }
-  });
 
-  /* ── 5. Branch nodes — bloom per-section ───────────────── */
-  // Split branch groups into left and right SVG groups
-  // All .hilo-branch elements live in two SVGs; pairs share the same data-node.
-  // We group by node index and animate both at once.
-  const nodeMap = {};   // nodeIndex → [elements]
-  branchGroups.forEach(grp => {
-    const n = grp.dataset.node;
-    if (!nodeMap[n]) nodeMap[n] = [];
-    nodeMap[n].push(grp);
-  });
+    // Draw smooth stem via quadratic Catmull-Rom pass
+    ctx.beginPath();
+    ctx.moveTo(pts[0][0], pts[0][1]);
+    for (let i = 0; i < pts.length - 2; i++) {
+      const mx = (pts[i][0] + pts[i + 1][0]) / 2;
+      const my = (pts[i][1] + pts[i + 1][1]) / 2;
+      ctx.quadraticCurveTo(pts[i][0], pts[i][1], mx, my);
+    }
+    ctx.lineTo(pts[N - 1][0], pts[N - 1][1]);
+    ctx.strokeStyle = gold(0.48);
+    ctx.lineWidth   = 1.35;
+    ctx.stroke();
 
-  sectionIds.forEach((sectionId, idx) => {
-    const section = document.querySelector(sectionId);
-    if (!section) return;
-    const groups = nodeMap[String(idx)];
-    if (!groups || !groups.length) return;
+    // â”€â”€ Branch nodes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // 8 nodes, evenly distributed, each at ~12.5% of docH
+    const nodeFracs = [0.07, 0.19, 0.31, 0.43, 0.55, 0.67, 0.79, 0.91];
+    const configs   = [
+      { len: 38, ang: 1.05, w: 1.0 },
+      { len: 44, ang: 0.95, w: 1.0 },
+      { len: 35, ang: 1.20, w: 0.9 },
+      { len: 42, ang: 1.00, w: 1.0 },
+      { len: 40, ang: 0.90, w: 0.95},
+      { len: 36, ang: 1.15, w: 0.9 },
+      { len: 46, ang: 1.00, w: 1.0 },
+      { len: 38, ang: 0.85, w: 0.95},
+    ];
 
-    // Collect all child paths and ellipses for this node across both vines
-    const paths    = groups.flatMap(g => [...g.querySelectorAll('path')]);
-    const ellipses = groups.flatMap(g => [...g.querySelectorAll('ellipse')]);
+    nodeFracs.forEach((frac, i) => {
+      const bY  = frac * docH;
+      // Interpolate stem X at this Y fraction
+      const si  = frac * (N - 1);
+      const si0 = Math.floor(si);
+      const si1 = Math.min(si0 + 1, N - 1);
+      const t   = si - si0;
+      const bX  = pts[si0][0] * (1 - t) + pts[si1][0] * t;
 
-    // Measure and set via SVG attributes — the browser SVG renderer reads
-    // stroke-dashoffset as an SVG attribute first, before CSS. Using
-    // setAttribute ensures the draw effect actually works.
-    paths.forEach(p => {
-      const len = p.getTotalLength ? p.getTotalLength() : 60;
-      p.setAttribute('stroke-dasharray',  len);
-      p.setAttribute('stroke-dashoffset', len);  // fully hidden = not drawn
-      p._pathLen = len;
+      const cfg = configs[i];
+      drawBranch(ctx, bX, bY, dirX, cfg.ang, cfg.len, cfg.w * 0.95, 0.50);
     });
 
-    // Hide branches initially via opacity (keeps stroke-dash state intact)
-    gsap.set(paths,    { autoAlpha: 0 });
-    gsap.set(ellipses, { autoAlpha: 0, scale: 0, transformOrigin: 'center center' });
-
-    // Scrubbed timeline — plays forward on scroll down, reverses on scroll up
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger:    section,
-        start:      'top 80%',
-        end:        'top 20%',
-        scrub:      1.0,
-      }
+    // â”€â”€ Accent leaves along stem â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    [0.13, 0.25, 0.37, 0.49, 0.61, 0.73, 0.85].forEach((frac, i) => {
+      const lY  = frac * docH;
+      const si  = frac * (N - 1);
+      const si0 = Math.floor(si);
+      const si1 = Math.min(si0 + 1, N - 1);
+      const t   = si - si0;
+      const lX  = pts[si0][0] * (1 - t) + pts[si1][0] * t;
+      const rot = (i % 2 === 0 ? 0.3 : -0.25) * (mirror ? 1 : -1);
+      drawLeaf(ctx, lX, lY, rot, 11, 0.70);
     });
+  }
 
-    // Draw each branch path sequentially using attr (SVG attribute target)
-    paths.forEach((p, i) => {
-      const len = p._pathLen || 60;
-      tl.to(p, {
-        attr: { 'stroke-dashoffset': 0 },  // draw the path
-        autoAlpha: 1,
-        duration:  0.8,
-        ease:      'power2.inOut',
-      }, i * 0.10);
-    });
+  // Draw both vines immediately (happens once)
+  paintVine(LC, false);
+  paintVine(RC, true);
 
-    // Bloom leaf ellipses — scale + fade in after branch draws
-    tl.to(ellipses, {
-      autoAlpha:  0.65,
-      scale:      1,
-      duration:   0.6,
-      ease:       'back.out(1.6)',
-      stagger:    0.07
-    }, paths.length * 0.10 + 0.05);
+  /* â”€â”€ Scroll-driven clip-path reveal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  // clip-path: inset(0 0 Npx 0) hides N pixels from the bottom.
+  // At progress=0 â†’ N = docH (fully hidden).
+  // At progress=1 â†’ N = 0   (fully visible).
+  // Viewport offset: at any scroll position the vine tip is visible
+  // ~40% of the viewport up from the bottom of the screen.
+  const viewH = window.innerHeight;
+
+  function applyClip(progress) {
+    const revealed = progress * docH + viewH * 0.40;
+    const cutoff   = Math.max(0, docH - revealed);
+    const clip     = `inset(0 0 ${cutoff}px 0)`;
+    LC.style.clipPath = clip;
+    RC.style.clipPath = clip;
+  }
+
+  applyClip(0);  // fully hidden on load
+
+  ScrollTrigger.create({
+    trigger:  document.body,
+    start:    'top top',
+    end:      'bottom bottom',
+    scrub:    1.8,       // organic lag â€” vine grows a hair behind the scroll
+    onUpdate: self => applyClip(self.progress)
   });
 
-
-  /* ── 6. Refresh on resize ───────────────────────────────── */
-  let resizeTimer;
+  /* â”€â”€ Resize handler â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  let _rt;
   window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
+    clearTimeout(_rt);
+    _rt = setTimeout(() => {
       if (window.innerWidth < 1280) {
-        conductor.style.display = 'none';
+        LC.style.display = RC.style.display = 'none';
         return;
       }
-      conductor.style.display = '';
-      scaleSVGs();
+      LC.style.display = RC.style.display = '';
+      sizeCanvases();
+      paintVine(LC, false);
+      paintVine(RC, true);
       ScrollTrigger.refresh();
-    }, 200);
+    }, 250);
   });
 
-})();
+  window.addEventListener('load', () => ScrollTrigger.refresh());
 
+})();
 
 

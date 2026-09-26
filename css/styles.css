@@ -3029,63 +3029,31 @@ footer { background: var(--black); border-top: 1px solid var(--glass-border); pa
 }
 
 /* ============================================================
-   HILO CONDUCTOR BOTÁNICO — scroll-synced margin vine system
-   Design: two fixed SVG vines, left + right, that draw from
-   top to bottom as the user scrolls. No interactivity needed.
+   HILO CONDUCTOR BOTÁNICO — v2 (canvas-based)
+   Canvas elements are inline-styled by JS with position:absolute,
+   full document height, and will-change:clip-path.
+   Body needs position:relative so absolute children are contained.
    ============================================================ */
 
-#hilo-conductor {
-  position: fixed;
+body { position: relative; }  /* anchor for absolute vine canvases */
+
+#vine-canvas-left,
+#vine-canvas-right {
+  position: absolute;     /* JS also sets this, belt-and-suspenders */
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;       /* Never captures click/touch events */
-  z-index: 2;                 /* Above page bg, below all content */
-  overflow: hidden;
+  pointer-events: none;
+  z-index: 2;
+  will-change: clip-path;
 }
 
-.hilo-vine {
-  position: absolute;
-  top: 0;
-  /* Height maps the SVG to the full document — overridden by JS */
-  height: 100vh;
-  width: 64px;
-  will-change: transform;     /* GPU hint for scrub performance */
-  overflow: visible;
-}
-
-.hilo-vine--left {
-  left: 0;
-  transform-origin: top left;
-}
-
-.hilo-vine--right {
-  right: 0;
-  transform-origin: top right;
-}
-
-/* The main trunk path — starts fully hidden.
-   JS sets the exact stroke-dasharray/dashoffset via setAttribute at runtime.
-   This CSS rule only provides a non-JS fallback so the trunks don't flash. */
-.hilo-trunk {
-  opacity: 0;   /* hidden until JS init runs */
-}
-
-/* Branch children start hidden — GSAP autoAlpha takes over on init */
-.hilo-branch path,
-.hilo-branch ellipse {
-  visibility: hidden;   /* JS will set autoAlpha which overrides this */
-}
-
-/* ---- Reduced-motion & narrow viewport: hide entirely ---- */
-@media (prefers-reduced-motion: reduce) {
-  #hilo-conductor { display: none; }
-}
-
-/* Hide on viewports narrower than 1280px (margins too tight) */
+/* Hide on narrow viewports (JS also guards this) */
 @media (max-width: 1279px) {
-  #hilo-conductor { display: none; }
+  #vine-canvas-left,
+  #vine-canvas-right { display: none !important; }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  #vine-canvas-left,
+  #vine-canvas-right { display: none !important; }
+}
 
