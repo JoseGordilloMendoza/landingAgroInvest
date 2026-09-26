@@ -33,107 +33,184 @@ mm.add(
     const { isDesktop, reduceMotion } = ctx.conditions;
     const dur = reduceMotion ? 0 : undefined; // override duration when reduced motion
 
+    // Everything below re-runs when a breakpoint flips (e.g. DevTools device toolbar).
+    // Listeners and rAF loops are not reverted by gsap.matchMedia, so we tear them down ourselves.
+    const abort = new AbortController();
+    const cleanups = [];
+    const on = (target, type, fn, opts) => target.addEventListener(type, fn, Object.assign({}, opts, { signal: abort.signal }));
+
     /* ======================================================
-       1. HERO â€” ORCHESTRATED TIMELINE ENTRANCE
+       1. HERO — CINEMATIC ENTRANCE + LIVING MOTION
+          - Title split by letters (3D flip), gold shimmer wave loop
+          - Mouse depth parallax, tilting pass card, magnetic CTA
+          - Scroll-out: content drifts up & fades, background lags
        ====================================================== */
-    const heroTl = gsap.timeline({ delay: 0.08 });
 
-    heroTl
-      // 1. Ambient background zoom out + infinite breathing
-      .from('.hero-bg', {
-        scale: 1.15, 
-        duration: reduceMotion ? 0 : 2.4, 
-        ease: 'power2.out',
-        onComplete: () => {
-          if (!reduceMotion) {
-            gsap.to('.hero-bg', {
-              scale: 1.05,
-              opacity: 0.85,
-              duration: 4,
-              repeat: -1,
-              yoyo: true,
-              ease: 'sine.inOut'
+    // Splits an element's text into inline-block words (or letters) without
+    // breaking <br>. The accessible name is set on `labelEl` (a heading).
+    const splitText = (el, mode, labelEl) => {
+      if (!el) return [];
+      (labelEl || el).setAttribute('aria-label', el.textContent.replace(/\s+/g, ' ').trim());
+      const frag = document.createDocumentFragment();
+      const units = [];
+      el.childNodes.forEach((node) => {
+        if (node.nodeType !== 3) { frag.appendChild(node.cloneNode(true)); return; }
+        node.textContent.split(/(\s+)/).forEach((tok) => {
+          if (!tok) return;
+          if (/^\s+$/.test(tok)) { frag.appendChild(document.createTextNode(' ')); return; }
+          const word = document.createElement('span');
+          word.className = 'split-word';
+          word.setAttribute('aria-hidden', 'true');
+          if (mode === 'chars') {
+            [...tok].forEach((ch) => {
+              const c = document.createElement('span');
+              c.className = 'split-char';
+              c.textContent = ch;
+              word.appendChild(c);
+              units.push(c);
             });
+          } else {
+            word.textContent = tok;
+            units.push(word);
           }
-        }
-      }, 0)
-      // 2. Editorial event metadata in header
-      .fromTo('.nav-event-meta .nav-meta-item',
-        { autoAlpha: 0, y: -6 },
-        { autoAlpha: 1, y: 0, duration: reduceMotion ? 0 : 0.35, stagger: 0.04, ease: 'power2.out' },
-        0.05
-      )
-      // 3. MONUMENTAL LOGO TITLE REVEAL WITH MAXIMUM PROTAGONISM
-      .fromTo('.hero-brand-logo',
-        { autoAlpha: 0, scale: 0.95 },
-        { autoAlpha: 1, scale: 1, duration: reduceMotion ? 0 : 0.65, ease: 'power3.out' },
-        0.06
-      )
-      .fromTo('.hero-logo-top',
-        { autoAlpha: 0, y: 18, letterSpacing: '0.32em' },
-        { autoAlpha: 1, y: 0, letterSpacing: '0.28em', duration: reduceMotion ? 0 : 0.55, ease: 'power3.out' },
-        0.10
-      )
-      .fromTo('.hero-logo-main',
-        { autoAlpha: 0, y: 22, scale: 0.94 },
-        { autoAlpha: 1, y: 0, scale: 1, duration: reduceMotion ? 0 : 0.68, ease: 'back.out(1.25)' },
-        0.16
-      )
-      // 4. Value proposition headline (quick, fluid cascade)
-      .fromTo('.hero-headline',
-        { autoAlpha: 0, y: 18 },
-        { autoAlpha: 1, y: 0, duration: reduceMotion ? 0 : 0.48, ease: 'power3.out' },
-        0.32
-      )
-      // 5. Subtitle (flows naturally after headline)
-      .fromTo('.hero-subtitle',
-        { autoAlpha: 0, y: 14 },
-        { autoAlpha: 1, y: 0, duration: reduceMotion ? 0 : 0.42, ease: 'power3.out' },
-        0.42
-      )
-      // 6. Event VIP Pass Card (3D entrance)
-      .fromTo('.vip-pass-card',
-        { autoAlpha: 0, rotationY: -10, rotationX: 6, x: 20, z: -25 },
-        { 
-          autoAlpha: 1, rotationY: 0, rotationX: 0, x: 0, z: 0, 
-          duration: reduceMotion ? 0 : 0.52, ease: 'back.out(1.15)'
-        },
-        0.36
-      )
-      .fromTo('.pass-row',
-        { autoAlpha: 0, x: 10 },
-        { autoAlpha: 1, x: 0, duration: reduceMotion ? 0 : 0.35, stagger: 0.05, ease: 'power2.out' },
-        0.48
-      )
-      // 7. Visible, high-impact CTA Button
-      .fromTo('.hero-cta-wrapper',
-        { autoAlpha: 0, y: 14, scale: 0.96 },
-        { autoAlpha: 1, y: 0, scale: 1, duration: reduceMotion ? 0 : 0.45, ease: 'back.out(1.3)', clearProps: 'transform' },
-        0.58
-      );
+          frag.appendChild(word);
+        });
+      });
+      el.textContent = '';
+      el.appendChild(frag);
+      return units;
+    };
 
-    // Subtle ambient breathing on logo title for continuous visual protagonism
-    if (!reduceMotion) {
-      gsap.to('.hero-brand-title', {
-        y: -4,
-        duration: 3.6,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-        delay: 1.5
+    if (reduceMotion) {
+      gsap.set(['.hero-bg', '.hero-glow'], { autoAlpha: 1 });
+    } else {
+      const topChars  = splitText(document.querySelector('.hero-logo-top'), 'chars', document.querySelector('.hero-brand-title'));
+      const mainChars = splitText(document.querySelector('.hero-logo-main'), 'chars');
+      const headWords = splitText(document.querySelector('.hero-headline'), 'words');
+
+      const heroTl = gsap.timeline({ delay: 0.15, defaults: { ease: 'expo.out' } });
+
+      heroTl
+        // Background: slow cinematic pull-back, then endless breathing
+        .fromTo('.hero-bg',
+          { scale: 1.35, autoAlpha: 0 },
+          {
+            scale: 1.06, autoAlpha: 0.9, duration: 3.2, ease: 'power2.out'
+          }, 0)
+        .fromTo('.hero-glow', { autoAlpha: 0 }, { autoAlpha: 1, duration: 2.4, ease: 'power2.out' }, 0)
+        .fromTo('.nav-event-meta .nav-meta-item',
+          { autoAlpha: 0, y: -8 },
+          { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.08 },
+          0.4)
+        // "INVERSIONISTA": letters rise and unfold in 3D
+        .fromTo(topChars,
+          { autoAlpha: 0, yPercent: 90, rotationX: -90, transformPerspective: 700, transformOrigin: '50% 100%' },
+          { autoAlpha: 1, yPercent: 0, rotationX: 0, duration: 1.4, stagger: 0.045 },
+          0.35)
+        // "IMPARABLE": the monumental word lands letter by letter
+        .fromTo(mainChars,
+          { autoAlpha: 0, yPercent: 70, rotationX: -80, scale: 1.18, transformPerspective: 900, transformOrigin: '50% 100%' },
+          { autoAlpha: 1, yPercent: 0, rotationX: 0, scale: 1, duration: 1.7, stagger: 0.075 },
+          0.75)
+        .fromTo(headWords,
+          { autoAlpha: 0, y: 26 },
+          { autoAlpha: 1, y: 0, duration: 1.1, stagger: 0.07 },
+          1.7)
+        .fromTo('.hero-subtitle',
+          { autoAlpha: 0, y: 18 },
+          { autoAlpha: 1, y: 0, duration: 1.1 },
+          2.05)
+        // Pass card sweeps in from depth
+        .fromTo('.vip-pass-card',
+          { autoAlpha: 0, rotationY: -20, rotationX: 8, x: 46, z: -70 },
+          { autoAlpha: 1, rotationY: 0, rotationX: 0, x: 0, z: 0, duration: 1.5 },
+          1.85)
+        .fromTo('.pass-row',
+          { autoAlpha: 0, y: 12 },
+          { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.14 },
+          2.3)
+        .fromTo('.hero-cta-wrapper',
+          { autoAlpha: 0, y: 26, scale: 0.94 },
+          { autoAlpha: 1, y: 0, scale: 1, duration: 1.1, clearProps: 'transform' },
+          2.5);
+
+      // Endless slow breathing of the background (starts after the pull-back finishes)
+      gsap.to('.hero-bg', { scale: 1.11, duration: 7, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 3.4 });
+
+      // Gold shimmer wave that travels across IMPARABLE, forever
+      const lit = '0 0 60px rgba(248, 237, 208, 0.7), 0 0 18px rgba(228, 194, 90, 0.55), 0 6px 24px rgba(0, 0, 0, 0.95)';
+      const base = '0 0 45px rgba(228, 194, 90, 0.4), 0 0 15px rgba(228, 194, 90, 0.2), 0 6px 24px rgba(0, 0, 0, 0.95)';
+      gsap.timeline({ delay: 4, repeat: -1, repeatDelay: 5 })
+        .to(mainChars, { color: '#FFEFB0', textShadow: lit, duration: 0.55, stagger: 0.085, ease: 'sine.inOut' })
+        .to(mainChars, { color: '#E4C25A', textShadow: base, duration: 0.8, stagger: 0.085, ease: 'sine.inOut' }, '<0.3');
+
+      // Gentle float of the whole title block
+      gsap.to('.hero-brand-title', { y: -5, duration: 4, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 2 });
+
+      // Scroll-out: content drifts up and fades while the background lags behind
+      gsap.to('.hero-layout-v3', {
+        y: -90, autoAlpha: 0.1, ease: 'none',
+        scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true }
+      });
+      gsap.to('.hero-bg', {
+        yPercent: 10, ease: 'none',
+        scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true }
       });
 
-      const logoEl = document.querySelector('.hero-brand-logo');
-      if (logoEl) {
-        logoEl.addEventListener('mouseenter', () => {
-          gsap.to('.hero-brand-title', { scale: 1.025, duration: 0.45, ease: 'power2.out', overwrite: 'auto' });
+      /* ---- Pointer-driven depth (desktop with a real pointer only) ---- */
+      if (isDesktop && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        const heroEl = document.getElementById('hero');
+        const qx = (t, p, d) => gsap.quickTo(t, p, { duration: d, ease: 'power3.out' });
+
+        const bgX = qx('.hero-bg', 'x', 1.4), bgY = qx('.hero-bg', 'y', 1.4);
+        const logoX = qx('.hero-brand-logo', 'x', 1.1), logoY = qx('.hero-brand-logo', 'y', 1.1);
+        const logoRY = qx('.hero-brand-logo', 'rotationY', 1.2), logoRX = qx('.hero-brand-logo', 'rotationX', 1.2);
+        gsap.set('.hero-brand-logo', { transformPerspective: 1000 });
+
+        on(heroEl, 'pointermove', (e) => {
+          const r = heroEl.getBoundingClientRect();
+          const nx = (e.clientX - r.left) / r.width - 0.5;
+          const ny = (e.clientY - r.top) / r.height - 0.5;
+          bgX(-nx * 34); bgY(-ny * 22);
+          logoX(nx * 16); logoY(ny * 10);
+          logoRY(nx * 7); logoRX(-ny * 5);
         });
-        logoEl.addEventListener('mouseleave', () => {
-          gsap.to('.hero-brand-title', { scale: 1, duration: 0.55, ease: 'power2.out', overwrite: 'auto' });
+        on(heroEl, 'pointerleave', () => {
+          bgX(0); bgY(0); logoX(0); logoY(0); logoRY(0); logoRX(0);
         });
+
+        // Pass card: 3D tilt + light that follows the cursor (armed once the entrance ends)
+        heroTl.eventCallback('onComplete', () => {
+          const card = document.querySelector('.vip-pass-card');
+          const glow = document.querySelector('.vip-pass-glow');
+          if (!card) return;
+          const tiltY = qx(card, 'rotationY', 0.6), tiltX = qx(card, 'rotationX', 0.6);
+          const glowX = qx(glow, 'x', 0.7), glowY = qx(glow, 'y', 0.7);
+          on(card, 'pointermove', (e) => {
+            const r = card.getBoundingClientRect();
+            const nx = (e.clientX - r.left) / r.width - 0.5;
+            const ny = (e.clientY - r.top) / r.height - 0.5;
+            tiltY(nx * 12); tiltX(-ny * 10);
+            glowX(nx * r.width * 0.9); glowY(ny * r.height * 0.9);
+          });
+          on(card, 'pointerleave', () => { tiltY(0); tiltX(0); glowX(0); glowY(0); });
+        });
+
+        // Magnetic CTA
+        const cta = document.querySelector('.btn-hero-cta');
+        if (cta) {
+          on(cta, 'pointermove', (e) => {
+            const r = cta.getBoundingClientRect();
+            const dx = e.clientX - (r.left + r.width / 2);
+            const dy = e.clientY - (r.top + r.height / 2);
+            gsap.to(cta, { x: dx * 0.28, y: dy * 0.4, scale: 1.05, duration: 0.45, ease: 'power3.out', overwrite: 'auto' });
+          });
+          on(cta, 'pointerleave', () => {
+            gsap.to(cta, { x: 0, y: 0, scale: 1, duration: 1, ease: 'elastic.out(1, 0.4)', overwrite: 'auto' });
+          });
+        }
       }
     }
-
 
     /* ======================================================
        1.5 HERO â€” ORGANIC FLOATING LEAVES CANVAS (100% BOTANICAL)
@@ -142,29 +219,34 @@ mm.add(
     const canvas = document.getElementById('hero-particles-canvas');
     if (canvas && !reduceMotion) {
       const ctx = canvas.getContext('2d');
-      let width = canvas.width = canvas.offsetWidth;
-      let height = canvas.height = canvas.offsetHeight;
+      const pixelRatio = () => Math.min(window.devicePixelRatio || 1, 2);
+      let width = 0, height = 0;
+      const sizeCanvas = () => {
+        const d = pixelRatio();
+        width = canvas.offsetWidth;
+        height = canvas.offsetHeight;
+        canvas.width = Math.round(width * d);
+        canvas.height = Math.round(height * d);
+        ctx.setTransform(d, 0, 0, d, 0, 0);
+      };
+      sizeCanvas();
 
       const mouse = { x: -1000, y: -1000, radius: isDesktop ? 160 : 100 };
       const leafCount = isDesktop ? 42 : 20;
       const leaves = [];
 
-      const onResize = () => {
-        if (!canvas) return;
-        width = canvas.width = canvas.offsetWidth;
-        height = canvas.height = canvas.offsetHeight;
-      };
-      window.addEventListener('resize', onResize, { passive: true });
+      const onResize = () => { if (canvas) sizeCanvas(); };
+      on(window, 'resize', onResize, { passive: true });
 
       const heroSec = document.getElementById('hero');
       if (heroSec) {
-        heroSec.addEventListener('pointermove', (e) => {
+        on(heroSec, 'pointermove', (e) => {
           const rect = canvas.getBoundingClientRect();
           mouse.x = e.clientX - rect.left;
           mouse.y = e.clientY - rect.top;
         }, { passive: true });
 
-        heroSec.addEventListener('pointerleave', () => {
+        on(heroSec, 'pointerleave', () => {
           mouse.x = -1000;
           mouse.y = -1000;
         }, { passive: true });
@@ -182,7 +264,7 @@ mm.add(
           rotSpeed: (Math.random() - 0.5) * 0.018,
           tilt: Math.random() * Math.PI * 2,
           tiltSpeed: Math.random() * 0.02 + 0.01,
-          color: (i % 5 === 0) ? 'rgba(147, 197, 253,' : (i % 3 === 0 ? 'rgba(232, 217, 189,' : 'rgba(201, 169, 110,'),
+          color: (i % 5 === 0) ? 'rgba(147, 197, 253,' : (i % 3 === 0 ? 'rgba(236, 222, 191,' : 'rgba(214, 179, 103,'),
           alpha: Math.random() * 0.28 + 0.18
         });
       }
@@ -271,10 +353,7 @@ mm.add(
 
       let animId;
       function render() {
-        if (!width || !height) {
-          width = canvas.width = canvas.offsetWidth;
-          height = canvas.height = canvas.offsetHeight;
-        }
+        if (!width || !height) sizeCanvas();
         ctx.clearRect(0, 0, width, height);
 
         for (let i = 0; i < leaves.length; i++) {
@@ -322,6 +401,7 @@ mm.add(
       }
 
       render();
+      cleanups.push(() => cancelAnimationFrame(animId));
 
       ScrollTrigger.create({
         trigger: '#hero',
@@ -570,16 +650,16 @@ mm.add(
               gsap.to(step, { y: -5, duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
               if (ill) gsap.to(ill, { autoAlpha: 0.75, scale: 1.05, duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
               if (title) gsap.to(title, { color: '#FFF8EE', duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
-              if (roman) gsap.to(roman, { autoAlpha: 0.55, color: '#BA9758', duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
-              if (twig) gsap.to(twig, { stroke: '#E2D2A4', opacity: 0.9, duration: 0.35, overwrite: 'auto' });
+              if (roman) gsap.to(roman, { autoAlpha: 0.55, color: '#C8A150', duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
+              if (twig) gsap.to(twig, { stroke: '#E7D6A5', opacity: 0.9, duration: 0.35, overwrite: 'auto' });
             });
 
             step.addEventListener('mouseleave', () => {
               gsap.to(step, { y: 0, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
               if (ill) gsap.to(ill, { autoAlpha: 0.45, scale: 1, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
               if (title) gsap.to(title, { color: '#FFFFFF', duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
-              if (roman) gsap.to(roman, { autoAlpha: 0.32, color: 'rgba(197, 160, 89, 0.32)', duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
-              if (twig) gsap.to(twig, { stroke: '#C5A059', opacity: 0.6, duration: 0.4, overwrite: 'auto' });
+              if (roman) gsap.to(roman, { autoAlpha: 0.32, color: 'rgba(212, 171, 80, 0.32)', duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
+              if (twig) gsap.to(twig, { stroke: '#D4AB50', opacity: 0.6, duration: 0.4, overwrite: 'auto' });
             });
           });
         }
@@ -780,58 +860,45 @@ mm.add(
     }
 
     /* ======================================================
-       6.5 CINTA MOVIL â€” INFINITE LUXURY MARQUEE TICKER (GSAP CORE)
+       6.5 CINTAS — INFINITE MARQUEE TICKER
+           One ribbon is authored in the HTML and cloned into every
+           [data-cinta-slot] by main.js. Each one only runs while on screen.
        ====================================================== */
-    const trackLeft  = document.getElementById('cinta-track-left');
-    const trackRight = document.getElementById('cinta-track-right');
-    const cintaLink  = document.getElementById('cinta-cta-link');
+    document.querySelectorAll('.cinta-movil-section').forEach((sec) => {
+      const trackLeft  = sec.querySelector('.cinta-track--left');
+      const trackRight = sec.querySelector('.cinta-track--right');
+      const cintaLink  = sec.querySelector('.cinta-movil-link');
+      if (!trackLeft || !trackRight) return;
 
-    if (trackLeft && trackRight) {
-      if (!reduceMotion) {
-        // Track 1: Moving infinitely to the left
-        const tweenLeft = gsap.to(trackLeft, {
-          xPercent: -50,
-          ease: 'none',
-          duration: isDesktop ? 22 : 16,
-          repeat: -1
-        });
-
-        // Track 2: Moving infinitely to the right
-        const tweenRight = gsap.fromTo(trackRight,
-          { xPercent: -50 },
-          {
-            xPercent: 0,
-            ease: 'none',
-            duration: isDesktop ? 28 : 20,
-            repeat: -1
-          }
-        );
-
-        // Hover deceleration / smooth control via GSAP Core
-        if (cintaLink && isDesktop) {
-          cintaLink.addEventListener('mouseenter', () => {
-            gsap.to([tweenLeft, tweenRight], {
-              timeScale: 0.2,
-              duration: 0.45,
-              ease: 'power2.out',
-              overwrite: 'auto'
-            });
-          });
-
-          cintaLink.addEventListener('mouseleave', () => {
-            gsap.to([tweenLeft, tweenRight], {
-              timeScale: 1,
-              duration: 0.5,
-              ease: 'power2.out',
-              overwrite: 'auto'
-            });
-          });
-        }
-      } else {
-        // Reduced motion accessibility fallback: keep static
+      if (reduceMotion) {
         gsap.set([trackLeft, trackRight], { xPercent: 0 });
+        return;
       }
-    }
+
+      const tweenLeft = gsap.to(trackLeft, {
+        xPercent: -50, ease: 'none', duration: isDesktop ? 22 : 16, repeat: -1
+      });
+      const tweenRight = gsap.fromTo(trackRight,
+        { xPercent: -50 },
+        { xPercent: 0, ease: 'none', duration: isDesktop ? 28 : 20, repeat: -1 }
+      );
+
+      // Pause off-screen ribbons: several run on the page, only visible ones cost CPU
+      const sync = (self) => { tweenLeft.paused(!self.isActive); tweenRight.paused(!self.isActive); };
+      ScrollTrigger.create({
+        trigger: sec, start: 'top bottom', end: 'bottom top',
+        onToggle: sync, onRefresh: sync
+      });
+
+      if (cintaLink && isDesktop) {
+        cintaLink.addEventListener('mouseenter', () => {
+          gsap.to([tweenLeft, tweenRight], { timeScale: 0.2, duration: 0.45, ease: 'power2.out', overwrite: 'auto' });
+        });
+        cintaLink.addEventListener('mouseleave', () => {
+          gsap.to([tweenLeft, tweenRight], { timeScale: 1, duration: 0.5, ease: 'power2.out', overwrite: 'auto' });
+        });
+      }
+    });
 
     /* ======================================================
        7. SPEAKER CARDS â€” ELEGANT HOVER LIFT (Lag-free)
@@ -923,8 +990,8 @@ mm.add(
           });
           if (border) {
             gsap.to(border, {
-              borderColor: 'rgba(197, 160, 89, 0.62)',
-              boxShadow: '0 18px 40px rgba(0, 0, 0, 0.65), 0 0 28px rgba(197, 160, 89, 0.16)',
+              borderColor: 'rgba(212, 171, 80, 0.62)',
+              boxShadow: '0 18px 40px rgba(0, 0, 0, 0.65), 0 0 28px rgba(212, 171, 80, 0.16)',
               duration: 0.38,
               ease: 'power2.out',
               overwrite: 'auto'
@@ -980,7 +1047,7 @@ mm.add(
           });
           if (border) {
             gsap.to(border, {
-              borderColor: 'rgba(197, 160, 89, 0.24)',
+              borderColor: 'rgba(212, 171, 80, 0.24)',
               boxShadow: '0 8px 25px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.025)',
               duration: 0.45,
               ease: 'power2.out',
@@ -1305,55 +1372,27 @@ mm.add(
       }
     }
 
-    /* Auspiciadores: entrada sutil e interacciÃ³n hover de luminosidad */
-    const auspiciadoresSec = document.getElementById('auspiciadores');
-    if (auspiciadoresSec) {
+    /* Auspiciadores: organizador primero, luego los logos en cascada (hover lo resuelve el CSS) */
+    if (document.getElementById('auspiciadores')) {
+      const logos = '#auspiciadores .organizer-logo, #auspiciadores .sponsor-cell';
       if (!reduceMotion) {
-        gsap.fromTo('#auspiciadores .sponsor-brand',
-          { autoAlpha: 0, y: 12 },
+        gsap.fromTo(logos,
+          { autoAlpha: 0, y: 16 },
           {
             autoAlpha: 1,
             y: 0,
-            duration: 0.45,
-            stagger: 0.08,
-            ease: 'power2.out',
+            duration: 0.8,
+            stagger: 0.1,
+            ease: 'power3.out',
             scrollTrigger: {
               trigger: '#auspiciadores',
-              start: 'top 90%',
+              start: 'top 85%',
               toggleActions: 'play none none none'
             }
           }
         );
-
-        document.querySelectorAll('.sponsor-brand').forEach((brand) => {
-          const img = brand.querySelector('img');
-          if (img) {
-            brand.addEventListener('mouseenter', () => {
-              gsap.to(img, {
-                filter: 'grayscale(0) brightness(100%)',
-                opacity: 1,
-                y: -5,
-                scale: 1.06,
-                duration: 0.3,
-                ease: 'power2.out',
-                overwrite: 'auto'
-              });
-            });
-            brand.addEventListener('mouseleave', () => {
-              gsap.to(img, {
-                filter: 'grayscale(1) brightness(140%) sepia(20%)',
-                opacity: 0.78,
-                y: 0,
-                scale: 1,
-                duration: 0.35,
-                ease: 'power2.out',
-                overwrite: 'auto'
-              });
-            });
-          }
-        });
       } else {
-        gsap.set('.sponsor-brand', { autoAlpha: 1, y: 0 });
+        gsap.set(logos, { autoAlpha: 1, y: 0 });
       }
     }
 
@@ -1536,6 +1575,8 @@ mm.add(
         });
       });
     }
+
+    return () => { cleanups.forEach((fn) => fn()); abort.abort(); };
   }
 );
 
@@ -1545,7 +1586,7 @@ mm.add(
   });
 }
 
-console.log('%c GSAP Animations Loaded ', 'background:#D4AF37;color:#05130E;font-weight:700;padding:4px 8px;border-radius:3px;');
+console.log('%c GSAP Animations Loaded ', 'background:#DDB534;color:#05130E;font-weight:700;padding:4px 8px;border-radius:3px;');
 
 
 
@@ -1567,8 +1608,8 @@ console.log('%c GSAP Animations Loaded ', 'background:#D4AF37;color:#05130E;font
   var CW = 180;
   var dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-  function gold(a) { return 'rgba(201, 169, 110, ' + a + ')'; }
-  function goldLight(a) { return 'rgba(232, 217, 189, ' + a + ')'; }
+  function gold(a) { return 'rgba(214, 179, 103, ' + a + ')'; }
+  function goldLight(a) { return 'rgba(236, 222, 191, ' + a + ')'; }
 
   function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
   function easeOutBack(t) {

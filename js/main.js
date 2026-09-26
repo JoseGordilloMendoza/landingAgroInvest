@@ -2,8 +2,33 @@
    INVERSIONISTA IMPARABLE — MAIN JAVASCRIPT
    ============================================================ */
 
+// ---- BOTÓN DEL HEADER: visible siempre, salvo cuando el formulario ya está en pantalla ----
+(function navCtaVisibility() {
+  const cta = document.getElementById('nav-cta-btn');
+  const target = document.getElementById('registro');
+  if (!cta || !target || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(([entry]) => {
+    cta.classList.toggle('is-away', entry.isIntersecting);
+  }, { threshold: 0.35 }).observe(target);
+})();
+
+// ---- CINTAS: reutiliza la cinta original en cada punto marcado con data-cinta-slot ----
+(function cloneCintas() {
+  const src = document.getElementById('banner-cinta');
+  if (!src) return;
+  document.querySelectorAll('[data-cinta-slot]').forEach((slot) => {
+    const clone = src.cloneNode(true);
+    clone.removeAttribute('id');
+    clone.querySelectorAll('[id]').forEach((n) => n.removeAttribute('id'));
+    clone.setAttribute('aria-hidden', 'true');
+    const link = clone.querySelector('a');
+    if (link) link.tabIndex = -1;
+    slot.replaceWith(clone);
+  });
+})();
+
 // ---- COUNTDOWN TIMER WITH PRECISION HOROLOGICAL TRANSITION ----
-// Fecha del evento: 10 de octubre 2026, 3:00 PM hora Arequipa / Peru (UTC-5)
+// Fecha del evento: 10 de octubre 2026, 3:00 PM hora Arequipa / Perú (UTC-5)
 const EVENT_DATE = new Date('2026-10-10T15:00:00-05:00');
 
 const prevCountdownValues = {
@@ -117,41 +142,83 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ---- FORM SUBMISSION FEEDBACK ----
-const forms = document.querySelectorAll('form[data-formspree]');
+// Origen de la visita (campaña): ?utm_source=instagram, ?fuente=... o el sitio que nos refirió.
+function visitSource() {
+  try {
+    const q = new URLSearchParams(window.location.search);
+    const explicit = q.get('utm_source') || q.get('fuente');
+    if (explicit) return explicit;
+    if (document.referrer) return new URL(document.referrer).hostname.replace(/^www./, '');
+  } catch (e) { /* sin origen */ }
+  return 'directo';
+}
+
+const forms = document.querySelectorAll('form[data-registro]');
 forms.forEach(form => {
+  const errorEl = form.querySelector('.form-error');
+  const successEl = document.getElementById('registro-exito');
+  const sourceField = form.querySelector('#reg-fuente');
+  if (sourceField) sourceField.value = visitSource().slice(0, 60);
+
+  const showError = (msg) => {
+    if (!errorEl) return;
+    errorEl.textContent = msg;
+    errorEl.hidden = false;
+  };
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const btn = form.querySelector('button[type="submit"]');
-    const originalText = btn.textContent;
+    if (errorEl) errorEl.hidden = true;
 
-    btn.textContent = 'Enviando...';
+    // Native validation UI (form has novalidate so we control when it shows)
+    if (!form.reportValidity()) return;
+
+    const btn = form.querySelector('button[type="submit"]');
+    const label = btn.querySelector('span');
+    const originalText = label ? label.textContent : btn.textContent;
+    const setLabel = (t) => { if (label) label.textContent = t; else btn.textContent = t; };
+    const resetButton = () => { setLabel(originalText); btn.disabled = false; btn.style.opacity = '1'; };
+
+    setLabel('Enviando...');
     btn.disabled = true;
     btn.style.opacity = '0.7';
 
     try {
-      const formData = new FormData(form);
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      });
+      const data = new FormData(form);
+      data.set('t', String(Math.round(performance.now()))); // ms desde que cargó la página (anti-bots)
 
-      if (response.ok) {
-        form.innerHTML = `
-          <div style="text-align:center; padding: 2rem 0;">
-            <div style="width:64px;height:64px;background:#D4AF37;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.8rem;color:#05130E;font-weight:900;">✓</div>
-            <h3 style="font-size:1.3rem;font-weight:700;margin-bottom:0.75rem;">¡Registro confirmado!</h3>
-            <p style="color:rgba(245,240,232,0.7);font-size:0.9rem;line-height:1.6;">Recibirás un mensaje de confirmación pronto.<br>¡Nos vemos el <strong style="color:#c9a84c;">10 de octubre</strong>!</p>
-          </div>
-        `;
-      } else {
-        throw new Error('Error en el servidor');
+      const response = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+      let payload = null;
+      try { payload = await response.json(); } catch (e2) { /* respuesta sin JSON */ }
+
+      if (response.status === 422 && payload && payload.fields) {
+        showError(Object.values(payload.fields).join(' '));
+        resetButton();
+        return;
+      }
+      if (response.status === 429) {
+        showError('Hiciste varios intentos seguidos. Espera unos minutos y vuelve a intentarlo.');
+        resetButton();
+        return;
+      }
+      if (!response.ok || !payload || payload.ok !== true) throw new Error('Error en el servidor');
+
+      // Success: swap form for confirmation + WhatsApp group button
+      const plate = form.closest('.plate-content');
+      const header = plate && plate.querySelector('.plate-header');
+      if (header) header.hidden = true;
+      form.hidden = true;
+      if (successEl) {
+        const group = form.dataset.whatsappGroup;
+        const link = successEl.querySelector('.btn-whatsapp');
+        if (group && link) link.href = group;
+        successEl.hidden = false;
+        successEl.focus({ preventScroll: true });
+        successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     } catch (err) {
-      btn.textContent = originalText;
-      btn.disabled = false;
-      btn.style.opacity = '1';
-      alert('Hubo un error al enviar. Por favor intenta de nuevo.');
+      resetButton();
+      showError('No pudimos enviar tu registro. Revisa tu conexión e inténtalo de nuevo.');
     }
   });
 });
@@ -181,4 +248,4 @@ window.addEventListener('scroll', () => {
   });
 }, { passive: true });
 
-console.log('%c INVERSIONISTA IMPARABLE ', 'background:#c9a84c;color:#0a0a0a;font-weight:900;font-size:16px;padding:6px 12px;border-radius:4px;');
+console.log('%c INVERSIONISTA IMPARABLE ', 'background:#DAB241;color:#0a0a0a;font-weight:900;font-size:16px;padding:6px 12px;border-radius:4px;');

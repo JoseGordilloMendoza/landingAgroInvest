@@ -1,0 +1,70 @@
+/* ============================================================
+   AMBIENT LAYER — progress bar, golden dust, ripple
+   Loaded after styles.css. Built by js/ambient.js
+   ============================================================ */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 1001;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(214, 179, 103, 0.7);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  pointer-events: none;
+}
+
+/* Above section backgrounds, below the nav and marquee */
+.ambient-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.tap-ripple {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 72px;
+  height: 72px;
+  margin: -36px 0 0 -36px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(236, 222, 191, 0.85);
+  box-shadow: 0 0 14px rgba(214, 179, 103, 0.45);
+  pointer-events: none;
+  z-index: 2000;
+}
+
+/* ---- Desktop pointer: soft light that follows the mouse ---- */
+.cursor-light {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(214, 179, 103, 0.07) 0%, rgba(214, 179, 103, 0) 68%);
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 4;
+}
+
+/* Magnetic buttons: GSAP owns transform, so CSS must not transition or override it */
+.is-magnetic {
+  transition: box-shadow 0.35s ease, filter 0.35s ease, background 0.35s ease, color 0.35s ease;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .ambient-canvas,
+  .cursor-light,
+  .tap-ripple {
+    display: none;
+  }
+}
