@@ -1,0 +1,11 @@
+# Solo registro.php debe poder abrirse desde el navegador.
+<FilesMatch "^(lib\.php|sync-pendientes\.php|config.*\.php|.*\.sql|.*\.log|\.htaccess)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+Options -Indexes
