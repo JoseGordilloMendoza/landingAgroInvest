@@ -2654,32 +2654,32 @@ section { padding: 6rem 2rem; }
 .auspiciadores-endorsement {
   position: relative;
   background: #040913;
-  padding: 2.5rem 0 6rem;
+  padding: 3rem 0 6.5rem;
   text-align: center;
 }
 
 .auspiciadores-inner {
-  max-width: 920px;
+  max-width: 1060px;
   margin: 0 auto;
-  padding-top: 2.5rem;
-  border-top: 1px solid rgba(197, 160, 89, 0.12);
+  padding-top: 3rem;
+  border-top: 1px solid rgba(197, 160, 89, 0.14);
 }
 
 .auspiciadores-kicker {
   font-family: 'Cinzel', serif;
-  font-size: 0.76rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.34em;
   text-transform: uppercase;
-  color: #8E9FB8;
-  margin-bottom: 2.5rem;
+  color: #9CB0CB;
+  margin-bottom: 3rem;
 }
 
 .auspiciadores-logos-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5rem;
+  gap: 5.5rem;
   flex-wrap: wrap;
 }
 
@@ -2687,16 +2687,16 @@ section { padding: 6rem 2rem; }
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 220px;
+  max-width: 280px;
   cursor: pointer;
 }
 
 .sponsor-brand img {
-  max-height: 58px;
+  max-height: 85px;
   width: auto;
   max-width: 100%;
   object-fit: contain;
-  opacity: 0.52;
+  opacity: 0.65;
   filter: grayscale(1) brightness(140%) sepia(20%);
   transition: opacity 0.35s ease, filter 0.35s ease, transform 0.35s ease;
 }
@@ -2704,7 +2704,7 @@ section { padding: 6rem 2rem; }
 .sponsor-brand:hover img {
   opacity: 1;
   filter: grayscale(0) brightness(100%);
-  transform: translateY(-3px) scale(1.04);
+  transform: translateY(-4px) scale(1.05);
 }
 
 @media (max-width: 768px) {
@@ -2712,13 +2712,13 @@ section { padding: 6rem 2rem; }
     padding: 2.2rem 1.6rem 2rem;
   }
   .auspiciadores-logos-wrap {
-    gap: 3rem;
+    gap: 3.5rem;
   }
   .sponsor-brand {
-    max-width: 160px;
+    max-width: 200px;
   }
   .sponsor-brand img {
-    max-height: 44px;
+    max-height: 60px;
   }
   .registro-botanical {
     opacity: 0.2;
