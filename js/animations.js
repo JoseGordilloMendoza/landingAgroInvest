@@ -446,11 +446,11 @@ mm.add(
     const viajeSection = document.getElementById('transformacion');
     if (viajeSection) {
       if (!reduceMotion) {
-        // Section entrance timeline
+        // Section entrance timeline — triggers promptly on entering viewport
         const viajeTl = gsap.timeline({
           scrollTrigger: {
             trigger: '#transformacion',
-            start: 'top 75%',
+            start: 'top 85%',
             toggleActions: 'play none none none'
           }
         });
@@ -458,85 +458,85 @@ mm.add(
         // 1. Kicker, Title, and Gold line reveal
         viajeTl
           .fromTo('#transform-kicker',
-            { autoAlpha: 0, y: 12 },
-            { autoAlpha: 1, y: 0, duration: 0.55, ease: 'power2.out' }
+            { autoAlpha: 0, y: 10 },
+            { autoAlpha: 1, y: 0, duration: 0.28, ease: 'power2.out' }
           )
           .fromTo('#transform-title',
-            { autoAlpha: 0, y: 22 },
-            { autoAlpha: 1, y: 0, duration: 0.8, ease: 'power3.out' },
-            '-=0.3'
+            { autoAlpha: 0, y: 16 },
+            { autoAlpha: 1, y: 0, duration: 0.38, ease: 'power3.out' },
+            0.08
           )
           .fromTo('#transformacion .editorial-gold-line .line-fill',
             { scaleX: 0 },
-            { scaleX: 1, duration: 0.75, ease: 'power2.inOut', transformOrigin: 'center' },
-            '-=0.45'
+            { scaleX: 1, duration: 0.35, ease: 'power2.inOut', transformOrigin: 'center' },
+            0.14
           );
 
-        // 2. Dibujo progresivo de la rama orgánica central
+        // 2. Dibujo progresivo de la rama orgánica central en PARALELO (sin bloquear las cards)
         const mainStem = document.querySelector('.viaje-stem-main');
         if (mainStem) {
           const stemLength = mainStem.getTotalLength ? mainStem.getTotalLength() : 1500;
           gsap.set(mainStem, { strokeDasharray: stemLength, strokeDashoffset: stemLength });
           viajeTl.to(mainStem, {
             strokeDashoffset: 0,
-            duration: 1.85,
+            duration: 1.2,
             ease: 'power2.inOut'
-          }, '-=0.3');
+          }, 0.1);
         }
 
         viajeTl.fromTo('.viaje-stem-accent',
           { autoAlpha: 0 },
-          { autoAlpha: 0.35, duration: 1.1, ease: 'power2.out' },
-          '-=1.4'
+          { autoAlpha: 0.35, duration: 0.7, ease: 'power2.out' },
+          0.14
         );
 
         viajeTl.fromTo('.viaje-node-dot, .viaje-twig',
           { autoAlpha: 0, scale: 0.7 },
-          { autoAlpha: 0.65, scale: 1, duration: 0.65, stagger: 0.14, ease: 'power2.out' },
-          '-=1.3'
+          { autoAlpha: 0.65, scale: 1, duration: 0.45, stagger: 0.05, ease: 'power2.out' },
+          0.16
         );
 
-        // 3. Etapas del viaje aparecen secuencialmente siguiendo la rama
+        // 3. Etapas del viaje (CARDS): aparecen de inmediato sin demora con stagger fluido
         const steps = document.querySelectorAll('.viaje-step');
         steps.forEach((step, idx) => {
-          const inner = step.querySelector('.viaje-step-inner');
           const roman = step.querySelector('.viaje-roman');
           const ill   = step.querySelector('.viaje-illustration');
           const body  = step.querySelector('.viaje-body');
+          const stepStartTime = 0.18 + (idx * 0.07);
 
           viajeTl.fromTo(step,
-            { autoAlpha: 0, y: 20 },
+            { autoAlpha: 0, y: 18 },
             {
               autoAlpha: 1,
               y: 0,
-              duration: 0.5,
+              duration: 0.42,
               ease: 'power3.out',
               clearProps: 'transform'
             },
-            `-=${idx === 0 ? '0.6' : '0.35'}`
+            stepStartTime
           );
 
           if (roman) {
             viajeTl.fromTo(roman,
-              { autoAlpha: 0, y: 8 },
-              { autoAlpha: 0.32, y: 0, duration: 0.4, ease: 'power2.out' },
-              '-=0.38'
+              { autoAlpha: 0, y: 6 },
+              { autoAlpha: 0.32, y: 0, duration: 0.35, ease: 'power2.out' },
+              stepStartTime + 0.03
             );
           }
 
           if (ill) {
             viajeTl.fromTo(ill,
               { autoAlpha: 0, scale: 0.94 },
-              { autoAlpha: 0.45, scale: 1, duration: 0.45, ease: 'power2.out' },
-              '-=0.38'
+              { autoAlpha: 0.45, scale: 1, duration: 0.38, ease: 'power2.out' },
+              stepStartTime + 0.03
             );
           }
 
           if (body) {
             viajeTl.fromTo(body,
               { autoAlpha: 0, y: 6 },
-              { autoAlpha: 1, y: 0, duration: 0.38, ease: 'power2.out' },
-              '-=0.35'
+              { autoAlpha: 1, y: 0, duration: 0.32, ease: 'power2.out' },
+              stepStartTime + 0.04
             );
           }
         });
@@ -1076,7 +1076,7 @@ mm.add(
         const herbarioTl = gsap.timeline({
           scrollTrigger: {
             trigger: '#beneficios',
-            start: 'top 78%',
+            start: 'top 85%',
             toggleActions: 'play none none none'
           }
         });
@@ -1084,72 +1084,72 @@ mm.add(
         herbarioTl
           // 1. Kicker & Title
           .fromTo('#beneficios-kicker',
-            { autoAlpha: 0, y: 12 },
-            { autoAlpha: 1, y: 0, duration: 0.45, ease: 'power2.out' }
+            { autoAlpha: 0, y: 10 },
+            { autoAlpha: 1, y: 0, duration: 0.28, ease: 'power2.out' }
           )
           .fromTo('.herbario-title-lead',
-            { autoAlpha: 0, y: 20 },
-            { autoAlpha: 1, y: 0, duration: 0.55, ease: 'power3.out' },
-            '-=0.3'
+            { autoAlpha: 0, y: 16 },
+            { autoAlpha: 1, y: 0, duration: 0.35, ease: 'power3.out' },
+            0.08
           )
           .fromTo('.herbario-title-accent',
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.55, ease: 'power3.out' },
-            '-=0.38'
+            { autoAlpha: 0, y: 14 },
+            { autoAlpha: 1, y: 0, duration: 0.35, ease: 'power3.out' },
+            0.14
           )
           // 2. Línea divisoria y hoja central
           .fromTo('.herbario-divider-line',
             { scaleX: 0 },
-            { scaleX: 1, duration: 0.5, ease: 'power2.inOut', transformOrigin: 'center' },
-            '-=0.35'
+            { scaleX: 1, duration: 0.3, ease: 'power2.inOut', transformOrigin: 'center' },
+            0.16
           )
           .fromTo('.herbario-divider-leaf',
             { autoAlpha: 0, scale: 0.6 },
-            { autoAlpha: 1, scale: 1, duration: 0.4, ease: 'back.out(1.8)' },
-            '-=0.45'
+            { autoAlpha: 1, scale: 1, duration: 0.28, ease: 'back.out(1.8)' },
+            0.18
           )
-          // 3. Ramas tenues de fondo
+          // 3. Ramas tenues de fondo en PARALELO (sin bloquear las cards)
           .fromTo('.herbario-backdrop-svg path',
             { strokeDashoffset: 120, strokeDasharray: 120 },
-            { strokeDashoffset: 0, duration: 1.6, stagger: 0.15, ease: 'power2.out' },
-            '-=0.4'
+            { strokeDashoffset: 0, duration: 1.2, stagger: 0.1, ease: 'power2.out' },
+            0.10
           )
-          // 4. Asymmetrical Folios Entrance
+          // 4. Asymmetrical Folios Entrance: CARDS APARECEN DE INMEDIATO
           // Elemento 01 (Tallo): entra desde la izquierda
           .fromTo('#folio-01',
-            { autoAlpha: 0, x: -28, y: 10 },
-            { autoAlpha: 1, x: 0, y: 0, duration: 0.65, ease: 'power3.out' },
-            '-=0.35'
+            { autoAlpha: 0, x: -22, y: 8 },
+            { autoAlpha: 1, x: 0, y: 0, duration: 0.42, ease: 'power3.out' },
+            0.20
           )
           // Elemento 02 (Follaje): entra desde la derecha
           .fromTo('#folio-02',
-            { autoAlpha: 0, x: 28, y: 10 },
-            { autoAlpha: 1, x: 0, y: 0, duration: 0.65, ease: 'power3.out' },
-            '-=0.55'
+            { autoAlpha: 0, x: 22, y: 8 },
+            { autoAlpha: 1, x: 0, y: 0, duration: 0.42, ease: 'power3.out' },
+            0.24
           )
           // Elemento 03 (PIEZA PRINCIPAL): entra con autoridad central y escala suave
           .fromTo('#folio-03',
-            { autoAlpha: 0, scale: 0.95, y: 22 },
-            { autoAlpha: 1, scale: 1, y: 0, duration: 0.75, ease: 'back.out(1.2)' },
-            '-=0.5'
+            { autoAlpha: 0, scale: 0.96, y: 16 },
+            { autoAlpha: 1, scale: 1, y: 0, duration: 0.48, ease: 'back.out(1.2)' },
+            0.22
           )
           // Elemento 04 (Semilla): entra desde abajo-izquierda
           .fromTo('#folio-04',
-            { autoAlpha: 0, x: -20, y: 22 },
-            { autoAlpha: 1, x: 0, y: 0, duration: 0.65, ease: 'power3.out' },
-            '-=0.5'
+            { autoAlpha: 0, x: -16, y: 16 },
+            { autoAlpha: 1, x: 0, y: 0, duration: 0.42, ease: 'power3.out' },
+            0.30
           )
           // Elemento 05 (Ramificación): entra desde abajo-derecha
           .fromTo('#folio-05',
-            { autoAlpha: 0, x: 20, y: 22 },
-            { autoAlpha: 1, x: 0, y: 0, duration: 0.65, ease: 'power3.out' },
-            '-=0.55'
+            { autoAlpha: 0, x: 16, y: 16 },
+            { autoAlpha: 1, x: 0, y: 0, duration: 0.42, ease: 'power3.out' },
+            0.34
           )
           // 5. Grabados botánicos se revelan progresivamente dentro de cada pieza
           .fromTo('.folio-engraving',
-            { autoAlpha: 0, scale: 0.92 },
-            { autoAlpha: 0.24, scale: 1, duration: 0.65, stagger: 0.08, ease: 'power2.out' },
-            '-=0.5'
+            { autoAlpha: 0, scale: 0.94 },
+            { autoAlpha: 0.24, scale: 1, duration: 0.42, stagger: 0.04, ease: 'power2.out' },
+            0.28
           );
 
         // Parallax sutil en grabados botánicos durante scroll
