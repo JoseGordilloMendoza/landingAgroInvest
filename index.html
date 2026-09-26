@@ -23,6 +23,179 @@
 <body>
 
   <!-- ========================================================
+       HILO CONDUCTOR BOTÁNICO — Fixed scroll-driven botanical vine
+       Two mirrored half-vines (left + right margin) that grow
+       progressively from top to bottom as the user scrolls.
+       All paths animated via GSAP ScrollTrigger + scrub.
+       ======================================================== -->
+  <div id="hilo-conductor" aria-hidden="true">
+
+    <!-- ===== LEFT VINE ===== -->
+    <svg id="hilo-left" class="hilo-vine hilo-vine--left"
+         viewBox="0 0 80 2000" preserveAspectRatio="xMidYMid meet"
+         xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="vineGradLeft" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+          <stop offset="0%"   stop-color="#C9A96E" stop-opacity="0"/>
+          <stop offset="8%"   stop-color="#C9A96E" stop-opacity="0.55"/>
+          <stop offset="85%"  stop-color="#C9A96E" stop-opacity="0.45"/>
+          <stop offset="100%" stop-color="#C9A96E" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Main trunk — vertical spine running the page height -->
+      <path id="hilo-trunk-left"
+            d="M 70,0 C 70,120 68,200 66,280 C 64,360 68,420 65,500
+               C 62,580 60,640 62,720 C 64,800 66,860 63,940
+               C 60,1020 58,1080 60,1160 C 62,1240 65,1300 62,1380
+               C 59,1460 57,1520 60,1600 C 63,1680 66,1740 63,1820
+               C 60,1900 58,1960 60,2000"
+            fill="none" stroke="url(#vineGradLeft)" stroke-width="1.2"
+            stroke-linecap="round" stroke-linejoin="round"
+            class="hilo-trunk"/>
+
+      <!-- Branch nodes — each at a section trigger point -->
+      <!-- Node 0 — Hero / top -->
+      <g class="hilo-branch" data-node="0">
+        <path d="M 70,120 C 55,115 38,108 20,116 C 10,120 4,128 8,136" fill="none" stroke="#C9A96E" stroke-width="0.9" stroke-linecap="round"/>
+        <path d="M 42,112 C 36,104 30,96 34,82" fill="none" stroke="#C9A96E" stroke-width="0.7" stroke-linecap="round"/>
+        <ellipse cx="8" cy="138" rx="4" ry="7" fill="#C9A96E" fill-opacity="0.35" transform="rotate(-20,8,138)"/>
+        <ellipse cx="34" cy="80" rx="3" ry="5.5" fill="#C9A96E" fill-opacity="0.28" transform="rotate(15,34,80)"/>
+      </g>
+
+      <!-- Node 1 — Countdown -->
+      <g class="hilo-branch" data-node="1">
+        <path d="M 66,380 C 50,372 32,368 14,376 C 6,380 2,390 6,398" fill="none" stroke="#C9A96E" stroke-width="0.9" stroke-linecap="round"/>
+        <path d="M 38,370 C 30,360 26,348 30,334" fill="none" stroke="#C9A96E" stroke-width="0.7" stroke-linecap="round"/>
+        <ellipse cx="6" cy="400" rx="4.5" ry="7.5" fill="#C9A96E" fill-opacity="0.32" transform="rotate(-25,6,400)"/>
+      </g>
+
+      <!-- Node 2 — Para Quién -->
+      <g class="hilo-branch" data-node="2">
+        <path d="M 65,620 C 48,612 30,608 12,618 C 4,622 0,634 4,642" fill="none" stroke="#C9A96E" stroke-width="0.9" stroke-linecap="round"/>
+        <path d="M 36,610 C 28,600 22,586 28,572" fill="none" stroke="#C9A96E" stroke-width="0.7" stroke-linecap="round"/>
+        <ellipse cx="4" cy="644" rx="5" ry="8" fill="#C9A96E" fill-opacity="0.30" transform="rotate(-18,4,644)"/>
+        <ellipse cx="28" cy="570" rx="3" ry="5" fill="#C9A96E" fill-opacity="0.25" transform="rotate(10,28,570)"/>
+      </g>
+
+      <!-- Node 3 — Sesiones -->
+      <g class="hilo-branch" data-node="3">
+        <path d="M 63,880 C 46,870 28,866 10,874 C 2,878 -2,890 2,900" fill="none" stroke="#C9A96E" stroke-width="0.9" stroke-linecap="round"/>
+        <path d="M 34,868 C 24,856 20,840 26,826" fill="none" stroke="#C9A96E" stroke-width="0.7" stroke-linecap="round"/>
+        <ellipse cx="2" cy="902" rx="4" ry="7" fill="#C9A96E" fill-opacity="0.28" transform="rotate(-22,2,902)"/>
+      </g>
+
+      <!-- Node 4 — Ponentes -->
+      <g class="hilo-branch" data-node="4">
+        <path d="M 62,1130 C 44,1120 26,1116 8,1124 C 0,1128 -4,1140 0,1150" fill="none" stroke="#C9A96E" stroke-width="0.9" stroke-linecap="round"/>
+        <path d="M 32,1118 C 22,1106 18,1090 24,1076" fill="none" stroke="#C9A96E" stroke-width="0.7" stroke-linecap="round"/>
+        <ellipse cx="0" cy="1152" rx="4.5" ry="7.5" fill="#C9A96E" fill-opacity="0.30" transform="rotate(-20,0,1152)"/>
+        <ellipse cx="24" cy="1074" rx="3.5" ry="6" fill="#C9A96E" fill-opacity="0.24" transform="rotate(12,24,1074)"/>
+      </g>
+
+      <!-- Node 5 — Transformación -->
+      <g class="hilo-branch" data-node="5">
+        <path d="M 60,1360 C 42,1350 24,1346 6,1354 C -2,1358 -6,1370 -2,1380" fill="none" stroke="#C9A96E" stroke-width="0.9" stroke-linecap="round"/>
+        <path d="M 30,1348 C 20,1336 16,1318 22,1304" fill="none" stroke="#C9A96E" stroke-width="0.7" stroke-linecap="round"/>
+        <ellipse cx="-2" cy="1382" rx="4" ry="7" fill="#C9A96E" fill-opacity="0.28" transform="rotate(-15,-2,1382)"/>
+      </g>
+
+      <!-- Node 6 — Beneficios -->
+      <g class="hilo-branch" data-node="6">
+        <path d="M 62,1610 C 44,1600 26,1596 8,1604 C 0,1608 -4,1620 0,1630" fill="none" stroke="#C9A96E" stroke-width="0.9" stroke-linecap="round"/>
+        <path d="M 34,1598 C 24,1586 20,1570 26,1556" fill="none" stroke="#C9A96E" stroke-width="0.7" stroke-linecap="round"/>
+        <ellipse cx="0" cy="1632" rx="5" ry="8" fill="#C9A96E" fill-opacity="0.32" transform="rotate(-18,0,1632)"/>
+        <ellipse cx="26" cy="1554" rx="3" ry="5.5" fill="#C9A96E" fill-opacity="0.24" transform="rotate(8,26,1554)"/>
+      </g>
+
+      <!-- Node 7 — Registro (culminación) -->
+      <g class="hilo-branch" data-node="7">
+        <path d="M 65,1860 C 48,1848 30,1844 12,1854 C 4,1858 0,1872 4,1882" fill="none" stroke="#C9A96E" stroke-width="0.9" stroke-linecap="round"/>
+        <path d="M 38,1848 C 28,1834 24,1816 30,1800" fill="none" stroke="#C9A96E" stroke-width="0.7" stroke-linecap="round"/>
+        <ellipse cx="4" cy="1884" rx="5.5" ry="9" fill="#C9A96E" fill-opacity="0.40" transform="rotate(-20,4,1884)"/>
+        <ellipse cx="30" cy="1798" rx="3.5" ry="6" fill="#C9A96E" fill-opacity="0.30" transform="rotate(10,30,1798)"/>
+        <!-- Final crown — blooms at the very bottom -->
+        <path d="M 65,1940 C 58,1932 48,1928 38,1934 C 28,1940 24,1952 30,1960" fill="none" stroke="#C9A96E" stroke-width="0.75" stroke-linecap="round"/>
+        <ellipse cx="30" cy="1962" rx="4" ry="6.5" fill="#C9A96E" fill-opacity="0.36" transform="rotate(-12,30,1962)"/>
+      </g>
+    </svg>
+
+    <!-- ===== RIGHT VINE (mirror) ===== -->
+    <svg id="hilo-right" class="hilo-vine hilo-vine--right"
+         viewBox="0 0 80 2000" preserveAspectRatio="xMidYMid meet"
+         xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="vineGradRight" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+          <stop offset="0%"   stop-color="#C9A96E" stop-opacity="0"/>
+          <stop offset="8%"   stop-color="#C9A96E" stop-opacity="0.55"/>
+          <stop offset="85%"  stop-color="#C9A96E" stop-opacity="0.45"/>
+          <stop offset="100%" stop-color="#C9A96E" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Main trunk (mirrored horizontally) -->
+      <path id="hilo-trunk-right"
+            d="M 10,0 C 10,120 12,200 14,280 C 16,360 12,420 15,500
+               C 18,580 20,640 18,720 C 16,800 14,860 17,940
+               C 20,1020 22,1080 20,1160 C 18,1240 15,1300 18,1380
+               C 21,1460 23,1520 20,1600 C 17,1680 14,1740 17,1820
+               C 20,1900 22,1960 20,2000"
+            fill="none" stroke="url(#vineGradRight)" stroke-width="1.2"
+            stroke-linecap="round" stroke-linejoin="round"
+            class="hilo-trunk"/>
+
+      <!-- Mirrored branch nodes -->
+      <g class="hilo-branch" data-node="0">
+        <path d="M 10,120 C 25,115 42,108 60,116 C 70,120 76,128 72,136" fill="none" stroke="#C9A96E" stroke-width="0.9" stroke-linecap="round"/>
+        <path d="M 38,112 C 44,104 50,96 46,82" fill="none" stroke="#C9A96E" stroke-width="0.7" stroke-linecap="round"/>
+        <ellipse cx="72" cy="138" rx="4" ry="7" fill="#C9A96E" fill-opacity="0.35" transform="rotate(20,72,138)"/>
+        <ellipse cx="46" cy="80" rx="3" ry="5.5" fill="#C9A96E" fill-opacity="0.28" transform="rotate(-15,46,80)"/>
+      </g>
+      <g class="hilo-branch" data-node="1">
+        <path d="M 14,380 C 30,372 48,368 66,376 C 74,380 78,390 74,398" fill="none" stroke="#C9A96E" stroke-width="0.9" stroke-linecap="round"/>
+        <path d="M 42,370 C 50,360 54,348 50,334" fill="none" stroke="#C9A96E" stroke-width="0.7" stroke-linecap="round"/>
+        <ellipse cx="74" cy="400" rx="4.5" ry="7.5" fill="#C9A96E" fill-opacity="0.32" transform="rotate(25,74,400)"/>
+      </g>
+      <g class="hilo-branch" data-node="2">
+        <path d="M 15,620 C 32,612 50,608 68,618 C 76,622 80,634 76,642" fill="none" stroke="#C9A96E" stroke-width="0.9" stroke-linecap="round"/>
+        <path d="M 44,610 C 52,600 58,586 52,572" fill="none" stroke="#C9A96E" stroke-width="0.7" stroke-linecap="round"/>
+        <ellipse cx="76" cy="644" rx="5" ry="8" fill="#C9A96E" fill-opacity="0.30" transform="rotate(18,76,644)"/>
+        <ellipse cx="52" cy="570" rx="3" ry="5" fill="#C9A96E" fill-opacity="0.25" transform="rotate(-10,52,570)"/>
+      </g>
+      <g class="hilo-branch" data-node="3">
+        <path d="M 17,880 C 34,870 52,866 70,874 C 78,878 82,890 78,900" fill="none" stroke="#C9A96E" stroke-width="0.9" stroke-linecap="round"/>
+        <path d="M 46,868 C 56,856 60,840 54,826" fill="none" stroke="#C9A96E" stroke-width="0.7" stroke-linecap="round"/>
+        <ellipse cx="78" cy="902" rx="4" ry="7" fill="#C9A96E" fill-opacity="0.28" transform="rotate(22,78,902)"/>
+      </g>
+      <g class="hilo-branch" data-node="4">
+        <path d="M 18,1130 C 36,1120 54,1116 72,1124 C 80,1128 84,1140 80,1150" fill="none" stroke="#C9A96E" stroke-width="0.9" stroke-linecap="round"/>
+        <path d="M 48,1118 C 58,1106 62,1090 56,1076" fill="none" stroke="#C9A96E" stroke-width="0.7" stroke-linecap="round"/>
+        <ellipse cx="80" cy="1152" rx="4.5" ry="7.5" fill="#C9A96E" fill-opacity="0.30" transform="rotate(20,80,1152)"/>
+        <ellipse cx="56" cy="1074" rx="3.5" ry="6" fill="#C9A96E" fill-opacity="0.24" transform="rotate(-12,56,1074)"/>
+      </g>
+      <g class="hilo-branch" data-node="5">
+        <path d="M 20,1360 C 38,1350 56,1346 74,1354 C 82,1358 86,1370 82,1380" fill="none" stroke="#C9A96E" stroke-width="0.9" stroke-linecap="round"/>
+        <path d="M 50,1348 C 60,1336 64,1318 58,1304" fill="none" stroke="#C9A96E" stroke-width="0.7" stroke-linecap="round"/>
+        <ellipse cx="82" cy="1382" rx="4" ry="7" fill="#C9A96E" fill-opacity="0.28" transform="rotate(15,82,1382)"/>
+      </g>
+      <g class="hilo-branch" data-node="6">
+        <path d="M 18,1610 C 36,1600 54,1596 72,1604 C 80,1608 84,1620 80,1630" fill="none" stroke="#C9A96E" stroke-width="0.9" stroke-linecap="round"/>
+        <path d="M 46,1598 C 56,1586 60,1570 54,1556" fill="none" stroke="#C9A96E" stroke-width="0.7" stroke-linecap="round"/>
+        <ellipse cx="80" cy="1632" rx="5" ry="8" fill="#C9A96E" fill-opacity="0.32" transform="rotate(18,80,1632)"/>
+        <ellipse cx="54" cy="1554" rx="3" ry="5.5" fill="#C9A96E" fill-opacity="0.24" transform="rotate(-8,54,1554)"/>
+      </g>
+      <g class="hilo-branch" data-node="7">
+        <path d="M 15,1860 C 32,1848 50,1844 68,1854 C 76,1858 80,1872 76,1882" fill="none" stroke="#C9A96E" stroke-width="0.9" stroke-linecap="round"/>
+        <path d="M 42,1848 C 52,1834 56,1816 50,1800" fill="none" stroke="#C9A96E" stroke-width="0.7" stroke-linecap="round"/>
+        <ellipse cx="76" cy="1884" rx="5.5" ry="9" fill="#C9A96E" fill-opacity="0.40" transform="rotate(20,76,1884)"/>
+        <ellipse cx="50" cy="1798" rx="3.5" ry="6" fill="#C9A96E" fill-opacity="0.30" transform="rotate(-10,50,1798)"/>
+        <path d="M 15,1940 C 22,1932 32,1928 42,1934 C 52,1940 56,1952 50,1960" fill="none" stroke="#C9A96E" stroke-width="0.75" stroke-linecap="round"/>
+        <ellipse cx="50" cy="1962" rx="4" ry="6.5" fill="#C9A96E" fill-opacity="0.36" transform="rotate(12,50,1962)"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- ========================================================
        NAV BAR (editorial, refined, zero-pill)
        ======================================================== -->
   <nav class="nav-bar" role="navigation" aria-label="Navegacion principal">

@@ -3027,3 +3027,64 @@ footer { background: var(--black); border-top: 1px solid var(--glass-border); pa
   .speakers-grid { grid-template-columns: 1fr 1fr; }
   .sessions-grid { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   HILO CONDUCTOR BOTÁNICO — scroll-synced margin vine system
+   Design: two fixed SVG vines, left + right, that draw from
+   top to bottom as the user scrolls. No interactivity needed.
+   ============================================================ */
+
+#hilo-conductor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;       /* Never captures click/touch events */
+  z-index: 2;                 /* Above page bg, below all content */
+  overflow: hidden;
+}
+
+.hilo-vine {
+  position: absolute;
+  top: 0;
+  /* Height maps the SVG to the full document — overridden by JS */
+  height: 100vh;
+  width: 64px;
+  will-change: transform;     /* GPU hint for scrub performance */
+  overflow: visible;
+}
+
+.hilo-vine--left {
+  left: 0;
+  transform-origin: top left;
+}
+
+.hilo-vine--right {
+  right: 0;
+  transform-origin: top right;
+}
+
+/* The main trunk path — initial state: invisible (JS draws it) */
+.hilo-trunk {
+  stroke-dasharray: var(--trunk-len, 4000);
+  stroke-dashoffset: var(--trunk-len, 4000);
+}
+
+/* All branch sub-paths & leaves start invisible */
+.hilo-branch path,
+.hilo-branch ellipse {
+  opacity: 0;
+}
+
+/* ---- Reduced-motion & narrow viewport: hide entirely ---- */
+@media (prefers-reduced-motion: reduce) {
+  #hilo-conductor { display: none; }
+}
+
+/* Hide on viewports narrower than 1280px (margins too tight) */
+@media (max-width: 1279px) {
+  #hilo-conductor { display: none; }
+}
+
+

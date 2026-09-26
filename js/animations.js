@@ -1547,3 +1547,167 @@ mm.add(
 
 console.log('%c GSAP Animations Loaded ', 'background:#D4AF37;color:#05130E;font-weight:700;padding:4px 8px;border-radius:3px;');
 
+
+/* ============================================================
+   HILO CONDUCTOR BOTÁNICO
+   Scroll-synced botanical vine that grows top→bottom as the
+   user scrolls and retracts when scrolling up.
+   Runs independently of the matchMedia block so it can safely
+   check viewport width and motion preferences itself.
+   ============================================================ */
+(function initHiloConductor() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+  // Skip on narrow viewports (vines hidden via CSS, no point in computing)
+  if (window.innerWidth < 1280) return;
+
+  // Respect prefers-reduced-motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  /* ── 1. Reference DOM elements ──────────────────────────── */
+  const conductor = document.getElementById('hilo-conductor');
+  if (!conductor) return;
+
+  const trunks        = document.querySelectorAll('.hilo-trunk');
+  const branchGroups  = document.querySelectorAll('.hilo-branch');
+  // Section triggers mapped to node indices
+  const sectionIds = [
+    '#hero',            // node 0
+    '#countdown',       // node 1
+    '#para-quien',      // node 2
+    '#sesiones',        // node 3
+    '#ponentes',        // node 4
+    '#transformacion',  // node 5
+    '#beneficios',      // node 6
+    '#registro'         // node 7
+  ];
+
+  /* ── 2. Scale SVG height to match full document ─────────── */
+  function scaleSVGs() {
+    const docH   = document.documentElement.scrollHeight;
+    const viewH  = window.innerHeight;
+    // The SVG viewBox height is 2000; we scale so viewBox fills docH.
+    const scaleY = docH / 2000;
+
+    document.querySelectorAll('.hilo-vine').forEach(svg => {
+      // Keep the SVG fixed in the viewport but use scaleY on internal
+      // coordinate space via a CSS custom property used by the trunk positions.
+      svg.style.height = viewH + 'px';        // viewport height (fixed)
+      // Use a CSS transform on the SVG itself to stretch its viewBox content
+      svg.style.transform = `scaleY(${scaleY})`;
+      svg.style.transformOrigin = 'top center';
+    });
+  }
+  scaleSVGs();
+
+  /* ── 3. Measure trunk total lengths & set dash arrays ───── */
+  trunks.forEach(trunk => {
+    const len = trunk.getTotalLength ? trunk.getTotalLength() : 2200;
+    trunk.style.strokeDasharray  = len;
+    trunk.style.strokeDashoffset = len;
+    // Store for animation reference
+    trunk._hiloLen = len;
+  });
+
+  /* ── 4. Master trunk draw — tied to whole-page scroll ───── */
+  // We use a proxy object so GSAP can tween a numeric value,
+  // then write it to all trunks on each tick (avoids multiple triggers).
+  const proxy = { progress: 0 };
+
+  ScrollTrigger.create({
+    trigger:    document.body,
+    start:      'top top',
+    end:        'bottom bottom',
+    scrub:      1.6,           // smooth 1.6s lag for organic feel
+    onUpdate: self => {
+      const p = self.progress;   // 0 → 1 as user scrolls top → bottom
+      trunks.forEach(trunk => {
+        const len = trunk._hiloLen || 2200;
+        trunk.style.strokeDashoffset = len * (1 - p);
+      });
+    }
+  });
+
+  /* ── 5. Branch nodes — bloom per-section ───────────────── */
+  // Split branch groups into left and right SVG groups
+  // All .hilo-branch elements live in two SVGs; pairs share the same data-node.
+  // We group by node index and animate both at once.
+  const nodeMap = {};   // nodeIndex → [elements]
+  branchGroups.forEach(grp => {
+    const n = grp.dataset.node;
+    if (!nodeMap[n]) nodeMap[n] = [];
+    nodeMap[n].push(grp);
+  });
+
+  sectionIds.forEach((sectionId, idx) => {
+    const section = document.querySelector(sectionId);
+    if (!section) return;
+    const groups = nodeMap[String(idx)];
+    if (!groups || !groups.length) return;
+
+    // Collect all child paths and ellipses for this node across both vines
+    const paths    = groups.flatMap(g => [...g.querySelectorAll('path')]);
+    const ellipses = groups.flatMap(g => [...g.querySelectorAll('ellipse')]);
+
+    // Prepare path draw animation via strokeDashoffset (no premium plugin)
+    paths.forEach(p => {
+      const len = p.getTotalLength ? p.getTotalLength() : 60;
+      p.style.strokeDasharray  = len;
+      p.style.strokeDashoffset = len;
+      p._pathLen = len;
+    });
+
+    // Set initial opacity states
+    gsap.set(paths,    { opacity: 0 });
+    gsap.set(ellipses, { opacity: 0, scale: 0, transformOrigin: 'center center' });
+
+    // Create a scrubbed timeline per node
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger:    section,
+        start:      'top 78%',
+        end:        'top 28%',
+        scrub:      1.2,
+      }
+    });
+
+    // Animate each path's dashoffset to 0 (draw the branch)
+    paths.forEach((p, i) => {
+      tl.to(p, {
+        strokeDashoffset: 0,
+        opacity:          1,
+        duration:         0.9,
+        ease:             'power2.inOut',
+      }, i * 0.08);
+    });
+
+    // Bloom the leaf ellipses
+    tl.to(ellipses, {
+      opacity:  0.65,
+      scale:    1,
+      duration: 0.7,
+      ease:     'power2.out',
+      stagger:  0.08
+    }, 0.2);
+  });
+
+
+  /* ── 6. Refresh on resize ───────────────────────────────── */
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (window.innerWidth < 1280) {
+        conductor.style.display = 'none';
+        return;
+      }
+      conductor.style.display = '';
+      scaleSVGs();
+      ScrollTrigger.refresh();
+    }, 200);
+  });
+
+})();
+
+
+
