@@ -1549,260 +1549,433 @@ console.log('%c GSAP Animations Loaded ', 'background:#D4AF37;color:#05130E;font
 
 
 
+
 /* ============================================================
-   HILO CONDUCTOR BOTÃNICO â€” v2 (Canvas-based, correct approach)
-   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-   Architecture:
-   â€¢ Two <canvas> elements (left + right), position:absolute,
-     full document height in REAL pixels â€” no coordinate tricks.
-   â€¢ The full botanical illustration is drawn ONCE at startup.
-   â€¢ Scroll reveal: only CSS clip-path changes per scroll tick.
-     Zero canvas ops per frame â†’ excellent performance.
-   â€¢ clip-path: inset(0 0 Npx 0) cuts the canvas from the bottom.
-     As scroll progress increases, N decreases, revealing vine.
-   â€¢ The reveal frontier stays ~40% up from bottom of viewport,
-     giving the sensation of the vine growing below you.
+   HILO CONDUCTOR BOTÁNICO — v4 (Dynamic Living Growth)
+   - Real-time branch growth: branches sprout & unfold as you scroll down
+   - Responsive retraction: branches smoothly fold & retract as you scroll up
+   - Inward direction: branches grow inward toward the content (Left: +X, Right: -X)
+   - Rhythm & Density: 50+ botanical nodes with olive leaves, buds & sub-twigs
+   - Butter-smooth: 60FPS fixed viewport canvas with high-DPI scaling
    ============================================================ */
-(function initBotanicalCanvas() {
+(function initBotanicalVine() {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
   if (window.innerWidth < 1280) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  /* â”€â”€ Config â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-  const CW      = 96;                  // canvas width px
-  const GOLD_R  = 201, GOLD_G = 169, GOLD_B = 110;  // #C9A96E
-  const gold    = (a) => `rgba(${GOLD_R},${GOLD_G},${GOLD_B},${a})`;
+  var CW = 180;
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-  /* â”€â”€ Create canvases â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-  function makeCanvas(side) {
-    const c = document.createElement('canvas');
-    c.id = `vine-canvas-${side}`;
-    c.style.cssText = [
-      'position:absolute',
-      'top:0',
-      `${side}:0`,
-      `width:${CW}px`,
-      'pointer-events:none',
-      'z-index:2',
-      'will-change:clip-path',
-    ].join(';');
-    document.body.appendChild(c);
+  function gold(a) { return 'rgba(201, 169, 110, ' + a + ')'; }
+  function goldLight(a) { return 'rgba(232, 217, 189, ' + a + ')'; }
+  function goldDark(a) { return 'rgba(158, 125, 66, ' + a + ')'; }
+
+  function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
+  function easeOutBack(t) {
+    var c1 = 1.70158;
+    var c3 = c1 + 1;
+    return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
+  }
+
+  function pseudoRandom(seed) {
+    var x = Math.sin(seed * 12.9898 + 78.233) * 43758.5453;
+    return x - Math.floor(x);
+  }
+
+  // Find or create left and right canvas
+  function getOrCreateCanvas(side) {
+    var id = 'vine-canvas-' + side;
+    var c = document.getElementById(id);
+    if (!c) {
+      c = document.createElement('canvas');
+      c.id = id;
+      document.body.appendChild(c);
+    }
+    c.style.position      = 'fixed';
+    c.style.top           = '0';
+    c.style[side]         = '0';
+    c.style.width         = CW + 'px';
+    c.style.height        = '100vh';
+    c.style.pointerEvents = 'none';
+    c.style.zIndex        = '2';
     return c;
   }
 
-  const LC = makeCanvas('left');
-  const RC = makeCanvas('right');
+  var LC = getOrCreateCanvas('left');
+  var RC = getOrCreateCanvas('right');
+  var leftCtx = LC.getContext('2d');
+  var rightCtx = RC.getContext('2d');
 
-  /* â”€â”€ Dimensions (set once, read repeatedly) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-  let docH = document.documentElement.scrollHeight;
+  var viewH = window.innerHeight;
+  var docH = document.documentElement.scrollHeight;
+  var nodes = [];
+  var accents = [];
 
-  function sizeCanvases() {
-    docH = document.documentElement.scrollHeight;
-    [LC, RC].forEach(c => {
-      c.width  = CW;
-      c.height = docH;
-      c.style.height = docH + 'px';
-    });
+  function getStemX(worldY, isRight) {
+    var baseX = isRight ? CW - 32 : 32;
+    var sway = Math.sin(worldY / 250) * 8 * (isRight ? -1 : 1) + Math.sin(worldY / 80) * 2.5;
+    return baseX + sway;
   }
-  sizeCanvases();
 
-  /* â”€â”€ Drawing primitives â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  function generateNodes() {
+    nodes = [];
+    accents = [];
+    docH = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+    
+    // Major branch nodes every ~210px
+    var step = 210;
+    var total = Math.floor((docH - 300) / step);
+    for (var i = 0; i < total; i++) {
+      var seed = i * 7 + 13;
+      var y = 200 + i * step + Math.floor(pseudoRandom(seed) * 50 - 25);
+      nodes.push({
+        worldY: y,
+        len: 70 + Math.floor(pseudoRandom(seed + 1) * 45), // 70px to 115px
+        angle: 0.18 + pseudoRandom(seed + 2) * 0.20,       // graceful arch upward
+        leafCount: pseudoRandom(seed + 3) > 0.4 ? 3 : 2,
+        hasSubBranch: pseudoRandom(seed + 4) > 0.35,
+        hasBud: pseudoRandom(seed + 5) > 0.45,
+        seed: seed
+      });
 
-  // Teardrop leaf shape centered at (0,0), pointing upward
-  function drawLeaf(ctx, x, y, rot, sz, alpha) {
+      // Accent leaflet along trunk
+      var accY = y + 105 + Math.floor(pseudoRandom(seed + 6) * 30 - 15);
+      accents.push({
+        worldY: accY,
+        tilt: (i % 2 === 0 ? 0.35 : -0.28),
+        size: 13 + Math.floor(pseudoRandom(seed + 7) * 4)
+      });
+    }
+  }
+
+  function resize() {
+    viewH = window.innerHeight;
+    if (window.innerWidth < 1280) {
+      LC.style.display = RC.style.display = 'none';
+      return;
+    }
+    LC.style.display = RC.style.display = '';
+
+    [LC, RC].forEach(function(c) {
+      c.width  = Math.round(CW * dpr);
+      c.height = Math.round(viewH * dpr);
+      c.style.width  = CW + 'px';
+      c.style.height = viewH + 'px';
+      var ctx = c.getContext('2d');
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(dpr, dpr);
+    });
+
+    generateNodes();
+    requestTick();
+  }
+
+  // Botanical leaf drawing with central vein
+  function drawLeaf(ctx, x, y, angle, length, width, fillAlpha, strokeAlpha) {
+    if (length <= 0.5) return;
     ctx.save();
     ctx.translate(x, y);
-    ctx.rotate(rot);
+    ctx.rotate(angle);
+
     ctx.beginPath();
-    // Upper body curves
     ctx.moveTo(0, 0);
-    ctx.bezierCurveTo( sz * 0.55, -sz * 0.35,  sz * 0.75, -sz * 0.85,  0, -sz);
-    ctx.bezierCurveTo(-sz * 0.75, -sz * 0.85, -sz * 0.55, -sz * 0.35,  0,  0);
-    ctx.fillStyle   = gold(alpha * 0.28);
-    ctx.strokeStyle = gold(alpha * 0.42);
-    ctx.lineWidth   = 0.7;
+    ctx.bezierCurveTo( width * 0.85, -length * 0.35,  width * 0.95, -length * 0.75, 0, -length);
+    ctx.bezierCurveTo(-width * 0.95, -length * 0.75, -width * 0.85, -length * 0.35, 0, 0);
+
+    ctx.fillStyle = gold(fillAlpha);
     ctx.fill();
+
+    ctx.strokeStyle = goldLight(strokeAlpha);
+    ctx.lineWidth = 0.9;
     ctx.stroke();
-    // Midrib vein
+
+    // Central vein
     ctx.beginPath();
     ctx.moveTo(0, 0);
-    ctx.lineTo(0, -sz * 0.82);
-    ctx.strokeStyle = gold(alpha * 0.30);
-    ctx.lineWidth   = 0.4;
+    ctx.lineTo(0, -length * 0.85);
+    ctx.strokeStyle = goldLight(strokeAlpha * 0.5);
+    ctx.lineWidth = 0.5;
+    ctx.stroke();
+
+    ctx.restore();
+  }
+
+  // Golden bud / olive jewel
+  function drawBud(ctx, x, y, scale) {
+    if (scale <= 0.1) return;
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.beginPath();
+    ctx.arc(0, 0, 2.5 * scale, 0, Math.PI * 2);
+    ctx.fillStyle = goldLight(0.9);
+    ctx.fill();
+    ctx.strokeStyle = goldDark(0.8);
+    ctx.lineWidth = 0.6;
+    ctx.stroke();
+
+    // Outer glow aura
+    ctx.beginPath();
+    ctx.arc(0, 0, 4.5 * scale, 0, Math.PI * 2);
+    ctx.strokeStyle = gold(0.3 * scale);
+    ctx.lineWidth = 1;
     ctx.stroke();
     ctx.restore();
   }
 
-  // Organic branch with one level of sub-branches + leaf tips
-  function drawBranch(ctx, sx, sy, dirX, ang, len, weight, alpha) {
-    // End point: branch arcs outward + slightly upward (natural growth)
-    const ex = sx + dirX * len * Math.cos(ang);
-    const ey = sy - len * Math.sin(ang) * 0.7;
-    // Control point for organic curve
-    const cpx = sx + dirX * len * 0.45 * Math.cos(ang * 0.6);
-    const cpy = sy - len * 0.3 * Math.sin(ang * 0.6);
+  // Glowing apex sprout at the descending tip of the vine
+  function drawApexBud(ctx, x, y, isRight) {
+    ctx.save();
+    ctx.translate(x, y);
+    var dirX = isRight ? -1 : 1;
+
+    // Glowing dot
+    ctx.beginPath();
+    ctx.arc(0, 0, 3.2, 0, Math.PI * 2);
+    ctx.fillStyle = goldLight(0.95);
+    ctx.fill();
 
     ctx.beginPath();
-    ctx.moveTo(sx, sy);
-    ctx.quadraticCurveTo(cpx, cpy, ex, ey);
-    ctx.strokeStyle = gold(alpha);
-    ctx.lineWidth   = weight;
+    ctx.arc(0, 0, 6.5, 0, Math.PI * 2);
+    ctx.strokeStyle = gold(0.4);
+    ctx.lineWidth = 1.2;
     ctx.stroke();
 
-    // Sub-branch A (goes further outward + up)
-    const sbLen = len * 0.52;
-    const sax   = ex + dirX * sbLen * Math.cos(ang + 0.55);
-    const say   = ey - sbLen * Math.sin(ang + 0.55) * 0.65;
-    ctx.beginPath();
-    ctx.moveTo(ex, ey);
-    ctx.quadraticCurveTo(
-      ex + dirX * sbLen * 0.4,  ey - sbLen * 0.2,
-      sax, say
-    );
-    ctx.strokeStyle = gold(alpha * 0.75);
-    ctx.lineWidth   = weight * 0.6;
-    ctx.stroke();
-    drawLeaf(ctx, sax, say, dirX > 0 ? -0.4 : 0.4, sbLen * 0.55, alpha);
+    // 2 tiny budding leaflets curling outward
+    drawLeaf(ctx, 0, 0, dirX * 0.5, 9, 4, 0.4, 0.8);
+    drawLeaf(ctx, 0, 0, -dirX * 0.2, 7, 3.2, 0.3, 0.7);
 
-    // Sub-branch B (goes slightly downward + outward)
-    const sbx   = ex + dirX * sbLen * 0.85 * Math.cos(ang - 0.45);
-    const sby   = ey + sbLen * 0.25;
-    ctx.beginPath();
-    ctx.moveTo(ex, ey);
-    ctx.lineTo(sbx, sby);
-    ctx.strokeStyle = gold(alpha * 0.6);
-    ctx.lineWidth   = weight * 0.5;
-    ctx.stroke();
-    drawLeaf(ctx, sbx, sby, dirX > 0 ? 0.3 : -0.3, sbLen * 0.42, alpha * 0.85);
-
-    // Tip leaf on main branch
-    drawLeaf(ctx, ex, ey, dirX > 0 ? -0.6 : 0.6, len * 0.38, alpha * 0.9);
+    ctx.restore();
   }
 
-  /* â”€â”€ Full vine illustration â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-  function paintVine(canvas, mirror) {
-    const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, CW, docH);
-    ctx.lineCap  = 'round';
-    ctx.lineJoin = 'round';
+  // Draw an organic dynamic branch with De Casteljau progression
+  function drawDynamicBranch(ctx, node, screenY, isRight, growth) {
+    var dirX = isRight ? -1 : 1;
+    var sx = getStemX(node.worldY, isRight);
+    var sy = screenY;
+    var len = node.len;
+    var ang = node.angle;
 
-    const dirX = mirror ? 1 : -1;   // branch direction: left canvas branches go left, right canvas goes right
-    // Stem X: inner edge (near content), oscillates gently
-    const stemCX = mirror ? CW * 0.22 : CW * 0.78;
+    // Control point and end point
+    var cpx = sx + dirX * len * 0.48 * Math.cos(ang * 0.45);
+    var cpy = sy - len * 0.22 * Math.sin(ang);
+    var ex  = sx + dirX * len * Math.cos(ang);
+    var ey  = sy - len * Math.sin(ang);
 
-    // â”€â”€ Stem waypoints â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-    // 14 control points spanning the full document height
-    // Gentle S-curve oscillation (Â±8px) around the center X
-    const N   = 14;
-    const pts = [];
-    for (let i = 0; i < N; i++) {
-      const t    = i / (N - 1);
-      const wave = Math.sin(t * Math.PI * 3.5) * (mirror ? 7 : -7);
-      pts.push([stemCX + wave, t * docH]);
+    // De Casteljau split for growth parameter t
+    var t = growth;
+    var q0x = sx, q0y = sy;
+    var q1x = (1 - t) * sx + t * cpx;
+    var q1y = (1 - t) * sy + t * cpy;
+    var q2x = (1 - t) * (1 - t) * sx + 2 * (1 - t) * t * cpx + t * t * ex;
+    var q2y = (1 - t) * (1 - t) * sy + 2 * (1 - t) * t * cpy + t * t * ey;
+
+    // Main branch stroke
+    ctx.beginPath();
+    ctx.moveTo(q0x, q0y);
+    ctx.quadraticCurveTo(q1x, q1y, q2x, q2y);
+    ctx.strokeStyle = gold(0.45 + growth * 0.35);
+    ctx.lineWidth   = 1.55;
+    ctx.lineCap     = 'round';
+    ctx.stroke();
+
+    // Leaf pair 1 at frac = 0.38
+    var f1 = 0.38;
+    if (growth > f1) {
+      var lx1 = (1 - f1) * (1 - f1) * sx + 2 * (1 - f1) * f1 * cpx + f1 * f1 * ex;
+      var ly1 = (1 - f1) * (1 - f1) * sy + 2 * (1 - f1) * f1 * cpy + f1 * f1 * ey;
+      var tdx1 = 2 * (1 - f1) * (cpx - sx) + 2 * f1 * (ex - cpx);
+      var tdy1 = 2 * (1 - f1) * (cpy - sy) + 2 * f1 * (ey - cpy);
+      var tang1 = Math.atan2(tdy1, tdx1);
+
+      var p1 = clamp((growth - f1) / 0.24, 0, 1);
+      var s1 = easeOutBack(p1);
+      drawLeaf(ctx, lx1, ly1, tang1 - 0.70, 15 * s1, 6.2 * s1, 0.32, 0.72);
+      drawLeaf(ctx, lx1, ly1, tang1 + 0.65, 13 * s1, 5.5 * s1, 0.28, 0.65);
     }
 
-    // Draw smooth stem via quadratic Catmull-Rom pass
-    ctx.beginPath();
-    ctx.moveTo(pts[0][0], pts[0][1]);
-    for (let i = 0; i < pts.length - 2; i++) {
-      const mx = (pts[i][0] + pts[i + 1][0]) / 2;
-      const my = (pts[i][1] + pts[i + 1][1]) / 2;
-      ctx.quadraticCurveTo(pts[i][0], pts[i][1], mx, my);
-    }
-    ctx.lineTo(pts[N - 1][0], pts[N - 1][1]);
-    ctx.strokeStyle = gold(0.48);
-    ctx.lineWidth   = 1.35;
-    ctx.stroke();
+    // Sub-branch at frac = 0.58
+    var fSub = 0.58;
+    if (node.hasSubBranch && growth > fSub) {
+      var subGrowth = clamp((growth - fSub) / 0.32, 0, 1);
+      var sbx = (1 - fSub) * (1 - fSub) * sx + 2 * (1 - fSub) * fSub * cpx + fSub * fSub * ex;
+      var sby = (1 - fSub) * (1 - fSub) * sy + 2 * (1 - fSub) * fSub * cpy + fSub * fSub * ey;
+      var subLen = 38 * subGrowth;
+      var subAng = ang + 0.40;
+      var subEx = sbx + dirX * subLen * Math.cos(subAng);
+      var subEy = sby - subLen * Math.sin(subAng);
 
-    // â”€â”€ Branch nodes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-    // 8 nodes, evenly distributed, each at ~12.5% of docH
-    const nodeFracs = [0.07, 0.19, 0.31, 0.43, 0.55, 0.67, 0.79, 0.91];
-    const configs   = [
-      { len: 38, ang: 1.05, w: 1.0 },
-      { len: 44, ang: 0.95, w: 1.0 },
-      { len: 35, ang: 1.20, w: 0.9 },
-      { len: 42, ang: 1.00, w: 1.0 },
-      { len: 40, ang: 0.90, w: 0.95},
-      { len: 36, ang: 1.15, w: 0.9 },
-      { len: 46, ang: 1.00, w: 1.0 },
-      { len: 38, ang: 0.85, w: 0.95},
-    ];
+      ctx.beginPath();
+      ctx.moveTo(sbx, sby);
+      ctx.lineTo(subEx, subEy);
+      ctx.strokeStyle = gold(0.40 + subGrowth * 0.30);
+      ctx.lineWidth = 1.1;
+      ctx.stroke();
 
-    nodeFracs.forEach((frac, i) => {
-      const bY  = frac * docH;
-      // Interpolate stem X at this Y fraction
-      const si  = frac * (N - 1);
-      const si0 = Math.floor(si);
-      const si1 = Math.min(si0 + 1, N - 1);
-      const t   = si - si0;
-      const bX  = pts[si0][0] * (1 - t) + pts[si1][0] * t;
-
-      const cfg = configs[i];
-      drawBranch(ctx, bX, bY, dirX, cfg.ang, cfg.len, cfg.w * 0.95, 0.50);
-    });
-
-    // â”€â”€ Accent leaves along stem â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-    [0.13, 0.25, 0.37, 0.49, 0.61, 0.73, 0.85].forEach((frac, i) => {
-      const lY  = frac * docH;
-      const si  = frac * (N - 1);
-      const si0 = Math.floor(si);
-      const si1 = Math.min(si0 + 1, N - 1);
-      const t   = si - si0;
-      const lX  = pts[si0][0] * (1 - t) + pts[si1][0] * t;
-      const rot = (i % 2 === 0 ? 0.3 : -0.25) * (mirror ? 1 : -1);
-      drawLeaf(ctx, lX, lY, rot, 11, 0.70);
-    });
-  }
-
-  // Draw both vines immediately (happens once)
-  paintVine(LC, false);
-  paintVine(RC, true);
-
-  /* â”€â”€ Scroll-driven clip-path reveal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-  // clip-path: inset(0 0 Npx 0) hides N pixels from the bottom.
-  // At progress=0 â†’ N = docH (fully hidden).
-  // At progress=1 â†’ N = 0   (fully visible).
-  // Viewport offset: at any scroll position the vine tip is visible
-  // ~40% of the viewport up from the bottom of the screen.
-  const viewH = window.innerHeight;
-
-  function applyClip(progress) {
-    const revealed = progress * docH + viewH * 0.40;
-    const cutoff   = Math.max(0, docH - revealed);
-    const clip     = `inset(0 0 ${cutoff}px 0)`;
-    LC.style.clipPath = clip;
-    RC.style.clipPath = clip;
-  }
-
-  applyClip(0);  // fully hidden on load
-
-  ScrollTrigger.create({
-    trigger:  document.body,
-    start:    'top top',
-    end:      'bottom bottom',
-    scrub:    1.8,       // organic lag â€” vine grows a hair behind the scroll
-    onUpdate: self => applyClip(self.progress)
-  });
-
-  /* â”€â”€ Resize handler â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-  let _rt;
-  window.addEventListener('resize', () => {
-    clearTimeout(_rt);
-    _rt = setTimeout(() => {
-      if (window.innerWidth < 1280) {
-        LC.style.display = RC.style.display = 'none';
-        return;
+      if (subGrowth > 0.45) {
+        var subP = clamp((subGrowth - 0.45) / 0.55, 0, 1);
+        var subS = easeOutBack(subP);
+        drawLeaf(ctx, subEx, subEy, Math.atan2(subEy - sby, subEx - sbx), 12 * subS, 5 * subS, 0.30, 0.70);
       }
-      LC.style.display = RC.style.display = '';
-      sizeCanvases();
-      paintVine(LC, false);
-      paintVine(RC, true);
-      ScrollTrigger.refresh();
-    }, 250);
+    }
+
+    // Leaf pair 2 at frac = 0.72
+    var f2 = 0.72;
+    if (growth > f2) {
+      var lx2 = (1 - f2) * (1 - f2) * sx + 2 * (1 - f2) * f2 * cpx + f2 * f2 * ex;
+      var ly2 = (1 - f2) * (1 - f2) * sy + 2 * (1 - f2) * f2 * cpy + f2 * f2 * ey;
+      var tdx2 = 2 * (1 - f2) * (cpx - sx) + 2 * f2 * (ex - cpx);
+      var tdy2 = 2 * (1 - f2) * (cpy - sy) + 2 * f2 * (ey - cpy);
+      var tang2 = Math.atan2(tdy2, tdx2);
+
+      var p2 = clamp((growth - f2) / 0.20, 0, 1);
+      var s2 = easeOutBack(p2);
+      drawLeaf(ctx, lx2, ly2, tang2 - 0.65, 13 * s2, 5.5 * s2, 0.30, 0.70);
+      drawLeaf(ctx, lx2, ly2, tang2 + 0.60, 11 * s2, 4.8 * s2, 0.26, 0.62);
+    }
+
+    // Terminal leaf at branch tip (q2x, q2y)
+    if (growth > 0.85) {
+      var pTip = clamp((growth - 0.85) / 0.15, 0, 1);
+      var sTip = easeOutBack(pTip);
+      var tdxTip = 2 * (1 - t) * (cpx - sx) + 2 * t * (ex - cpx);
+      var tdyTip = 2 * (1 - t) * (cpy - sy) + 2 * t * (ey - cpy);
+      var tangTip = Math.atan2(tdyTip, tdxTip);
+      drawLeaf(ctx, q2x, q2y, tangTip, 16 * sTip, 7 * sTip, 0.38, 0.85);
+
+      if (node.hasBud) {
+        drawBud(ctx, q2x, q2y, sTip);
+      }
+    }
+  }
+
+  // Draw full vine for one side
+  function renderSide(ctx, isRight, scrollY) {
+    ctx.clearRect(0, 0, CW, viewH);
+
+    var tipScreenY = currentReach - scrollY;
+    var maxStemY = Math.min(viewH, Math.max(0, tipScreenY));
+
+    // 1. Draw main stem line
+    if (maxStemY > 0) {
+      ctx.beginPath();
+      var startWorldY = Math.max(0, scrollY);
+      var startX = getStemX(startWorldY, isRight);
+      ctx.moveTo(startX, 0);
+
+      var stepY = 16;
+      for (var sy = stepY; sy <= maxStemY; sy += stepY) {
+        var wY = scrollY + sy;
+        var ptX = getStemX(wY, isRight);
+        ctx.lineTo(ptX, sy);
+      }
+      // Exact tip
+      if (maxStemY < viewH) {
+        var tipX = getStemX(currentReach, isRight);
+        ctx.lineTo(tipX, maxStemY);
+      }
+
+      ctx.strokeStyle = gold(0.55);
+      ctx.lineWidth   = 1.5;
+      ctx.lineCap     = 'round';
+      ctx.stroke();
+
+      // Apex bud at tip
+      if (tipScreenY >= 0 && tipScreenY <= viewH) {
+        var tipX = getStemX(currentReach, isRight);
+        drawApexBud(ctx, tipX, tipScreenY, isRight);
+      }
+    }
+
+    // 2. Draw major branch nodes
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i];
+      var sY = n.worldY - scrollY;
+      if (sY < -150 || sY > viewH + 150) continue;
+
+      var growth = 0;
+      if (currentReach >= n.worldY) {
+        growth = clamp((currentReach - n.worldY) / 160, 0, 1);
+      }
+      if (growth <= 0.001) continue;
+
+      drawDynamicBranch(ctx, n, sY, isRight, growth);
+    }
+
+    // 3. Accent leaflets along trunk
+    var dirX = isRight ? -1 : 1;
+    for (var j = 0; j < accents.length; j++) {
+      var acc = accents[j];
+      var aY = acc.worldY - scrollY;
+      if (aY < -50 || aY > viewH + 50) continue;
+
+      if (currentReach >= acc.worldY) {
+        var aGrowth = clamp((currentReach - acc.worldY) / 100, 0, 1);
+        var aScale = easeOutBack(aGrowth);
+        var stemX = getStemX(acc.worldY, isRight);
+        var leafAng = (dirX > 0 ? 0.45 : -0.45) + acc.tilt;
+        drawLeaf(ctx, stemX, aY, leafAng, acc.size * aScale, acc.size * 0.45 * aScale, 0.28, 0.65);
+      }
+    }
+  }
+
+  function render() {
+    var scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+    renderSide(leftCtx, false, scrollY);
+    renderSide(rightCtx, true, scrollY);
+  }
+
+  // Animation ticker: smooth organic chasing of scroll
+  var targetReach = 0;
+  var currentReach = 0;
+  var isTicking = false;
+
+  function tick() {
+    var diff = targetReach - currentReach;
+    if (Math.abs(diff) > 0.4) {
+      currentReach += diff * 0.18;
+      render();
+      requestAnimationFrame(tick);
+    } else {
+      currentReach = targetReach;
+      render();
+      isTicking = false;
+    }
+  }
+
+  function requestTick() {
+    if (!isTicking) {
+      isTicking = true;
+      requestAnimationFrame(tick);
+    }
+  }
+
+  function onScroll() {
+    var scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+    var maxScroll = Math.max(1, docH - viewH);
+    var scrollProgress = clamp(scrollY / maxScroll, 0, 1);
+
+    // Tip reaches ~70% down the screen, expanding to full document at bottom
+    targetReach = scrollY + viewH * (0.65 + scrollProgress * 0.35);
+    requestTick();
+  }
+
+  // Init
+  resize();
+  onScroll();
+  currentReach = targetReach; // Instant render on first load
+  render();
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  var _rt;
+  window.addEventListener('resize', function() {
+    clearTimeout(_rt);
+    _rt = setTimeout(resize, 200);
   });
 
-  window.addEventListener('load', () => ScrollTrigger.refresh());
-
+  window.addEventListener('load', function() {
+    docH = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+    generateNodes();
+    requestTick();
+  });
 })();
-
-

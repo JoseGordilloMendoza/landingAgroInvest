@@ -3029,24 +3029,30 @@ footer { background: var(--black); border-top: 1px solid var(--glass-border); pa
 }
 
 /* ============================================================
-   HILO CONDUCTOR BOTÁNICO — v2 (canvas-based)
-   Canvas elements are inline-styled by JS with position:absolute,
-   full document height, and will-change:clip-path.
-   Body needs position:relative so absolute children are contained.
+   HILO CONDUCTOR BOTÁNICO — v4 (Dynamic Living Growth)
+   Fixed viewport-height canvases flanking the layout margins.
+   Ultra-crisp 60FPS dynamic growth & retraction on scroll.
    ============================================================ */
-
-body { position: relative; }  /* anchor for absolute vine canvases */
 
 #vine-canvas-left,
 #vine-canvas-right {
-  position: absolute;     /* JS also sets this, belt-and-suspenders */
+  position: fixed;
   top: 0;
   pointer-events: none;
   z-index: 2;
-  will-change: clip-path;
+  width: 180px;
+  height: 100vh;
 }
 
-/* Hide on narrow viewports (JS also guards this) */
+#vine-canvas-left {
+  left: 0;
+}
+
+#vine-canvas-right {
+  right: 0;
+}
+
+/* Hide on narrow viewports */
 @media (max-width: 1279px) {
   #vine-canvas-left,
   #vine-canvas-right { display: none !important; }
