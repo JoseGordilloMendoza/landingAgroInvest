@@ -1332,8 +1332,8 @@ mm.add(
               gsap.to(img, {
                 filter: 'grayscale(0) brightness(100%)',
                 opacity: 1,
-                y: -4,
-                scale: 1.05,
+                y: -5,
+                scale: 1.06,
                 duration: 0.3,
                 ease: 'power2.out',
                 overwrite: 'auto'
@@ -1342,7 +1342,7 @@ mm.add(
             brand.addEventListener('mouseleave', () => {
               gsap.to(img, {
                 filter: 'grayscale(1) brightness(140%) sepia(20%)',
-                opacity: 0.65,
+                opacity: 0.78,
                 y: 0,
                 scale: 1,
                 duration: 0.35,

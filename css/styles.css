@@ -2659,27 +2659,27 @@ section { padding: 6rem 2rem; }
 }
 
 .auspiciadores-inner {
-  max-width: 1060px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding-top: 3rem;
-  border-top: 1px solid rgba(197, 160, 89, 0.14);
+  padding-top: 3.5rem;
+  border-top: 1px solid rgba(197, 160, 89, 0.16);
 }
 
 .auspiciadores-kicker {
   font-family: 'Cinzel', serif;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  letter-spacing: 0.34em;
+  letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: #9CB0CB;
-  margin-bottom: 3rem;
+  color: #A6B9D4;
+  margin-bottom: 3.5rem;
 }
 
 .auspiciadores-logos-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5.5rem;
+  gap: 6rem;
   flex-wrap: wrap;
 }
 
@@ -2687,16 +2687,16 @@ section { padding: 6rem 2rem; }
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 280px;
+  max-width: 350px;
   cursor: pointer;
 }
 
 .sponsor-brand img {
-  max-height: 85px;
+  max-height: 120px;
   width: auto;
   max-width: 100%;
   object-fit: contain;
-  opacity: 0.65;
+  opacity: 0.78;
   filter: grayscale(1) brightness(140%) sepia(20%);
   transition: opacity 0.35s ease, filter 0.35s ease, transform 0.35s ease;
 }
@@ -2704,7 +2704,7 @@ section { padding: 6rem 2rem; }
 .sponsor-brand:hover img {
   opacity: 1;
   filter: grayscale(0) brightness(100%);
-  transform: translateY(-4px) scale(1.05);
+  transform: translateY(-5px) scale(1.06);
 }
 
 @media (max-width: 768px) {
@@ -2715,10 +2715,10 @@ section { padding: 6rem 2rem; }
     gap: 3.5rem;
   }
   .sponsor-brand {
-    max-width: 200px;
+    max-width: 250px;
   }
   .sponsor-brand img {
-    max-height: 60px;
+    max-height: 75px;
   }
   .registro-botanical {
     opacity: 0.2;
