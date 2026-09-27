@@ -153,7 +153,7 @@ body {
 .hero-bg {
   position: absolute;
   inset: -4%;
-  background-image: url('../images/backgrounds/hero_bg.jpg');
+  background-image: url('../images/backgrounds/hero_bg.webp');
   background-size: cover;
   background-position: center center;
   opacity: 0.90;
@@ -177,23 +177,6 @@ body {
   height: 100%;
   pointer-events: none;
   z-index: 1;
-}
-
-/* HERO FLOATING GOLDEN LEAVES (Zero Mouse Lag, 60 FPS GSAP) */
-.hero-leaves-container {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 1;
-}
-.hero-leaf {
-  position: absolute;
-  top: -30px;
-  color: var(--accent);
-  opacity: 0.42;
-  pointer-events: none;
-  will-change: transform;
 }
 
 .hero-layout-v3 {
@@ -340,7 +323,7 @@ body {
   content: '';
   position: absolute;
   inset: -15px; /* Reduced to lower noise and prevent clashing with title */
-  background-image: url('../assets/images/vip-border.jpg');
+  background-image: url('../assets/images/vip-border.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -695,7 +678,7 @@ section { padding: 6rem 2rem; }
   position: relative;
   padding: 6.5rem 2rem 7rem;
   background-color: #040C1E;
-  background-image: url('../assets/images/para_quien_bg_editorial.jpg');
+  background-image: url('../assets/images/para_quien_bg_editorial.webp');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -895,7 +878,7 @@ section { padding: 6rem 2rem; }
 #para-quien {
   position: relative;
   background-color: #040C1E;
-  background-image: url('../assets/images/para_quien_bg_editorial.jpg');
+  background-image: url('../assets/images/para_quien_bg_editorial.webp');
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
@@ -1080,30 +1063,33 @@ section { padding: 6rem 2rem; }
 }
 
 /* Card 03: Luxury Ivory Piece */
+/* Antes era una tarjeta color crema (#F4EFE6): rompía con el resto, siempre oscuro.
+   Se queda en la misma paleta, con un tinte dorado interior que la distingue como
+   la pieza "iluminada" del grupo, sin salirse del conjunto. */
 .editorial-card.theme-light {
-  background: #F4EFE6;
-  border: 1px solid rgba(198, 161, 80, 0.45);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
+  background: radial-gradient(ellipse 120% 100% at 50% 0%, rgba(212, 171, 80, 0.16) 0%, rgba(5, 14, 29, 0) 55%), #050E1D;
+  border: 1px solid rgba(212, 171, 80, 0.4);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(212, 171, 80, 0.08);
 }
 .editorial-card.theme-light::before {
-  border-color: rgba(198, 161, 80, 0.2);
+  border-color: rgba(212, 171, 80, 0.22);
 }
 .editorial-card.theme-light:hover {
-  background: #FAF6EF;
-  border-color: rgba(198, 161, 80, 0.75);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  background: radial-gradient(ellipse 120% 100% at 50% 0%, rgba(212, 171, 80, 0.24) 0%, rgba(5, 14, 29, 0) 60%), #050E1D;
+  border-color: rgba(212, 171, 80, 0.7);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
 }
 .editorial-card.theme-light:hover::before {
-  border-color: rgba(198, 161, 80, 0.35);
+  border-color: rgba(212, 171, 80, 0.32);
 }
 .editorial-card.theme-light .editorial-card-num {
-  color: #997732;
+  color: #D4AB50;
 }
 .editorial-card.theme-light .editorial-card-content p {
-  color: #041126;
+  color: #EDE5D8;
 }
 .editorial-card.theme-light .editorial-card-content .highlight {
-  color: #997732;
+  color: #D4AB50;
   font-weight: 600;
 }
 
@@ -1586,10 +1572,11 @@ section { padding: 6rem 2rem; }
 /* SPEAKERS */
 #ponentes {
   position: relative;
-  background-image: url('../assets/images/ponentes_raices_bg.jpg');
+  background-image: url('../assets/images/ponentes_raices_bg.webp');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  /* "fixed" obliga a repintar el fondo en cada frame de scroll (jank en Android); con "scroll" se pinta una sola vez */
+  background-attachment: scroll;
   overflow: hidden;
 }
 #ponentes::before {
@@ -3566,3 +3553,26 @@ section { overflow-x: clip; }
   z-index: 0;
 }
 #countdown .countdown-ambient { z-index: 1; }
+
+/* ============================================================
+   RENDIMIENTO EN CELULAR — quita los desenfoques de fondo (backdrop-filter)
+   Un "fixed" (el header) o varias tarjetas con blur obligan al navegador a
+   recalcular el desenfoque de todo lo que pasa por debajo en cada frame de
+   scroll: es de los costos más comunes de scroll con tirones en Android de
+   gama media. En pantallas grandes hay más margen de GPU y se conserva.
+   Los fondos ya son suficientemente opacos sin el desenfoque; a las dos
+   tarjetas más translúcidas (ponentes y "lo que te llevarás") se les sube
+   un poco la opacidad para compensar.
+   ============================================================ */
+@media (max-width: 900px) {
+  .nav-bar,
+  .vip-pass-card,
+  .speaker-card,
+  .folio-piece-inner,
+  .registro-editorial-plate {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .speaker-card.theme-dark { background: rgba(6, 24, 52, 0.82); }
+  .folio-piece-inner { background: rgba(8, 21, 44, 0.72); }
+}

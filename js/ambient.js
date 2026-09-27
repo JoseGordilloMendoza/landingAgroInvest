@@ -71,7 +71,7 @@
     resize();
     window.addEventListener('resize', resize, { passive: true });
 
-    var count = small ? 22 : 46;
+    var count = small ? 14 : 46;
     var motes = [];
     for (var i = 0; i < count; i++) {
       var depth = 0.25 + Math.random() * 0.75;
@@ -90,8 +90,13 @@
     }
 
     var lastY = window.scrollY, wind = 0, last = performance.now(), raf = 0, running = false;
+    // En celular se dibuja a ~30fps en vez de 60 (la mitad del costo); en escritorio no se limita.
+    // "last" solo avanza cuando de verdad se dibuja, así el movimiento se ve igual de fluido, solo con menos cuadros.
+    var frameInterval = small ? 1000 / 30 : 0;
 
     function frame(now) {
+      raf = requestAnimationFrame(frame);
+      if (frameInterval && (now - last) < frameInterval) return;
       var dt = Math.min(now - last, 50) / 16.67;
       last = now;
       var t = now / 1000;
@@ -129,7 +134,6 @@
         }
       }
       ctx.globalAlpha = 1;
-      raf = requestAnimationFrame(frame);
     }
 
     function start() { if (running) return; running = true; last = performance.now(); raf = requestAnimationFrame(frame); }

@@ -1500,63 +1500,12 @@ mm.add(
     }
 
     /* ======================================================
-       15. PARTICLES / ATMOSPHERE â€” FLOATING GOLDEN LEAVES
-           Theme: RaÃ­ces & Patrimonio Tangible (60 FPS GSAP)
+       15. (eliminado) Este hueco era un segundo sistema de hojas del hero,
+           hecho con elementos DOM (8 a 16, cada uno con 2 animaciones infinitas
+           que nunca se detenían). Duplicaba al canvas de arriba, que ya hace lo
+           mismo con física de mouse y sí se pausa al salir del hero: se quitó
+           por costo doble en el primer tramo de la página, sobre todo en celular.
        ====================================================== */
-    if (!reduceMotion) {
-      const leavesContainer = document.getElementById('hero-leaves');
-      if (leavesContainer) {
-        leavesContainer.innerHTML = '';
-        const leafCount = isDesktop ? 16 : 8;
-        const leafSVGs = [
-          '<svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M17 8C8 10 5 16 8 21C13 21 19 18 21 12C21 8 18 8 17 8Z"/></svg>',
-          '<svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12C5 12 8 10 10 8C12 6 12 4 12 2ZM22 12C16.5 12 14 15 14 18C14 20 15 21 16 22C20 20 22 16.5 22 12Z"/></svg>',
-          '<svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 3C7 3 3 8 4 14C5 20 11 21 12 21C13 21 19 20 20 14C21 8 17 3 12 3ZM12 17C10 17 8 15 8 13C8 10 11 7 12 5C13 7 16 10 16 13C16 15 14 17 12 17Z"/></svg>'
-        ];
-
-        for (let i = 0; i < leafCount; i++) {
-          const leaf = document.createElement('div');
-          leaf.className = 'hero-leaf';
-          const size = gsap.utils.random(11, 20);
-          leaf.style.width = `${size}px`;
-          leaf.style.height = `${size}px`;
-          leaf.style.left = `${gsap.utils.random(2, 96)}%`;
-          leaf.style.top = `${gsap.utils.random(-50, 600)}px`;
-          leaf.style.opacity = `${gsap.utils.random(0.18, 0.42)}`;
-          leaf.innerHTML = leafSVGs[i % leafSVGs.length];
-          leavesContainer.appendChild(leaf);
-
-          // Continuous vertical falling with random speed
-          const fallDur = gsap.utils.random(12, 22);
-          gsap.to(leaf, {
-            y: `+=${window.innerHeight + 150}`,
-            duration: fallDur,
-            repeat: -1,
-            ease: 'none',
-            delay: gsap.utils.random(0, 8),
-            modifiers: {
-              y: (y) => {
-                const cur = parseFloat(y);
-                const limit = window.innerHeight + 80;
-                return (cur % limit) + 'px';
-              }
-            }
-          });
-
-          // Organic horizontal sway and 3D leaf tumble
-          gsap.to(leaf, {
-            x: `+=${gsap.utils.random(-45, 45)}`,
-            rotation: `+=${gsap.utils.random(90, 240)}`,
-            rotationY: `+=${gsap.utils.random(80, 200)}`,
-            duration: gsap.utils.random(3.5, 6),
-            repeat: -1,
-            yoyo: true,
-            ease: 'sine.inOut',
-            delay: gsap.utils.random(0, 3)
-          });
-        }
-      }
-    }
 
     /* ======================================================
        16. TOPOGRAPHIC BACKGROUND PARALLAX
