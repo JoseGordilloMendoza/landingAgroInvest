@@ -38,9 +38,10 @@ const INTERESES = {
  */
 function resolveInteres_(value) {
   const v = String(value == null ? '' : value).trim();
+  if (!v || v === '-' || v === '—') return '-';
   if (INTERESES[v]) return INTERESES[v];
   const labels = Object.keys(INTERESES).map(function (k) { return INTERESES[k]; });
-  return labels.indexOf(v) !== -1 ? v : '';
+  return labels.indexOf(v) !== -1 ? v : '-';
 }
 
 /** Comprobación de salud: no devuelve datos. */
