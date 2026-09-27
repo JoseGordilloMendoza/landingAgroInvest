@@ -3,8 +3,6 @@
    Paleta: Bosque Profundo #05130E | Oro Cosecha #DDB534 | Lino #FBF9F5
    ============================================================ */
 
-/* ---- GOOGLE FONTS ---- */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;800;900&family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 /* ---- RESET & BASE ---- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -632,14 +630,19 @@ body {
 
 .btn-scarcity {
   text-align: center;
-  font-size: 0.74rem;
-  color: var(--white-muted);
-  letter-spacing: 0.02em;
-  margin-bottom: 0.5rem;
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  font-weight: 500;
+  color: #DFE8F6;
+  letter-spacing: 0.025em;
+  margin-top: 0.85rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.45;
 }
 .btn-scarcity span {
-  color: var(--accent);
-  font-weight: 600;
+  color: #F1CF7A;
+  font-weight: 700;
+  text-shadow: 0 0 12px rgba(241, 207, 122, 0.3);
 }
 .btn-secondary {
   display: inline-flex;
@@ -2647,14 +2650,18 @@ section { padding: 6rem 2rem; }
 .registro-editorial-plate .btn-scarcity {
   text-align: center;
   font-family: 'Inter', sans-serif;
-  font-size: 0.8rem;
-  color: #BAC7DA;
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  font-weight: 500;
+  color: #DFE8F6;
   margin-top: 1rem;
   margin-bottom: 0.75rem;
+  letter-spacing: 0.025em;
+  line-height: 1.45;
 }
 .registro-editorial-plate .btn-scarcity span {
-  color: #E5C271;
-  font-weight: 600;
+  color: #F1CF7A;
+  font-weight: 700;
+  text-shadow: 0 0 12px rgba(241, 207, 122, 0.3);
 }
 
 .registro-editorial-plate .form-privacy {
@@ -2808,8 +2815,13 @@ section { padding: 6rem 2rem; }
   .sponsor-brand img {
     max-height: 75px;
   }
-  .registro-botanical {
-    opacity: 0.2;
+  /* Ocultar fondos botánicos vectoriales pesados en móviles para evitar repaints en GPU */
+  .sesiones-botanical,
+  .registro-botanical,
+  .cta-botanical,
+  .countdown-botanical,
+  .herbario-backdrop-svg {
+    display: none !important;
   }
 }
 
