@@ -232,7 +232,7 @@ mm.add(
       sizeCanvas();
 
       const mouse = { x: -1000, y: -1000, radius: isDesktop ? 160 : 100 };
-      const leafCount = isDesktop ? 42 : 20;
+      const leafCount = isDesktop ? 42 : 8;
       const leaves = [];
 
       const onResize = () => { if (canvas) sizeCanvas(); };
