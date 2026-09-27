@@ -71,7 +71,7 @@
     resize();
     window.addEventListener('resize', resize, { passive: true });
 
-    var count = small ? 14 : 46;
+    var count = small ? 10 : 46;
     var motes = [];
     for (var i = 0; i < count; i++) {
       var depth = 0.25 + Math.random() * 0.75;
@@ -157,8 +157,9 @@
     });
   }
 
-  /* ---------- 3. TAP / CLICK RIPPLE (touch + mouse) ---------- */
+  /* ---------- 3. TAP / CLICK RIPPLE (mouse only to avoid scroll GC lag on touch devices) ---------- */
   window.addEventListener('pointerdown', function (e) {
+    if (e.pointerType === 'touch') return;
     var r = el('div', 'tap-ripple');
     gsap.set(r, { x: e.clientX, y: e.clientY });
     gsap.fromTo(r, { scale: 0.15, autoAlpha: 0.85 }, {
