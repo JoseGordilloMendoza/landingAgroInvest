@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    INVERSIONISTA IMPARABLE â€” GSAP ANIMATIONS
    Requires: gsap 3.12+ and ScrollTrigger plugin
    Follows gsap-core skill best practices:
@@ -883,12 +883,18 @@ mm.add(
         { xPercent: 0, ease: 'none', duration: isDesktop ? 28 : 20, repeat: -1 }
       );
 
-      // Pause off-screen ribbons: several run on the page, only visible ones cost CPU
-      const sync = (self) => { tweenLeft.paused(!self.isActive); tweenRight.paused(!self.isActive); };
-      ScrollTrigger.create({
-        trigger: sec, start: 'top bottom', end: 'bottom top',
-        onToggle: sync, onRefresh: sync
-      });
+      // En móviles garantizamos movimiento continuo sin desincronizaciones de ScrollTrigger
+      if (!isDesktop) {
+        tweenLeft.play();
+        tweenRight.play();
+      } else {
+        // En desktop pausamos cuando sale de pantalla para ahorrar recursos
+        const sync = (self) => { tweenLeft.paused(!self.isActive); tweenRight.paused(!self.isActive); };
+        ScrollTrigger.create({
+          trigger: sec, start: 'top bottom', end: 'bottom top',
+          onToggle: sync, onRefresh: sync
+        });
+      }
 
       if (cintaLink && isDesktop) {
         cintaLink.addEventListener('mouseenter', () => {
