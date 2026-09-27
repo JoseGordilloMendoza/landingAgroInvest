@@ -116,8 +116,8 @@ try {
         $errors['email'] = 'Escribe un correo válido.';
     }
 
-    $interesKey = isset($_POST['interes']) && is_string($_POST['interes']) ? $_POST['interes'] : '';
-    if ($interesKey !== '' && !isset(INTERESES[$interesKey])) {
+    $interesKey = isset($_POST['interes']) && is_string($_POST['interes']) ? trim($_POST['interes']) : '';
+    if ($interesKey !== '' && $interesKey !== '-' && !isset(INTERESES[$interesKey])) {
         $errors['interes'] = 'Elige una opción de la lista.';
     }
 
@@ -136,11 +136,16 @@ try {
     }
 
     // ---- 5. Guardar (el correo es único: un duplicado no crea otra fila) -------------
+    $interesValue = '-';
+    if ($interesKey !== '' && $interesKey !== '-' && isset(INTERESES[$interesKey])) {
+        $interesValue = INTERESES[$interesKey];
+    }
+
     $row = array(
         'nombre' => $nombre,
         'whatsapp' => $whatsapp,
         'email' => $email,
-        'interes' => $interesKey !== '' ? INTERESES[$interesKey] : '',
+        'interes' => $interesValue,
         'fuente' => $fuente,
     );
     $userAgent = isset($_SERVER['HTTP_USER_AGENT']) ? substr(clean_text($_SERVER['HTTP_USER_AGENT'], 255), 0, 255) : '';
