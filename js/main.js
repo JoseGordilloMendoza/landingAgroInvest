@@ -203,6 +203,11 @@ forms.forEach(form => {
       }
       if (!response.ok || !payload || payload.ok !== true) throw new Error('Error en el servidor');
 
+      // Notificar conversión al Píxel de Meta
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead');
+      }
+
       // Success: swap form for confirmation + WhatsApp group button
       const plate = form.closest('.plate-content');
       const header = plate && plate.querySelector('.plate-header');
